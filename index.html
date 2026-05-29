@@ -424,6 +424,33 @@
       box-shadow: 0 20px 50px rgba(255, 142, 83, 0.12);
     }
 
+    .program-card.past {
+      position: relative;
+      pointer-events: none;
+    }
+
+    .program-card.past::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      border-radius: 18px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .program-card.past .featured-badge,
+    .program-card.past .btn-primary {
+      position: relative;
+      z-index: 3;
+      pointer-events: auto;
+    }
+
+    .program-card.past:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
     .program-card.featured {
       border: 2px solid rgba(78, 205, 196, 0.4);
       background: rgba(255, 255, 255, 0.92);
@@ -992,7 +1019,7 @@
     <div class="grid-3">
 
       <!-- City Camp -->
-      <div class="program-card">
+      <div class="program-card past">
         <span class="featured-badge" style="background:linear-gradient(135deg,#e74c3c,#c0392b);">Đã diễn ra</span>
         <div class="program-icon city">
           <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
@@ -1092,6 +1119,8 @@
         el.textContent = 'Đã diễn ra';
         el.style.background = 'linear-gradient(135deg, #94a3b8, #64748b)';
         el.style.animation = 'none';
+        var card = el.closest('.program-card');
+        if (card) card.classList.add('past');
       }
     });
   </script>
