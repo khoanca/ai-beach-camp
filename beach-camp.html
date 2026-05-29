@@ -176,6 +176,40 @@
       50% { box-shadow: 0 0 0 8px rgba(78, 205, 196, 0.08); }
     }
 
+    .upcoming-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: linear-gradient(135deg, #FF6B6B, #ee5a24);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 50px;
+      margin-bottom: 16px;
+      animation: upcoming-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes upcoming-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5); }
+      50% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+    }
+
+    .upcoming-tag .pulse-circle {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     .hero h1 {
       font-size: 3.4rem;
       font-weight: 800;
@@ -786,6 +820,7 @@
         <span class="dot"></span>
         05–06/07/2026 · TPHCM – Vũng Tàu · Giới hạn 25–30 slot
       </span>
+      <div class="upcoming-tag" data-event-end="2026-07-06"><span class="pulse-circle"></span> Sắp diễn ra</div>
       <h1>AI <span class="grad">Beach Camp</span></h1>
       <p>
         2 ngày <b>thực chiến 6 Module</b> cùng 5+ chuyên gia — từ chiến lược vận hành AI, xây dựng Agent, sản xuất content vô hạn đến chăm sóc khách hàng tự động.
@@ -1047,6 +1082,15 @@
 
     overlay.addEventListener('click', closeMenu);
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    document.querySelectorAll('[data-event-end]').forEach(function(el) {
+      var end = new Date(el.dataset.eventEnd + 'T23:59:59');
+      if (new Date() > end) {
+        el.innerHTML = 'Đã diễn ra';
+        el.style.background = 'linear-gradient(135deg, #94a3b8, #64748b)';
+        el.style.animation = 'none';
+      }
+    });
   </script>
 
   <!-- Wave background -->
