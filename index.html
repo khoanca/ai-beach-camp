@@ -383,6 +383,24 @@
       margin-bottom: 14px;
     }
 
+    .card-icon-spline {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+      border-radius: 14px;
+      margin-bottom: 14px;
+    }
+
+    .card-icon-spline iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 14px;
+    }
+
     .card h3 {
       font-size: 1.2rem;
       font-weight: 700;
@@ -677,39 +695,45 @@
       .hero {
         flex-direction: column;
         text-align: center;
-        padding: 0 0 50px;
+        padding: 100px 24px 50px;
         min-height: auto;
       }
 
       .hero-content {
-        max-width: 100%;
+        display: contents;
+      }
+
+      .hero .hero-badge {
         order: 0;
-        padding: 0 24px;
       }
 
       .hero h1 {
         font-size: 2.2rem;
-      }
-
-      .hero p {
-        margin: 0 auto 24px;
-        font-size: 1rem;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-meta {
-        justify-content: center;
+        order: 1;
       }
 
       .hero-spline {
         width: 100%;
         height: 55vh;
         margin: 0;
-        order: 0;
+        order: 2;
         border-radius: 0;
+      }
+
+      .hero p {
+        margin: 0 auto 24px;
+        font-size: 1rem;
+        order: 3;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+        order: 4;
+      }
+
+      .hero-meta {
+        justify-content: center;
+        order: 5;
       }
 
       .section {
@@ -759,11 +783,7 @@
       }
 
       .hero {
-        padding: 0 0 40px;
-      }
-
-      .hero-content {
-        padding: 0 16px;
+        padding: 90px 16px 40px;
       }
 
       .hero-badge {
@@ -933,17 +953,23 @@
     </div>
     <div class="grid-3">
       <div class="card">
-        <div class="card-icon">🧭</div>
+        <div class="card-icon card-icon-spline">
+          <iframe src="https://my.spline.design/pixeltextsetcopycopy-JqwgGyRaKsn6gC82qz6XBMoO-Vsa/" frameborder="0" loading="eager" style="width:100%;height:100%;pointer-events:none;border:none;"></iframe>
+        </div>
         <h3>Hiểu cách AI hoạt động</h3>
         <p>Nắm được điểm mạnh – điểm yếu – ranh giới của AI. Biết khi nào nên giao, khi nào phải tự làm, khi nào cần kiểm tra lại.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🛠️</div>
+        <div class="card-icon card-icon-spline">
+          <iframe src="https://my.spline.design/pixeltextsetcopycopy-JqwgGyRaKsn6gC82qz6XBMoO-mJg/" frameborder="0" loading="eager" style="width:100%;height:100%;pointer-events:none;border:none;"></iframe>
+        </div>
         <h3>Thành thạo qua thực hành</h3>
         <p>Học viên mở laptop làm tại chỗ. Ra workflow thật, ra prompt thật, ra kết quả mang về dùng được ngay.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🎯</div>
+        <div class="card-icon card-icon-spline">
+          <iframe src="https://my.spline.design/pixeltextsetcopycopy-JqwgGyRaKsn6gC82qz6XBMoO-Vsa/" frameborder="0" loading="eager" style="width:100%;height:100%;pointer-events:none;border:none;"></iframe>
+        </div>
         <h3>Quản lý AI – không bị AI dắt</h3>
         <p>Học cách giao việc cho AI như giao cho nhân sự: rõ yêu cầu, rõ tiêu chí, kiểm soát chất lượng đầu ra.</p>
       </div>
