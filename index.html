@@ -433,13 +433,21 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(255, 255, 255, 0.55);
       border-radius: 18px;
       z-index: 2;
       pointer-events: none;
     }
 
-    .program-card.past .featured-badge,
+    .program-card.past .featured-badge {
+      position: relative;
+      z-index: 3;
+      background: linear-gradient(135deg, #94a3b8, #64748b) !important;
+      font-size: 0.65rem;
+      padding: 4px 10px;
+      animation: none;
+    }
+
     .program-card.past .btn-primary {
       position: relative;
       z-index: 3;
@@ -1020,7 +1028,7 @@
 
       <!-- City Camp -->
       <div class="program-card past">
-        <span class="featured-badge" style="background:linear-gradient(135deg,#e74c3c,#c0392b);">Đã diễn ra</span>
+        <span class="featured-badge">Đã diễn ra</span>
         <div class="program-icon city">
           <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
         </div>
