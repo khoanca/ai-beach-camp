@@ -383,22 +383,14 @@
       margin-bottom: 14px;
     }
 
-    .card-icon-spline {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-      background: transparent;
-      border: none;
-      border-radius: 14px;
-      margin-bottom: 14px;
-    }
-
-    .card-icon-spline iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 14px;
+    .card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #FF8E53;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .card h3 {
@@ -458,8 +450,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
       margin-bottom: 16px;
+    }
+
+    .program-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .program-icon.city { background: linear-gradient(135deg, #FFD93D, #FF8E53); }
@@ -927,7 +928,7 @@
     <div class="hero-content">
       <span class="hero-badge">
         <span class="dot"></span>
-        AI Camp · Đang nhận đăng ký
+        Khoá sắp tới: <a href="beach-camp.html" style="color:#44B09E;font-weight:700;text-decoration:none;">AI Beach Camp 05–06/07</a> · Đang nhận đăng ký
       </span>
       <h1>Hiểu &amp; thành thạo để <span class="grad">quản lý AI</span></h1>
       <p>
@@ -953,22 +954,22 @@
     </div>
     <div class="grid-3">
       <div class="card">
-        <div class="card-icon card-icon-spline">
-          <iframe src="https://my.spline.design/pixeltextsetcopycopy-JqwgGyRaKsn6gC82qz6XBMoO-Vsa/" frameborder="0" loading="eager" style="width:100%;height:100%;pointer-events:none;border:none;"></iframe>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5c-2.5.5-4.5 1.5-5.5 3"/><path d="M15 6.5c2.5.5 4.5 1.5 5.5 3"/></svg>
         </div>
         <h3>Hiểu cách AI hoạt động</h3>
         <p>Nắm được điểm mạnh – điểm yếu – ranh giới của AI. Biết khi nào nên giao, khi nào phải tự làm, khi nào cần kiểm tra lại.</p>
       </div>
       <div class="card">
-        <div class="card-icon card-icon-spline">
-          <iframe src="https://my.spline.design/pixeltextsetcopycopy-JqwgGyRaKsn6gC82qz6XBMoO-mJg/" frameborder="0" loading="eager" style="width:100%;height:100%;pointer-events:none;border:none;"></iframe>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
         </div>
         <h3>Thành thạo qua thực hành</h3>
         <p>Học viên mở laptop làm tại chỗ. Ra workflow thật, ra prompt thật, ra kết quả mang về dùng được ngay.</p>
       </div>
       <div class="card">
-        <div class="card-icon card-icon-spline">
-          <iframe src="https://my.spline.design/pixeltextsetcopycopy-JqwgGyRaKsn6gC82qz6XBMoO-Vsa/" frameborder="0" loading="eager" style="width:100%;height:100%;pointer-events:none;border:none;"></iframe>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h3>Quản lý AI – không bị AI dắt</h3>
         <p>Học cách giao việc cho AI như giao cho nhân sự: rõ yêu cầu, rõ tiêu chí, kiểm soát chất lượng đầu ra.</p>
@@ -986,7 +987,9 @@
 
       <!-- City Camp -->
       <div class="program-card">
-        <div class="program-icon city">🏙️</div>
+        <div class="program-icon city">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
+        </div>
         <h3>City Camp</h3>
         <p class="program-tag">AI Intensive · 1 ngày · TPHCM &amp; Hà Nội</p>
         <p>Dành cho người bận rộn. Một ngày tập trung tại thành phố – sáng học &amp; thiết lập, chiều thực hành sâu &amp; coaching 1-1 trên usecase của chính bạn.</p>
@@ -1002,7 +1005,9 @@
       <!-- Beach Camp -->
       <div class="program-card featured">
         <span class="featured-badge">Nổi bật</span>
-        <div class="program-icon beach">🏖️</div>
+        <div class="program-icon beach">
+          <svg viewBox="0 0 24 24"><path d="M17.5 21H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+        </div>
         <h3>Beach Camp</h3>
         <p class="program-tag">AI + Family Retreat · 4 ngày · Resort Biển 5★</p>
         <p>Kết hợp nghỉ dưỡng gia đình với học AI. Buổi sáng học &amp; thực hành với thầy, buổi chiều tận hưởng biển cùng người thân.</p>
@@ -1012,12 +1017,14 @@
           <li>Workshop AI buổi sáng, biển buổi chiều</li>
           <li>Kết nối sâu với giảng viên &amp; học viên</li>
         </ul>
-        <a href="#dangky" class="btn-primary btn-beach" style="justify-content:center;">Đăng ký Beach Camp →</a>
+        <a href="beach-camp.html" class="btn-primary btn-beach" style="justify-content:center;">Xem Beach Camp →</a>
       </div>
 
       <!-- Webinar -->
       <div class="program-card">
-        <div class="program-icon webinar">💻</div>
+        <div class="program-icon webinar">
+          <svg viewBox="0 0 24 24"><path d="M15.6 11.6 22 7v10l-6.4-4.6"/><rect x="2" y="7" width="14" height="10" rx="2"/></svg>
+        </div>
         <h3>Webinar</h3>
         <p class="program-tag">AI Skillset · Online · Mọi lúc mọi nơi</p>
         <p>Chuỗi buổi học online chuyên sâu về từng bộ skillset AI cụ thể. Linh hoạt thời gian, replay không giới hạn.</p>
