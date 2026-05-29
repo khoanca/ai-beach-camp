@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Camp · Hiểu và thành thạo để quản lý AI</title>
+  <meta name="description" content="AI Camp – 3 hình thức học: City Camp tại TPHCM & Hà Nội, Beach Camp nghỉ dưỡng cùng gia đình, Webinar online. Hiểu và thành thạo để quản lý AI – không phải chỉ dùng AI.">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+  <script type="module" src="https://cdn.spline.design/@splinetool/hana-viewer@1.2.54/hana-viewer.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      background: #FFF8F0;
+      min-height: 100vh;
+      color: #2D2A26;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wave-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.75);
+      border-bottom: 1px solid rgba(230, 180, 130, 0.25);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+      background: none;
+      border: none;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2.5px;
+      background: rgba(80, 60, 40, 0.7);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(60, 50, 40, 0.8);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #FF6B6B, #FFD93D);
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #FF6B6B;
+    }
+
+    .nav-cta {
+      padding: 10px 28px;
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: white !important;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      -webkit-text-fill-color: white !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 98;
+    }
+
+    .nav-overlay.active {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 50px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 620px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 25px;
+      border: 1px solid rgba(230, 180, 130, 0.3);
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0f9d58;
+      box-shadow: 0 0 0 4px rgba(15, 157, 88, 0.15);
+    }
+
+    .hero h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.12;
+      color: #0f172a;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .grad {
+      background: linear-gradient(120deg, #ff6a3d 0%, #ff8a3d 40%, #ffb347 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      max-width: 520px;
+    }
+
+    .hero p b {
+      color: #0f172a;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: #475569;
+      font-size: 0.9rem;
+    }
+
+    .hero-meta b {
+      color: #0f172a;
+    }
+
+    .btn-primary {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #ff6a3d, #ffb347);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      box-shadow: 0 10px 24px -10px rgba(255, 106, 61, 0.65);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -10px rgba(255, 106, 61, 0.7);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      padding: 14px 28px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #0f172a;
+      border: 1px solid rgba(230, 180, 130, 0.35);
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+      border-color: rgba(255, 107, 107, 0.4);
+    }
+
+    /* Spline 3D Container */
+    .hero-spline {
+      flex: 1;
+      height: 600px;
+      position: relative;
+    }
+
+    .hero-spline hana-viewer {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      display: block;
+    }
+
+    .spline-glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at center, rgba(255, 217, 61, 0.15) 0%, transparent 70%);
+      border-radius: 24px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title p {
+      font-size: 1.05rem;
+      color: #475569;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 225, 214, 0.6);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 50px rgba(255, 142, 83, 0.12);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #fff3e6, #fff);
+      border: 1px solid rgba(230, 225, 214, 0.6);
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    /* Program Cards */
+    .program-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 225, 214, 0.6);
+      border-radius: 18px;
+      padding: 32px 26px;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .program-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 50px rgba(255, 142, 83, 0.12);
+    }
+
+    .program-card.featured {
+      border: 2px solid rgba(78, 205, 196, 0.4);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(135deg, #4ECDC4, #44B09E);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+
+    .program-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .program-icon.city { background: linear-gradient(135deg, #FFD93D, #FF8E53); }
+    .program-icon.beach { background: linear-gradient(135deg, #4ECDC4, #44B09E); }
+    .program-icon.webinar { background: linear-gradient(135deg, #FF6B6B, #ee5a24); }
+
+    .program-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .program-tag {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    .program-card > p {
+      font-size: 0.92rem;
+      color: #475569;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .program-features {
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+      flex: 1;
+    }
+
+    .program-features li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 2;
+    }
+
+    .program-features li::before {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffd5bf, #ff6a3d);
+    }
+
+    .btn-beach {
+      background: linear-gradient(135deg, #4ECDC4, #44B09E) !important;
+      box-shadow: 0 10px 24px -10px rgba(78, 205, 196, 0.65) !important;
+    }
+
+    .btn-beach:hover {
+      box-shadow: 0 14px 30px -10px rgba(78, 205, 196, 0.7) !important;
+    }
+
+    .btn-webinar {
+      background: linear-gradient(135deg, #FFD93D, #F7C948) !important;
+      color: #5D4E0E !important;
+      box-shadow: 0 10px 24px -10px rgba(255, 217, 61, 0.65) !important;
+    }
+
+    .btn-webinar:hover {
+      box-shadow: 0 14px 30px -10px rgba(255, 217, 61, 0.7) !important;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 60px 50px 100px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #fff, #fffaf2);
+      border: 1px solid rgba(230, 225, 214, 0.6);
+      border-radius: 24px;
+      padding: 50px 44px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 12px 32px -16px rgba(15, 23, 42, 0.18);
+    }
+
+    .cta-box h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      color: #475569;
+      font-size: 1rem;
+      margin-bottom: 28px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 50px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Tablet landscape */
+    @media (max-width: 1024px) {
+      .hero {
+        padding: 120px 32px 80px;
+        gap: 24px;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-spline {
+        height: 450px;
+      }
+
+      .section {
+        padding: 60px 32px;
+      }
+
+      .cta-section {
+        padding: 50px 32px 80px;
+      }
+    }
+
+    /* Tablet portrait */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        flex-direction: column;
+        background: rgba(255, 248, 240, 0.97);
+        backdrop-filter: blur(30px);
+        padding: 100px 36px 40px;
+        gap: 8px;
+        transition: right 0.35s ease;
+        z-index: 99;
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .nav-links a::after {
+        bottom: 8px;
+      }
+
+      .nav-cta {
+        display: inline-block;
+        text-align: center;
+        margin-top: 12px;
+        padding: 14px 28px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 110px 24px 50px;
+        min-height: auto;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        margin: 0 auto 24px;
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-meta {
+        justify-content: center;
+      }
+
+      .hero-spline {
+        width: 100%;
+        height: 380px;
+        margin-top: 32px;
+      }
+
+      .section {
+        padding: 48px 24px;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .cta-section {
+        padding: 40px 24px 70px;
+      }
+
+      .cta-box {
+        padding: 36px 24px;
+      }
+
+      .cta-box h2 {
+        font-size: 1.6rem;
+      }
+
+      footer {
+        padding: 24px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      nav {
+        padding: 14px 16px;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        right: -100%;
+        padding: 90px 24px 40px;
+      }
+
+      .hero {
+        padding: 100px 16px 40px;
+      }
+
+      .hero-badge {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        font-size: 1.85rem;
+        margin-bottom: 14px;
+      }
+
+      .hero p {
+        font-size: 0.92rem;
+        margin-bottom: 20px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 13px 24px;
+        font-size: 0.9rem;
+      }
+
+      .hero-meta {
+        font-size: 0.82rem;
+        gap: 12px;
+      }
+
+      .hero-spline {
+        height: 300px;
+        margin-top: 24px;
+      }
+
+      .spline-glow {
+        inset: -10px;
+      }
+
+      .section {
+        padding: 40px 16px;
+      }
+
+      .section-title {
+        margin-bottom: 28px;
+      }
+
+      .section-title p {
+        font-size: 0.92rem;
+      }
+
+      .program-card {
+        padding: 24px 20px;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      .cta-section {
+        padding: 32px 16px 50px;
+      }
+
+      .cta-box {
+        padding: 32px 18px;
+        border-radius: 20px;
+      }
+
+      .cta-box h2 {
+        font-size: 1.4rem;
+      }
+
+      .cta-box p {
+        font-size: 0.92rem;
+      }
+
+      footer {
+        padding: 20px 16px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Small mobile */
+    @media (max-width: 360px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero-spline {
+        height: 250px;
+      }
+
+      .cta-box h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated wave background -->
+  <canvas class="wave-canvas" id="waveCanvas"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">AI Camp</div>
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#home">Trang chủ</a></li>
+      <li><a href="#programs">Chương trình</a></li>
+      <li><a href="#noidung">Nội dung</a></li>
+      <li><a href="#dangky" class="nav-cta">Đăng ký tham dự</a></li>
+    </ul>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-badge">
+        <span class="dot"></span>
+        AI Camp · Đang nhận đăng ký
+      </span>
+      <h1>Hiểu &amp; thành thạo để <span class="grad">quản lý AI</span></h1>
+      <p>
+        Không phải khoá học lý thuyết, không phải buổi demo công cụ.
+        Mục tiêu: bạn rời camp với khả năng <b>chỉ huy AI</b> trong công việc của mình – biết giao việc, kiểm soát đầu ra, và chốt được kết quả thật.
+      </p>
+      <div class="hero-buttons">
+        <a href="#dangky" class="btn-primary">Đăng ký tham dự →</a>
+        <a href="#programs" class="btn-secondary">Xem chương trình</a>
+      </div>
+      <div class="hero-meta">
+        <div>📌 <b>3 hình thức</b> · City · Beach · Online</div>
+        <div>🎓 Cho mọi nghề, không cần nền tảng kỹ thuật</div>
+      </div>
+    </div>
+    <div class="hero-spline">
+      <div class="spline-glow"></div>
+      <hana-viewer url="https://prod.spline.design/pk6b0UIVJPidMY9m-tam/scene.hanacode"></hana-viewer>
+    </div>
+  </section>
+
+  <!-- Camp là gì? -->
+  <section class="section" id="noidung">
+    <div class="section-title">
+      <h2>Camp này là gì?</h2>
+      <p>Chuyển từ <i>"người dùng AI"</i> thành <i>"người quản lý AI"</i>. Cho mọi nghề, không cần nền tảng kỹ thuật.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <h3>Hiểu cách AI hoạt động</h3>
+        <p>Nắm được điểm mạnh – điểm yếu – ranh giới của AI. Biết khi nào nên giao, khi nào phải tự làm, khi nào cần kiểm tra lại.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Thành thạo qua thực hành</h3>
+        <p>Học viên mở laptop làm tại chỗ. Ra workflow thật, ra prompt thật, ra kết quả mang về dùng được ngay.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Quản lý AI – không bị AI dắt</h3>
+        <p>Học cách giao việc cho AI như giao cho nhân sự: rõ yêu cầu, rõ tiêu chí, kiểm soát chất lượng đầu ra.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Chương trình -->
+  <section class="section" id="programs">
+    <div class="section-title">
+      <h2>Chọn hình thức phù hợp với bạn</h2>
+      <p>Dù bạn ở đâu, bận đến đâu, luôn có chương trình phù hợp.</p>
+    </div>
+    <div class="grid-3">
+
+      <!-- City Camp -->
+      <div class="program-card">
+        <div class="program-icon city">🏙️</div>
+        <h3>City Camp</h3>
+        <p class="program-tag">AI Intensive · 1 ngày · TPHCM &amp; Hà Nội</p>
+        <p>Dành cho người bận rộn. Một ngày tập trung tại thành phố – sáng học &amp; thiết lập, chiều thực hành sâu &amp; coaching 1-1 trên usecase của chính bạn.</p>
+        <ul class="program-features">
+          <li>Mở laptop, làm trực tiếp tại chỗ</li>
+          <li>Thầy coaching 1-1 – chỉnh prompt, chỉnh quy trình</li>
+          <li>Mang về workflow dùng được ngay tuần sau</li>
+          <li>Networking với cộng đồng AI Việt Nam</li>
+        </ul>
+        <a href="#dangky" class="btn-primary" style="justify-content:center;">Đăng ký City Camp →</a>
+      </div>
+
+      <!-- Beach Camp -->
+      <div class="program-card featured">
+        <span class="featured-badge">Nổi bật</span>
+        <div class="program-icon beach">🏖️</div>
+        <h3>Beach Camp</h3>
+        <p class="program-tag">AI + Family Retreat · 4 ngày · Resort Biển 5★</p>
+        <p>Kết hợp nghỉ dưỡng gia đình với học AI. Buổi sáng học &amp; thực hành với thầy, buổi chiều tận hưởng biển cùng người thân.</p>
+        <ul class="program-features">
+          <li>Resort 5 sao ven biển</li>
+          <li>Chương trình hoạt động cho gia đình</li>
+          <li>Workshop AI buổi sáng, biển buổi chiều</li>
+          <li>Kết nối sâu với giảng viên &amp; học viên</li>
+        </ul>
+        <a href="#dangky" class="btn-primary btn-beach" style="justify-content:center;">Đăng ký Beach Camp →</a>
+      </div>
+
+      <!-- Webinar -->
+      <div class="program-card">
+        <div class="program-icon webinar">💻</div>
+        <h3>Webinar</h3>
+        <p class="program-tag">AI Skillset · Online · Mọi lúc mọi nơi</p>
+        <p>Chuỗi buổi học online chuyên sâu về từng bộ skillset AI cụ thể. Linh hoạt thời gian, replay không giới hạn.</p>
+        <ul class="program-features">
+          <li>Buổi học live 90 phút mỗi tuần</li>
+          <li>Replay không giới hạn</li>
+          <li>Tài liệu &amp; template sẵn dùng</li>
+          <li>Cộng đồng hỗ trợ online</li>
+        </ul>
+        <a href="#dangky" class="btn-primary btn-webinar" style="justify-content:center;">Đăng ký Webinar →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="dangky">
+    <div class="cta-box">
+      <h2>Sẵn sàng bắt đầu?</h2>
+      <p>Để lại thông tin để giữ slot và nhận tài liệu đọc trước. BTC sẽ liên hệ tư vấn chương trình phù hợp nhất với bạn.</p>
+      <a href="#dangky" class="btn-primary">Đăng ký tham dự →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 AI Camp · Hiểu &amp; thành thạo để quản lý AI</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.nav-overlay');
+
+    function closeMenu() {
+      toggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('waveCanvas');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const waves = [
+        { y: 0.85, amplitude: 40, frequency: 0.008, speed: 0.015, gradient: ['rgba(255, 107, 107, 0.18)', 'rgba(255, 142, 83, 0.06)'] },
+        { y: 0.80, amplitude: 50, frequency: 0.006, speed: 0.020, gradient: ['rgba(255, 180, 100, 0.15)', 'rgba(255, 217, 61, 0.05)'] },
+        { y: 0.75, amplitude: 35, frequency: 0.010, speed: 0.012, gradient: ['rgba(255, 217, 61, 0.12)', 'rgba(255, 236, 179, 0.04)'] },
+        { y: 0.70, amplitude: 45, frequency: 0.007, speed: 0.018, gradient: ['rgba(78, 205, 196, 0.14)', 'rgba(135, 206, 235, 0.05)'] },
+        { y: 0.65, amplitude: 30, frequency: 0.012, speed: 0.014, gradient: ['rgba(135, 206, 235, 0.10)', 'rgba(78, 205, 196, 0.03)'] },
+        { y: 0.60, amplitude: 55, frequency: 0.005, speed: 0.022, gradient: ['rgba(255, 183, 197, 0.10)', 'rgba(255, 218, 185, 0.03)'] },
+        { y: 0.55, amplitude: 25, frequency: 0.009, speed: 0.016, gradient: ['rgba(255, 218, 185, 0.08)', 'rgba(255, 236, 179, 0.02)'] },
+        { y: 0.50, amplitude: 38, frequency: 0.011, speed: 0.010, gradient: ['rgba(173, 216, 230, 0.08)', 'rgba(224, 247, 250, 0.02)'] },
+      ];
+
+      let time = 0;
+
+      function drawWave(wave) {
+        const w = canvas.width;
+        const h = canvas.height;
+        const baseY = h * wave.y;
+
+        ctx.beginPath();
+        ctx.moveTo(0, h);
+
+        let minY = h;
+        for (let x = 0; x <= w; x += 2) {
+          const y = baseY
+            + Math.sin(x * wave.frequency + time * wave.speed) * wave.amplitude
+            + Math.sin(x * wave.frequency * 0.5 + time * wave.speed * 1.3) * wave.amplitude * 0.5;
+          ctx.lineTo(x, y);
+          if (y < minY) minY = y;
+        }
+
+        ctx.lineTo(w, h);
+        ctx.closePath();
+
+        const grd = ctx.createLinearGradient(0, minY, 0, h);
+        grd.addColorStop(0, wave.gradient[0]);
+        grd.addColorStop(1, wave.gradient[1]);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const bgGrd = ctx.createRadialGradient(
+          canvas.width * 0.3, canvas.height * 0.3, 0,
+          canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.8
+        );
+        bgGrd.addColorStop(0, '#FFF8F0');
+        bgGrd.addColorStop(0.5, '#FFF5E8');
+        bgGrd.addColorStop(1, '#FFF0DD');
+        ctx.fillStyle = bgGrd;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = waves.length - 1; i >= 0; i--) {
+          drawWave(waves[i]);
+        }
+
+        time++;
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+
+</body>
+</html>
