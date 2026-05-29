@@ -6,7 +6,7 @@
   <title>AI Camp · Hiểu và thành thạo để quản lý AI</title>
   <meta name="description" content="AI Camp – 3 hình thức học: City Camp tại TPHCM & Hà Nội, Beach Camp nghỉ dưỡng cùng gia đình, Webinar online. Hiểu và thành thạo để quản lý AI – không phải chỉ dùng AI.">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
-  <script type="module" src="https://cdn.spline.design/@splinetool/hana-viewer@1.2.54/hana-viewer.js"></script>
+  <!-- hana-viewer loaded lazily via script below -->
   <style>
     * {
       margin: 0;
@@ -172,6 +172,7 @@
     .hero-content {
       flex: 1;
       max-width: 620px;
+      order: -1;
     }
 
     .hero-badge {
@@ -581,6 +582,46 @@
       }
     }
 
+    /* Loading gate */
+    .loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #FFF8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loading-screen.loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 142, 83, 0.2);
+      border-top-color: #FF8E53;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .page-content {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .page-content.visible {
+      opacity: 1;
+    }
+
     /* Tablet portrait */
     @media (max-width: 768px) {
       nav {
@@ -636,12 +677,14 @@
       .hero {
         flex-direction: column;
         text-align: center;
-        padding: 110px 24px 50px;
+        padding: 0 0 50px;
         min-height: auto;
       }
 
       .hero-content {
         max-width: 100%;
+        order: 0;
+        padding: 0 24px;
       }
 
       .hero h1 {
@@ -663,8 +706,10 @@
 
       .hero-spline {
         width: 100%;
-        height: 380px;
-        margin-top: 32px;
+        height: 55vh;
+        margin: 0;
+        order: 0;
+        border-radius: 0;
       }
 
       .section {
@@ -714,7 +759,11 @@
       }
 
       .hero {
-        padding: 100px 16px 40px;
+        padding: 0 0 40px;
+      }
+
+      .hero-content {
+        padding: 0 16px;
       }
 
       .hero-badge {
@@ -754,8 +803,7 @@
       }
 
       .hero-spline {
-        height: 300px;
-        margin-top: 24px;
+        height: 50vh;
       }
 
       .spline-glow {
@@ -812,7 +860,7 @@
       }
 
       .hero-spline {
-        height: 250px;
+        height: 45vh;
       }
 
       .cta-box h2 {
@@ -822,6 +870,13 @@
   </style>
 </head>
 <body>
+
+  <!-- Loading gate — hides page until Spline is ready -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div class="page-content" id="pageContent">
 
   <!-- Animated wave background -->
   <canvas class="wave-canvas" id="waveCanvas"></canvas>
@@ -845,6 +900,10 @@
 
   <!-- Hero Section -->
   <section class="hero" id="home">
+    <div class="hero-spline">
+      <div class="spline-glow"></div>
+      <hana-viewer url="https://prod.spline.design/pk6b0UIVJPidMY9m-tam/scene.hanacode"></hana-viewer>
+    </div>
     <div class="hero-content">
       <span class="hero-badge">
         <span class="dot"></span>
@@ -863,10 +922,6 @@
         <div>📌 <b>3 hình thức</b> · City · Beach · Online</div>
         <div>🎓 Cho mọi nghề, không cần nền tảng kỹ thuật</div>
       </div>
-    </div>
-    <div class="hero-spline">
-      <div class="spline-glow"></div>
-      <hana-viewer url="https://prod.spline.design/pk6b0UIVJPidMY9m-tam/scene.hanacode"></hana-viewer>
     </div>
   </section>
 
@@ -966,6 +1021,8 @@
     <p>© 2026 AI Camp · Hiểu &amp; thành thạo để quản lý AI</p>
   </footer>
 
+  </div><!-- /page-content -->
+
   <script>
     const toggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -1064,6 +1121,38 @@
       }
 
       animate();
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var loadingScreen = document.getElementById('loadingScreen');
+      var pageContent = document.getElementById('pageContent');
+      var viewer = document.querySelector('hana-viewer');
+
+      function reveal() {
+        pageContent.classList.add('visible');
+        loadingScreen.classList.add('loaded');
+      }
+
+      var script = document.createElement('script');
+      script.type = 'module';
+      script.src = 'https://cdn.spline.design/@splinetool/hana-viewer@1.2.54/hana-viewer.js';
+
+      script.onload = function() {
+        var check = setInterval(function() {
+          var v = document.querySelector('hana-viewer');
+          if (v && v.shadowRoot && v.shadowRoot.querySelector('canvas')) {
+            clearInterval(check);
+            setTimeout(reveal, 200);
+          }
+        }, 100);
+      };
+
+      // Fallback: reveal after 8s even if Spline fails
+      setTimeout(reveal, 8000);
+
+      document.head.appendChild(script);
     })();
   </script>
 
