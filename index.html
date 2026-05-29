@@ -424,39 +424,9 @@
       box-shadow: 0 20px 50px rgba(255, 142, 83, 0.12);
     }
 
-    .program-card.past {
-      position: relative;
-      pointer-events: none;
-    }
-
-    .program-card.past::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.55);
-      border-radius: 18px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
     .program-card.past .featured-badge {
-      position: relative;
-      z-index: 3;
       background: linear-gradient(135deg, #94a3b8, #64748b) !important;
-      font-size: 0.65rem;
-      padding: 4px 10px;
       animation: none;
-    }
-
-    .program-card.past .btn-primary {
-      position: relative;
-      z-index: 3;
-      pointer-events: auto;
-    }
-
-    .program-card.past:hover {
-      transform: none;
-      box-shadow: none;
     }
 
     .program-card.featured {
