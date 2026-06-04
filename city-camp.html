@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>City Camp · Bootcamp AI Agent · ĐÃ DIỄN RA</title>
+  <title data-en="City Camp · AI Agent Bootcamp · PAST EVENT">City Camp · Bootcamp AI Agent · ĐÃ DIỄN RA</title>
   <meta name="description" content="City Camp – Bootcamp AI Agent: Xây hệ thống AI vận hành dành cho Expert. 1 ngày thực chiến tại TPHCM. Sự kiện đã diễn ra thành công.">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
   <style>
@@ -870,6 +870,41 @@
       .past-tag { font-size: 0.85rem; padding: 9px 20px; }
       .cta-box h2 { font-size: 1.3rem; }
     }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 10000;
+      height: 46px;
+      padding: 0 20px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 26px -8px rgba(255, 106, 61, 0.6);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(255, 106, 61, 0.7);
+    }
+    .lang-toggle svg {
+      width: 17px; height: 17px;
+      stroke: #fff; stroke-width: 2; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (max-width: 480px) {
+      .lang-toggle { bottom: 16px; right: 16px; height: 42px; padding: 0 16px; font-size: 0.84rem; }
+    }
   </style>
 </head>
 <body>
@@ -877,7 +912,7 @@
   <canvas class="wave-canvas" id="waveCanvas"></canvas>
 
   <!-- Fixed past-event strip -->
-  <div class="past-strip">
+  <div class="past-strip" data-en="THIS EVENT HAS SUCCESSFULLY TAKEN PLACE — Thank you to everyone who joined us!">
     SỰ KIỆN ĐÃ DIỄN RA THÀNH CÔNG — Cảm ơn tất cả học viên đã tham gia!
   </div>
 
@@ -888,54 +923,60 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="index.html">Trang chủ</a></li>
-      <li><a href="#noidung">Nội dung</a></li>
-      <li><a href="#lichtrinh">Lịch trình</a></li>
-      <li><a href="#chuyengia">Chuyên gia</a></li>
-      <li><a href="beach-camp.html" class="nav-cta">Xem Beach Camp →</a></li>
+      <li><a href="index.html" data-en="Home">Trang chủ</a></li>
+      <li><a href="#noidung" data-en="Curriculum">Nội dung</a></li>
+      <li><a href="#lichtrinh" data-en="Schedule">Lịch trình</a></li>
+      <li><a href="#chuyengia" data-en="Experts">Chuyên gia</a></li>
+      <li><a href="beach-camp.html" class="nav-cta" data-en="View Beach Camp →">Xem Beach Camp →</a></li>
     </ul>
   </nav>
   <div class="nav-overlay"></div>
 
+  <!-- Language toggle -->
+  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span id="langLabel">English</span>
+  </button>
+
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-inner">
-      <div class="past-tag">
+      <div class="past-tag" data-en="<svg viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg> PAST EVENT">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         ĐÃ DIỄN RA
       </div>
       <br>
-      <span class="hero-badge">
+      <span class="hero-badge" data-en="1-day bootcamp · 8 hours hands-on · Ho Chi Minh City">
         Bootcamp 1 ngày · 8 giờ thực chiến · TPHCM
       </span>
-      <h1>City <span class="grad">Camp</span></h1>
-      <p class="hero-subtitle">BOOTCAMP AI AGENT: XÂY HỆ THỐNG AI VẬN HÀNH DÀNH CHO EXPERT</p>
-      <p>
+      <h1 data-en="City <span class='grad'>Camp</span>">City <span class="grad">Camp</span></h1>
+      <p class="hero-subtitle" data-en="AI AGENT BOOTCAMP: BUILD AN OPERATIONAL AI SYSTEM FOR EXPERTS">BOOTCAMP AI AGENT: XÂY HỆ THỐNG AI VẬN HÀNH DÀNH CHO EXPERT</p>
+      <p data-en="Built for <b>marketers, creators, copywriters and managers</b>. Build your own AI Agent system in just one hands-on bootcamp day — no coding required. Turn AI from a set of &quot;scattered tools&quot; into a personal assistant with real workflows: <b>5X execution speed — 5X output performance</b>.">
         Dành cho <b>Marketers, Creators, Copywriters, Managers</b>.
         Xây dựng hệ thống AI Agent chỉ sau 1 ngày bootcamp thực chiến — không cần biết code.
         Biến AI từ "công cụ rời rạc" thành trợ lý cá nhân có quy trình: <b>X5 tốc độ thực thi — X5 hiệu suất đầu ra</b>.
       </p>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-value">1 ngày</span>
-          <span class="stat-label">8 giờ thực chiến</span>
+          <span class="stat-value" data-en="1 day">1 ngày</span>
+          <span class="stat-label" data-en="8 hours hands-on">8 giờ thực chiến</span>
         </div>
         <div class="stat">
           <span class="stat-value">6</span>
-          <span class="stat-label">Phần chuyên sâu</span>
+          <span class="stat-label" data-en="In-depth modules">Phần chuyên sâu</span>
         </div>
         <div class="stat">
           <span class="stat-value">30–40</span>
-          <span class="stat-label">Học viên</span>
+          <span class="stat-label" data-en="Participants">Học viên</span>
         </div>
         <div class="stat">
           <span class="stat-value">5</span>
-          <span class="stat-label">Giảng viên</span>
+          <span class="stat-label" data-en="Instructors">Giảng viên</span>
         </div>
       </div>
       <div class="hero-buttons">
-        <a href="beach-camp.html" class="btn-primary">Xem Beach Camp sắp tới →</a>
-        <a href="#lichtrinh" class="btn-secondary">Xem nội dung đã học</a>
+        <a href="beach-camp.html" class="btn-primary" data-en="View the upcoming Beach Camp →">Xem Beach Camp sắp tới →</a>
+        <a href="#lichtrinh" class="btn-secondary" data-en="See what was covered">Xem nội dung đã học</a>
       </div>
     </div>
   </section>
@@ -943,22 +984,22 @@
   <!-- Vấn đề -->
   <section class="section" id="noidung">
     <div class="section-title">
-      <h2>Vấn đề: AI có sẵn, nhưng Workflow thì chưa có</h2>
-      <p>Không phải bạn thiếu công cụ, mà bạn đang thiếu một hệ thống vận hành AI được thiết kế riêng cho công việc của mình.</p>
+      <h2 data-en="The Problem: AI Is Everywhere, but the Workflow Isn't">Vấn đề: AI có sẵn, nhưng Workflow thì chưa có</h2>
+      <p data-en="You're not short on tools — you're missing an AI operating system designed specifically for your work.">Không phải bạn thiếu công cụ, mà bạn đang thiếu một hệ thống vận hành AI được thiết kế riêng cho công việc của mình.</p>
     </div>
     <div class="content-container">
       <ul class="item-list problems">
         <li>
-          <h4>Output AI vẫn phải sửa quá nhiều</h4>
-          <p>Bản nháp đầu chỉ đạt 50–60%. Vẫn phải ngồi chỉnh tone giọng, bóc tách sự thật (fact-check), và sắp xếp lại cấu trúc.</p>
+          <h4 data-en="AI output still needs too much editing">Output AI vẫn phải sửa quá nhiều</h4>
+          <p data-en="First drafts only get you 50–60% of the way. You still have to fix the tone, fact-check, and restructure everything by hand.">Bản nháp đầu chỉ đạt 50–60%. Vẫn phải ngồi chỉnh tone giọng, bóc tách sự thật (fact-check), và sắp xếp lại cấu trúc.</p>
         </li>
         <li>
-          <h4>Không có workflow chuẩn hoá</h4>
-          <p>Mỗi task lại bắt đầu từ đầu — không có prompt template, checklist, hay SOP để bàn giao cho team.</p>
+          <h4 data-en="No standardized workflow">Không có workflow chuẩn hoá</h4>
+          <p data-en="Every task starts from scratch — no prompt templates, checklists, or SOPs to hand off to the team.">Mỗi task lại bắt đầu từ đầu — không có prompt template, checklist, hay SOP để bàn giao cho team.</p>
         </li>
         <li>
-          <h4>Cả team sử dụng AI rời rạc</h4>
-          <p>Người dùng ChatGPT, Claude, Gemini... nhưng không ai chia sẻ prompt hay đo lường được kết quả.</p>
+          <h4 data-en="The whole team uses AI in silos">Cả team sử dụng AI rời rạc</h4>
+          <p data-en="People use ChatGPT, Claude, Gemini... but nobody shares prompts or measures the results.">Người dùng ChatGPT, Claude, Gemini... nhưng không ai chia sẻ prompt hay đo lường được kết quả.</p>
         </li>
       </ul>
     </div>
@@ -967,30 +1008,30 @@
   <!-- Giải pháp -->
   <section class="section">
     <div class="section-title">
-      <h2>Giải pháp: Từ AI rời rạc sang Hệ thống AI Vận hành</h2>
-      <p>Không phải khoá học "mẹo viết câu lệnh", mà là xây dựng hệ thống có cấu trúc rõ ràng.</p>
+      <h2 data-en="The Solution: From Scattered AI to an Operational AI System">Giải pháp: Từ AI rời rạc sang Hệ thống AI Vận hành</h2>
+      <p data-en="This isn't a &quot;prompt tricks&quot; course — it's about building a system with a clear structure.">Không phải khoá học "mẹo viết câu lệnh", mà là xây dựng hệ thống có cấu trúc rõ ràng.</p>
     </div>
     <div class="content-container">
       <ul class="item-list solutions">
         <li>
-          <h4>Đầu vào chuẩn</h4>
-          <p>Bản tóm tắt yêu cầu theo khung PTCF, mẫu nhập liệu cho từng loại công việc.</p>
+          <h4 data-en="Standardized inputs">Đầu vào chuẩn</h4>
+          <p data-en="Request briefs built on the PTCF framework, with intake templates for every type of work.">Bản tóm tắt yêu cầu theo khung PTCF, mẫu nhập liệu cho từng loại công việc.</p>
         </li>
         <li>
-          <h4>Trợ lý AI phân vai</h4>
-          <p>Phân chia rõ AI nghiên cứu, soạn thảo, kiểm tra chất lượng, và tái sử dụng nội dung.</p>
+          <h4 data-en="Role-based AI assistants">Trợ lý AI phân vai</h4>
+          <p data-en="Clear roles for AI to research, draft, quality-check, and repurpose content.">Phân chia rõ AI nghiên cứu, soạn thảo, kiểm tra chất lượng, và tái sử dụng nội dung.</p>
         </li>
         <li>
-          <h4>Cổng kiểm chất lượng</h4>
-          <p>Bảng kiểm 7 điểm, giữ đúng giọng văn thương hiệu, đối chiếu thông tin chặt chẽ.</p>
+          <h4 data-en="Quality gate">Cổng kiểm chất lượng</h4>
+          <p data-en="A 7-point checklist that keeps your brand voice on point and cross-checks every fact.">Bảng kiểm 7 điểm, giữ đúng giọng văn thương hiệu, đối chiếu thông tin chặt chẽ.</p>
         </li>
         <li>
-          <h4>Đầu ra đa kênh</h4>
-          <p>Biến 1 ý tưởng ban đầu thành 5–8 định dạng cho nhiều nền tảng khác nhau.</p>
+          <h4 data-en="Multi-channel output">Đầu ra đa kênh</h4>
+          <p data-en="Turn a single idea into 5–8 formats for a range of platforms.">Biến 1 ý tưởng ban đầu thành 5–8 định dạng cho nhiều nền tảng khác nhau.</p>
         </li>
         <li>
-          <h4>Đo lường</h4>
-          <p>Đánh giá năng suất, thời gian hoàn thành và số giờ tiết kiệm được mỗi tuần.</p>
+          <h4 data-en="Measurement">Đo lường</h4>
+          <p data-en="Track productivity, turnaround time, and the hours you save each week.">Đánh giá năng suất, thời gian hoàn thành và số giờ tiết kiệm được mỗi tuần.</p>
         </li>
       </ul>
     </div>
@@ -999,57 +1040,57 @@
   <!-- 6 Quy trình ứng dụng -->
   <section class="section">
     <div class="section-title">
-      <h2>6 Quy trình ứng dụng thực chiến</h2>
-      <p>Mỗi quy trình phân định rõ: Việc AI làm · Việc bạn quyết định · Kết quả đo lường được.</p>
+      <h2 data-en="6 Hands-On Application Workflows">6 Quy trình ứng dụng thực chiến</h2>
+      <p data-en="Each workflow makes it clear: What AI does · What you decide · Measurable results.">Mỗi quy trình phân định rõ: Việc AI làm · Việc bạn quyết định · Kết quả đo lường được.</p>
     </div>
     <div class="usecase-grid">
       <div class="usecase-card">
-        <h4><span class="usecase-num">1</span> Sản xuất nội dung</h4>
+        <h4 data-en="<span class='usecase-num'>1</span> Content production"><span class="usecase-num">1</span> Sản xuất nội dung</h4>
         <div class="usecase-role">
-          <span class="role-ai">AI: Lên dàn ý, viết nháp, tái sử dụng 1→5</span>
-          <span class="role-human">Bạn: Chốt góc nhìn, giọng thương hiệu</span>
+          <span class="role-ai" data-en="AI: Outlines, drafts, repurposes 1→5">AI: Lên dàn ý, viết nháp, tái sử dụng 1→5</span>
+          <span class="role-human" data-en="You: Lock the angle and brand voice">Bạn: Chốt góc nhìn, giọng thương hiệu</span>
         </div>
-        <div class="usecase-result">Giảm 60% thời gian, đầu ra đều đặn hằng tuần</div>
+        <div class="usecase-result" data-en="60% less time, consistent weekly output">Giảm 60% thời gian, đầu ra đều đặn hằng tuần</div>
       </div>
       <div class="usecase-card">
-        <h4><span class="usecase-num">2</span> Nghiên cứu thị trường</h4>
+        <h4 data-en="<span class='usecase-num'>2</span> Market research"><span class="usecase-num">2</span> Nghiên cứu thị trường</h4>
         <div class="usecase-role">
-          <span class="role-ai">AI: Quét nguồn, tóm tắt, so sánh đối thủ</span>
-          <span class="role-human">Bạn: Đặt câu hỏi, diễn giải hiểu biết</span>
+          <span class="role-ai" data-en="AI: Scans sources, summarizes, benchmarks rivals">AI: Quét nguồn, tóm tắt, so sánh đối thủ</span>
+          <span class="role-human" data-en="You: Ask the questions, interpret the insights">Bạn: Đặt câu hỏi, diễn giải hiểu biết</span>
         </div>
-        <div class="usecase-result">1 ngày → 90 phút, có dẫn nguồn rõ ràng</div>
+        <div class="usecase-result" data-en="1 day → 90 minutes, with clear sources">1 ngày → 90 phút, có dẫn nguồn rõ ràng</div>
       </div>
       <div class="usecase-card">
-        <h4><span class="usecase-num">3</span> Đề xuất kinh doanh</h4>
+        <h4 data-en="<span class='usecase-num'>3</span> Business proposals"><span class="usecase-num">3</span> Đề xuất kinh doanh</h4>
         <div class="usecase-role">
-          <span class="role-ai">AI: Soạn đề xuất, chấm điểm lead, viết email</span>
-          <span class="role-human">Bạn: Quyết định giá, đàm phán, chốt HĐ</span>
+          <span class="role-ai" data-en="AI: Drafts proposals, scores leads, writes emails">AI: Soạn đề xuất, chấm điểm lead, viết email</span>
+          <span class="role-human" data-en="You: Set pricing, negotiate, close the deal">Bạn: Quyết định giá, đàm phán, chốt HĐ</span>
         </div>
-        <div class="usecase-result">Tỷ lệ phản hồi tăng, không bỏ sót KH</div>
+        <div class="usecase-result" data-en="Higher response rate, no leads slip through">Tỷ lệ phản hồi tăng, không bỏ sót KH</div>
       </div>
       <div class="usecase-card">
-        <h4><span class="usecase-num">4</span> Báo cáo chỉ số (KPI)</h4>
+        <h4 data-en="<span class='usecase-num'>4</span> KPI reporting"><span class="usecase-num">4</span> Báo cáo chỉ số (KPI)</h4>
         <div class="usecase-role">
-          <span class="role-ai">AI: Tổng hợp số liệu, viết diễn giải, biểu đồ</span>
-          <span class="role-human">Bạn: Phân tích nguyên nhân, đề xuất</span>
+          <span class="role-ai" data-en="AI: Aggregates data, writes commentary, builds charts">AI: Tổng hợp số liệu, viết diễn giải, biểu đồ</span>
+          <span class="role-human" data-en="You: Analyze root causes, make recommendations">Bạn: Phân tích nguyên nhân, đề xuất</span>
         </div>
-        <div class="usecase-result">Báo cáo đúng hạn, không thiếu sót</div>
+        <div class="usecase-result" data-en="Reports on time, with nothing left out">Báo cáo đúng hạn, không thiếu sót</div>
       </div>
       <div class="usecase-card">
-        <h4><span class="usecase-num">5</span> Quản lý tri thức</h4>
+        <h4 data-en="<span class='usecase-num'>5</span> Knowledge management"><span class="usecase-num">5</span> Quản lý tri thức</h4>
         <div class="usecase-role">
-          <span class="role-ai">AI: Tóm tắt tài liệu, xây kho tri thức</span>
-          <span class="role-human">Bạn: Định nghĩa cấu trúc, kiểm tra</span>
+          <span class="role-ai" data-en="AI: Summarizes documents, builds the knowledge base">AI: Tóm tắt tài liệu, xây kho tri thức</span>
+          <span class="role-human" data-en="You: Define the structure and review it">Bạn: Định nghĩa cấu trúc, kiểm tra</span>
         </div>
-        <div class="usecase-result">Đào tạo nhân sự mới nhanh hơn</div>
+        <div class="usecase-result" data-en="Onboard new hires faster">Đào tạo nhân sự mới nhanh hơn</div>
       </div>
       <div class="usecase-card">
-        <h4><span class="usecase-num">6</span> Thương hiệu chuyên gia</h4>
+        <h4 data-en="<span class='usecase-num'>6</span> Expert personal brand"><span class="usecase-num">6</span> Thương hiệu chuyên gia</h4>
         <div class="usecase-role">
-          <span class="role-ai">AI: Chuyển ghi âm thành bài đăng, kịch bản</span>
-          <span class="role-human">Bạn: Cung cấp tri thức gốc, giọng CG</span>
+          <span class="role-ai" data-en="AI: Turns recordings into posts and scripts">AI: Chuyển ghi âm thành bài đăng, kịch bản</span>
+          <span class="role-human" data-en="You: Provide the core expertise and expert voice">Bạn: Cung cấp tri thức gốc, giọng CG</span>
         </div>
-        <div class="usecase-result">1 giờ tư duy → 1 tuần nội dung</div>
+        <div class="usecase-result" data-en="1 hour of thinking → 1 week of content">1 giờ tư duy → 1 tuần nội dung</div>
       </div>
     </div>
   </section>
@@ -1057,56 +1098,56 @@
   <!-- Lịch trình -->
   <section class="section" id="lichtrinh">
     <div class="section-title">
-      <h2>Lộ trình bootcamp: 6 phần · 8 giờ thực chiến</h2>
-      <p>Liên hiệp các Hội Khoa học Kỹ thuật TP.HCM — 224 Điện Biên Phủ, Xuân Hoà, TP.HCM</p>
+      <h2 data-en="Bootcamp roadmap: 6 modules · 8 hours hands-on">Lộ trình bootcamp: 6 phần · 8 giờ thực chiến</h2>
+      <p data-en="Union of Science &amp; Technology Associations of HCMC — 224 Dien Bien Phu, Xuan Hoa Ward, Ho Chi Minh City">Liên hiệp các Hội Khoa học Kỹ thuật TP.HCM — 224 Điện Biên Phủ, Xuân Hoà, TP.HCM</p>
     </div>
 
     <div class="schedule-container">
       <div class="schedule-item highlight">
-        <div class="schedule-time">08:30 – 09:30 · Phần 1</div>
-        <h4>Rà soát công việc &amp; Chọn 2 quy trình ưu tiên</h4>
-        <p>Vẽ workflow thực tế, đo lường thời gian từng đầu việc. Chọn 2 quy trình ROI cao nhất để chuẩn hoá bằng AI.</p>
-        <div class="schedule-output">Sản phẩm: Bản đồ công việc + 2 quy trình mục tiêu kèm KPI</div>
+        <div class="schedule-time" data-en="08:30 – 09:30 · Module 1">08:30 – 09:30 · Phần 1</div>
+        <h4 data-en="Audit your work &amp; pick 2 priority workflows">Rà soát công việc &amp; Chọn 2 quy trình ưu tiên</h4>
+        <p data-en="Map your real workflows and time each task. Pick the 2 highest-ROI workflows to standardize with AI.">Vẽ workflow thực tế, đo lường thời gian từng đầu việc. Chọn 2 quy trình ROI cao nhất để chuẩn hoá bằng AI.</p>
+        <div class="schedule-output" data-en="Deliverable: A work map + 2 target workflows with KPIs">Sản phẩm: Bản đồ công việc + 2 quy trình mục tiêu kèm KPI</div>
       </div>
 
       <div class="schedule-item highlight">
-        <div class="schedule-time">09:30 – 11:00 · Phần 2</div>
-        <h4>Khung prompt PTCF &amp; Thư viện câu lệnh</h4>
-        <p>Học khung PTCF (Persona – Task – Context – Format). Kỹ thuật few-shot, chain-of-thought, role-prompting.</p>
-        <div class="schedule-output">Sản phẩm: Thư viện ≥15 prompt template + checklist 7 điểm</div>
+        <div class="schedule-time" data-en="09:30 – 11:00 · Module 2">09:30 – 11:00 · Phần 2</div>
+        <h4 data-en="The PTCF prompt framework &amp; prompt library">Khung prompt PTCF &amp; Thư viện câu lệnh</h4>
+        <p data-en="Learn the PTCF framework (Persona – Task – Context – Format), plus few-shot, chain-of-thought, and role-prompting techniques.">Học khung PTCF (Persona – Task – Context – Format). Kỹ thuật few-shot, chain-of-thought, role-prompting.</p>
+        <div class="schedule-output" data-en="Deliverable: A library of 15+ prompt templates + a 7-point checklist">Sản phẩm: Thư viện ≥15 prompt template + checklist 7 điểm</div>
       </div>
 
       <div class="schedule-item highlight">
-        <div class="schedule-time">11:00 – 12:00 · Phần 3</div>
-        <h4>Pipeline Nghiên cứu → Insight → Bản nháp</h4>
-        <p>Quy trình 4 bước kiểm chứng thông tin (chống ảo giác AI). Sử dụng Perplexity Pro / Gemini Deep Research để quét nguồn.</p>
-        <div class="schedule-output">Sản phẩm: SOP nghiên cứu 4 bước + 1 báo cáo insight mẫu</div>
+        <div class="schedule-time" data-en="11:00 – 12:00 · Module 3">11:00 – 12:00 · Phần 3</div>
+        <h4 data-en="Pipeline: Research → Insight → Draft">Pipeline Nghiên cứu → Insight → Bản nháp</h4>
+        <p data-en="A 4-step process to verify information (and prevent AI hallucinations). Use Perplexity Pro / Gemini Deep Research to scan sources.">Quy trình 4 bước kiểm chứng thông tin (chống ảo giác AI). Sử dụng Perplexity Pro / Gemini Deep Research để quét nguồn.</p>
+        <div class="schedule-output" data-en="Deliverable: A 4-step research SOP + 1 sample insight report">Sản phẩm: SOP nghiên cứu 4 bước + 1 báo cáo insight mẫu</div>
       </div>
 
       <div class="schedule-item break-item">
-        <div class="schedule-time">12:00 – 13:00</div>
-        <h4>Nghỉ trưa</h4>
+        <div class="schedule-time" data-en="12:00 – 13:00">12:00 – 13:00</div>
+        <h4 data-en="Lunch break">Nghỉ trưa</h4>
       </div>
 
       <div class="schedule-item highlight">
-        <div class="schedule-time">13:00 – 14:00 · Phần 4</div>
-        <h4>Dựng Trợ lý AI cá nhân có kho tri thức riêng</h4>
-        <p>Tạo Custom GPT / Claude Project nạp sẵn brand guide, sản phẩm, dữ liệu công ty. Thiết lập guardrails (điều cấm nói, tone giọng mặc định).</p>
-        <div class="schedule-output">Sản phẩm: 1–2 trợ lý AI cá nhân chạy được thực tế</div>
+        <div class="schedule-time" data-en="13:00 – 14:00 · Module 4">13:00 – 14:00 · Phần 4</div>
+        <h4 data-en="Build a personal AI assistant with its own knowledge base">Dựng Trợ lý AI cá nhân có kho tri thức riêng</h4>
+        <p data-en="Create a Custom GPT / Claude Project preloaded with your brand guide, products, and company data. Set up guardrails (off-limits topics, default tone of voice).">Tạo Custom GPT / Claude Project nạp sẵn brand guide, sản phẩm, dữ liệu công ty. Thiết lập guardrails (điều cấm nói, tone giọng mặc định).</p>
+        <div class="schedule-output" data-en="Deliverable: 1–2 personal AI assistants running for real">Sản phẩm: 1–2 trợ lý AI cá nhân chạy được thực tế</div>
       </div>
 
       <div class="schedule-item highlight">
-        <div class="schedule-time">14:00 – 15:30 · Phần 5</div>
-        <h4>Sản xuất nội dung đa kênh &amp; Tự động hoá nhẹ</h4>
-        <p>Repurpose pipeline: 1 bài dài ⇒ đa nền tảng (Facebook, TikTok, Email...). Dựng luồng tự động (n8n/Make): Ý tưởng → AI viết → Đẩy lên Notion/Sheet.</p>
-        <div class="schedule-output">Sản phẩm: 1 content pipeline + 1 luồng tự động + Sổ tay giọng văn</div>
+        <div class="schedule-time" data-en="14:00 – 15:30 · Module 5">14:00 – 15:30 · Phần 5</div>
+        <h4 data-en="Multi-channel content production &amp; light automation">Sản xuất nội dung đa kênh &amp; Tự động hoá nhẹ</h4>
+        <p data-en="Repurpose pipeline: 1 long-form piece ⇒ many platforms (Facebook, TikTok, Email...). Build an automated flow (n8n/Make): Idea → AI writes → Push to Notion/Sheet.">Repurpose pipeline: 1 bài dài ⇒ đa nền tảng (Facebook, TikTok, Email...). Dựng luồng tự động (n8n/Make): Ý tưởng → AI viết → Đẩy lên Notion/Sheet.</p>
+        <div class="schedule-output" data-en="Deliverable: 1 content pipeline + 1 automation flow + a tone-of-voice handbook">Sản phẩm: 1 content pipeline + 1 luồng tự động + Sổ tay giọng văn</div>
       </div>
 
       <div class="schedule-item highlight">
-        <div class="schedule-time">15:30 – 16:30 · Phần 6</div>
-        <h4>Kế hoạch 30 ngày triển khai &amp; Cam kết</h4>
-        <p>Đóng gói kế hoạch 4 tuần áp dụng AI vào công ty.</p>
-        <div class="schedule-output">Sản phẩm: Kế hoạch 30 ngày + Bảng KPI + Đặt lịch kèm 1:1</div>
+        <div class="schedule-time" data-en="15:30 – 16:30 · Module 6">15:30 – 16:30 · Phần 6</div>
+        <h4 data-en="30-day rollout plan &amp; commitment">Kế hoạch 30 ngày triển khai &amp; Cam kết</h4>
+        <p data-en="Package a 4-week plan to roll out AI across your company.">Đóng gói kế hoạch 4 tuần áp dụng AI vào công ty.</p>
+        <div class="schedule-output" data-en="Deliverable: A 30-day plan + KPI sheet + a scheduled 1:1 session">Sản phẩm: Kế hoạch 30 ngày + Bảng KPI + Đặt lịch kèm 1:1</div>
       </div>
     </div>
   </section>
@@ -1114,35 +1155,35 @@
   <!-- Đội ngũ giảng viên -->
   <section class="section" id="chuyengia">
     <div class="section-title">
-      <h2>Đội ngũ giảng viên thực chiến</h2>
-      <p>5 chuyên gia — mỗi người một lĩnh vực, thực chiến tại doanh nghiệp.</p>
+      <h2 data-en="A team of hands-on instructors">Đội ngũ giảng viên thực chiến</h2>
+      <p data-en="5 experts — each in their own field, battle-tested inside real businesses.">5 chuyên gia — mỗi người một lĩnh vực, thực chiến tại doanh nghiệp.</p>
     </div>
 
     <div class="experts-grid">
       <div class="expert-card">
         <div class="expert-avatar">TT</div>
         <h4>Trung Trần</h4>
-        <span class="expert-role">GĐKD – Vietnix</span>
+        <span class="expert-role" data-en="Business Director – Vietnix">GĐKD – Vietnix</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">ĐN</div>
         <h4>Đạt Nguyễn AI</h4>
-        <span class="expert-role">Co-founder Admatrix</span>
+        <span class="expert-role" data-en="Co-founder, Admatrix">Co-founder Admatrix</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">NQ</div>
         <h4>Nguyễn Quốc</h4>
-        <span class="expert-role">Founder &amp; CEO – Pidu Digital</span>
+        <span class="expert-role" data-en="Founder &amp; CEO – Pidu Digital">Founder &amp; CEO – Pidu Digital</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">TT</div>
         <h4>Thiện Trần</h4>
-        <span class="expert-role">Founder Mood Biz</span>
+        <span class="expert-role" data-en="Founder, Mood Biz">Founder Mood Biz</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">TL</div>
         <h4>Tuấn Lê</h4>
-        <span class="expert-role">Founder A1 Digihub · Angel Investor</span>
+        <span class="expert-role" data-en="Founder, A1 Digihub · Angel Investor">Founder A1 Digihub · Angel Investor</span>
       </div>
     </div>
   </section>
@@ -1150,8 +1191,8 @@
   <!-- Quà tặng mang về -->
   <section class="section">
     <div class="section-title">
-      <h2>Học viên mang về sau bootcamp</h2>
-      <p>Không chỉ kiến thức — mà là bộ bàn giao thực tế áp dụng được ngay.</p>
+      <h2 data-en="What participants take home">Học viên mang về sau bootcamp</h2>
+      <p data-en="Not just knowledge — a practical handover kit you can apply right away.">Không chỉ kiến thức — mà là bộ bàn giao thực tế áp dụng được ngay.</p>
     </div>
 
     <div class="takeaway-grid">
@@ -1159,43 +1200,43 @@
         <div class="takeaway-icon">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
-        <h4>Bản đồ quy trình AI cá nhân</h4>
-        <p>Cho 2 đầu việc ưu tiên, thiết kế riêng trong bootcamp.</p>
+        <h4 data-en="A personal AI workflow map">Bản đồ quy trình AI cá nhân</h4>
+        <p data-en="For your 2 priority tasks, custom-designed during the bootcamp.">Cho 2 đầu việc ưu tiên, thiết kế riêng trong bootcamp.</p>
       </div>
       <div class="takeaway-card">
         <div class="takeaway-icon">
           <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h4>Bộ câu lệnh tái sử dụng</h4>
-        <p>Nghiên cứu, soạn thảo, QA — chuẩn hoá cho toàn team.</p>
+        <h4 data-en="A reusable prompt set">Bộ câu lệnh tái sử dụng</h4>
+        <p data-en="Research, drafting, QA — standardized for the whole team.">Nghiên cứu, soạn thảo, QA — chuẩn hoá cho toàn team.</p>
       </div>
       <div class="takeaway-card">
         <div class="takeaway-icon">
           <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <h4>Bảng kiểm chất lượng đầu ra</h4>
-        <p>Rubric 7 điểm kiểm tra trước khi đăng/gửi.</p>
+        <h4 data-en="An output quality checklist">Bảng kiểm chất lượng đầu ra</h4>
+        <p data-en="A 7-point rubric to review before you publish or send.">Rubric 7 điểm kiểm tra trước khi đăng/gửi.</p>
       </div>
       <div class="takeaway-card">
         <div class="takeaway-icon">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h4>Bản đồ phân vai AI vs Người</h4>
-        <p>Rõ ràng việc nào AI làm, việc nào người quyết định.</p>
+        <h4 data-en="An AI vs. Human role map">Bản đồ phân vai AI vs Người</h4>
+        <p data-en="Crystal clear on what AI handles and what people decide.">Rõ ràng việc nào AI làm, việc nào người quyết định.</p>
       </div>
       <div class="takeaway-card">
         <div class="takeaway-icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
-        <h4>Kế hoạch triển khai 30 ngày</h4>
-        <p>Lộ trình 4 tuần áp dụng AI vào công việc thực tế.</p>
+        <h4 data-en="A 30-day rollout plan">Kế hoạch triển khai 30 ngày</h4>
+        <p data-en="A 4-week roadmap to apply AI to your real work.">Lộ trình 4 tuần áp dụng AI vào công việc thực tế.</p>
       </div>
       <div class="takeaway-card">
         <div class="takeaway-icon">
           <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h4>Hỗ trợ kèm cặp</h4>
-        <p>1 buổi 1:1 + Cộng đồng Zalo hỗ trợ 30 ngày.</p>
+        <h4 data-en="Coaching support">Hỗ trợ kèm cặp</h4>
+        <p data-en="One 1:1 session + a Zalo community with 30 days of support.">1 buổi 1:1 + Cộng đồng Zalo hỗ trợ 30 ngày.</p>
       </div>
     </div>
   </section>
@@ -1203,24 +1244,24 @@
   <!-- Đối tượng -->
   <section class="section">
     <div class="section-title">
-      <h2>Đối tượng tham gia</h2>
+      <h2 data-en="Who it's for">Đối tượng tham gia</h2>
     </div>
     <div class="audience-grid">
       <div class="audience-box yes">
-        <h3>Phù hợp với</h3>
+        <h3 data-en="A great fit for">Phù hợp với</h3>
         <ul>
-          <li>Chuyên gia/nhân sự cấp cao (Marketing, Content, Sales, Vận hành)</li>
-          <li>Trưởng phòng/Trưởng nhóm muốn chuẩn hoá quy trình cho team</li>
-          <li>Chủ doanh nghiệp/SME đang quá tải với các việc lặp lại</li>
-          <li>Người đã dùng ChatGPT/Claude nhưng chưa tối ưu được chất lượng</li>
+          <li data-en="Experts and senior professionals (Marketing, Content, Sales, Operations)">Chuyên gia/nhân sự cấp cao (Marketing, Content, Sales, Vận hành)</li>
+          <li data-en="Managers and team leads who want to standardize their team's workflows">Trưởng phòng/Trưởng nhóm muốn chuẩn hoá quy trình cho team</li>
+          <li data-en="Business owners and SMEs overwhelmed by repetitive tasks">Chủ doanh nghiệp/SME đang quá tải với các việc lặp lại</li>
+          <li data-en="People already using ChatGPT/Claude but not yet getting quality results">Người đã dùng ChatGPT/Claude nhưng chưa tối ưu được chất lượng</li>
         </ul>
       </div>
       <div class="audience-box no">
-        <h3>Không phù hợp nếu</h3>
+        <h3 data-en="Not a fit if">Không phù hợp nếu</h3>
         <ul>
-          <li>Bạn tìm khoá học lập trình, code, hay huấn luyện mô hình AI chuyên sâu</li>
-          <li>Bạn muốn "bấm nút ra tiền" mà không sẵn sàng thực hành</li>
-          <li>Bạn chưa có công việc/quy trình thực tế để áp dụng</li>
+          <li data-en="You're looking for a programming, coding, or deep AI model-training course">Bạn tìm khoá học lập trình, code, hay huấn luyện mô hình AI chuyên sâu</li>
+          <li data-en="You want a &quot;push-button money machine&quot; without putting in the practice">Bạn muốn "bấm nút ra tiền" mà không sẵn sàng thực hành</li>
+          <li data-en="You don't yet have real work or workflows to apply this to">Bạn chưa có công việc/quy trình thực tế để áp dụng</li>
         </ul>
       </div>
     </div>
@@ -1229,17 +1270,17 @@
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-box">
-      <h2>City Camp đã diễn ra thành công!</h2>
-      <p>Cảm ơn tất cả học viên đã tham gia. Đừng bỏ lỡ chương trình tiếp theo của chúng tôi.</p>
-      <a href="beach-camp.html" class="btn-primary">Xem Beach Camp sắp tới →</a>
+      <h2 data-en="City Camp was a success!">City Camp đã diễn ra thành công!</h2>
+      <p data-en="Thank you to everyone who joined. Don't miss our next program.">Cảm ơn tất cả học viên đã tham gia. Đừng bỏ lỡ chương trình tiếp theo của chúng tôi.</p>
+      <a href="beach-camp.html" class="btn-primary" data-en="View the upcoming Beach Camp →">Xem Beach Camp sắp tới →</a>
       <br><br>
-      <a href="index.html" class="btn-secondary">← Về trang AI Camp</a>
+      <a href="index.html" class="btn-secondary" data-en="← Back to AI Camp">← Về trang AI Camp</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p><a href="index.html">← Về trang AI Camp</a> · © 2026 AI Camp</p>
+    <p data-en="<a href='index.html'>← Back to AI Camp</a> · © 2026 AI Camp"><a href="index.html">← Về trang AI Camp</a> · © 2026 AI Camp</p>
   </footer>
 
   <!-- Mobile menu -->
@@ -1337,6 +1378,42 @@
       }
 
       animate();
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var KEY = 'aicamp_lang';
+      var textEls = document.querySelectorAll('[data-en]');
+      textEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi')) el.setAttribute('data-vi', el.innerHTML);
+      });
+      var phEls = document.querySelectorAll('[data-en-ph]');
+      phEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi-ph')) el.setAttribute('data-vi-ph', el.getAttribute('placeholder') || '');
+      });
+      var label = document.getElementById('langLabel');
+
+      function apply(lang) {
+        textEls.forEach(function(el) {
+          el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-vi');
+        });
+        phEls.forEach(function(el) {
+          el.setAttribute('placeholder', el.getAttribute(lang === 'en' ? 'data-en-ph' : 'data-vi-ph'));
+        });
+        document.documentElement.lang = lang;
+        if (label) label.textContent = lang === 'en' ? 'Tiếng Việt' : 'English';
+        try { localStorage.setItem(KEY, lang); } catch (e) {}
+      }
+
+      var saved = 'vi';
+      try { saved = localStorage.getItem(KEY) || 'vi'; } catch (e) {}
+      apply(saved);
+
+      document.getElementById('langToggle').addEventListener('click', function() {
+        var cur = document.documentElement.lang === 'en' ? 'en' : 'vi';
+        apply(cur === 'en' ? 'vi' : 'en');
+      });
     })();
   </script>
 

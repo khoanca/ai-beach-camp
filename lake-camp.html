@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="AI Lake Camp · Jun 20–21, 2026 · Hanoi">AI Lake Camp · 20–21/06/2026 · Hà Nội</title>
+  <meta name="description" content="AI Lake Camp – 2 ngày thực chiến tại Hà Nội. 6 Module từ AI Agent, automation, content đến chăm sóc khách hàng. Thực hành theo nhóm, networking. 20-21/06/2026.">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+      background: #F0F4FF;
+      min-height: 100vh;
+      color: #2D2A26;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wave-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.75);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 101;
+      background: none;
+      border: none;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2.5px;
+      background: rgba(80, 60, 40, 0.7);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(60, 50, 40, 0.8);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #3B82F6, #6366F1);
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #3B82F6; }
+
+    .nav-cta {
+      padding: 10px 28px;
+      background: linear-gradient(135deg, #3B82F6, #6366F1) !important;
+      color: white !important;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      -webkit-text-fill-color: white !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 98;
+    }
+
+    .nav-overlay.active { display: block; }
+
+    /* Hero */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 50px 60px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-inner { max-width: 780px; }
+
+    .upcoming-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 40px;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 28px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.35);
+      animation: pulse-tag 2.5s infinite;
+    }
+
+    @keyframes pulse-tag {
+      0%, 100% { box-shadow: 0 8px 30px rgba(59, 130, 246, 0.35); }
+      50% { box-shadow: 0 8px 45px rgba(59, 130, 246, 0.55); }
+    }
+
+    .upcoming-tag svg {
+      width: 24px; height: 24px;
+      stroke: white; stroke-width: 2.5;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 25px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.12;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .grad {
+      background: linear-gradient(120deg, #3B82F6 0%, #6366F1 50%, #8B5CF6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p b { color: #0f172a; }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      box-shadow: 0 10px 24px -10px rgba(59, 130, 246, 0.65);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -10px rgba(59, 130, 246, 0.7);
+    }
+
+    .btn-secondary {
+      padding: 14px 28px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #0f172a;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      font-size: 1.05rem;
+      color: #475569;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Schedule */
+    .schedule-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .day-header {
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      color: white;
+      border-radius: 16px;
+      padding: 20px 28px;
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+
+    .day-header:first-child { margin-top: 0; }
+
+    .day-header h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .day-header p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
+    .schedule-item {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 225, 214, 0.4);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+
+    .schedule-item:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .schedule-time {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #3B82F6;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+
+    .schedule-item h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .schedule-item p {
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .schedule-item.highlight {
+      border-left: 3px solid #3B82F6;
+    }
+
+    .schedule-item.break-item {
+      background: rgba(59, 130, 246, 0.04);
+      border: 1px dashed rgba(59, 130, 246, 0.25);
+    }
+
+    .schedule-expert {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6366F1;
+    }
+
+    /* Module cards for afternoon parallel sessions */
+    .module-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .module-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: 14px;
+      padding: 18px 22px;
+      transition: all 0.3s;
+      border-left: 3px solid #6366F1;
+    }
+
+    .module-card:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .module-num {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .module-card h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .module-card p {
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .module-expert {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6366F1;
+      margin-top: 6px;
+    }
+
+    /* Tools section */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 225, 214, 0.4);
+      border-radius: 16px;
+      padding: 22px 20px;
+      transition: all 0.3s;
+    }
+
+    .tool-card:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .tool-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .tool-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tool-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.9;
+    }
+
+    .tool-list li::before {
+      content: '';
+      position: absolute;
+      left: 2px; top: 9px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+    }
+
+    /* Expert grid */
+    .experts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .expert-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 225, 214, 0.4);
+      border-radius: 16px;
+      padding: 22px 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .expert-card:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .expert-avatar {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+    }
+
+    .expert-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .expert-card .expert-role {
+      font-size: 0.8rem;
+      color: #3B82F6;
+      font-weight: 600;
+    }
+
+    /* Registration form */
+    .register-section {
+      padding: 80px 50px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .register-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #fff, #f0f4ff);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 24px;
+      padding: 44px 40px;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 12px 32px -16px rgba(15, 23, 42, 0.18);
+    }
+
+    .register-box h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .register-box > p {
+      text-align: center;
+      color: #475569;
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .form-group select {
+      padding: 14px 16px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-group select:focus {
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 14px 16px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #3B82F6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      gap: 16px;
+    }
+
+    .form-footer .form-note {
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    .btn-submit {
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      box-shadow: 0 8px 20px -8px rgba(59, 130, 246, 0.5);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -8px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success .success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #6366F1);
+      color: white;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .form-success h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .form-success p {
+      font-size: 0.92rem;
+      color: #475569;
+    }
+
+    .form-error {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #dc2626;
+    }
+
+    .form-error.show {
+      display: block;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 60px 50px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #fff, #f0f4ff);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 24px;
+      padding: 50px 44px;
+      text-align: center;
+      box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 12px 32px -16px rgba(15, 23, 42, 0.18);
+    }
+
+    .cta-box h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .cta-box .slots {
+      font-size: 0.9rem;
+      color: #e74c3c;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .payment-info {
+      text-align: left;
+      margin-top: 24px;
+    }
+
+    .payment-block {
+      background: rgba(59, 130, 246, 0.06);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+
+    .payment-block h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .payment-block p {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .cta-note {
+      font-size: 0.88rem;
+      color: #475569;
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 50px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: #3B82F6;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero { padding: 130px 32px 50px; }
+      .hero h1 { font-size: 2.8rem; }
+      .section { padding: 60px 32px; }
+      .register-section { padding: 60px 32px 0; }
+      .cta-section { padding: 50px 32px 80px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .menu-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 280px; height: 100vh;
+        flex-direction: column;
+        background: rgba(240, 244, 255, 0.97);
+        backdrop-filter: blur(30px);
+        padding: 100px 36px 40px;
+        gap: 8px;
+        transition: right 0.35s ease;
+        z-index: 99;
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-links.active { right: 0; }
+      .nav-links li { width: 100%; }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .nav-cta {
+        display: inline-block;
+        text-align: center;
+        margin-top: 12px;
+        padding: 14px 28px;
+      }
+
+      .hero { padding: 120px 24px 40px; min-height: auto; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-stats { gap: 20px; }
+      .section { padding: 48px 24px; }
+
+      .tools-grid { grid-template-columns: 1fr; }
+      .experts-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .register-section { padding: 48px 24px 0; }
+      .register-box { padding: 36px 24px; }
+      .register-box h2 { font-size: 1.6rem; }
+      .form-row { grid-template-columns: 1fr; gap: 16px; }
+      .form-footer { flex-direction: column-reverse; align-items: stretch; text-align: center; }
+      .btn-submit { width: 100%; }
+
+      .cta-section { padding: 40px 24px 70px; }
+      .cta-box { padding: 36px 24px; }
+      .cta-box h2 { font-size: 1.6rem; }
+      footer { padding: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 14px 16px; }
+      .logo { font-size: 1.2rem; }
+
+      .nav-links {
+        width: 100%;
+        right: -100%;
+        padding: 90px 24px 40px;
+      }
+
+      .hero { padding: 110px 16px 32px; }
+      .upcoming-tag { font-size: 0.95rem; padding: 11px 26px; }
+      .hero h1 { font-size: 1.85rem; margin-bottom: 8px; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .hero p { font-size: 0.92rem; }
+      .hero-stats { gap: 16px; }
+      .stat-value { font-size: 1.3rem; }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 13px 24px;
+        font-size: 0.9rem;
+      }
+
+      .section { padding: 40px 16px; }
+      .section-title { margin-bottom: 28px; }
+      .section-title p { font-size: 0.92rem; }
+
+      .schedule-item { padding: 16px 18px; }
+      .module-card { padding: 14px 16px; }
+      .day-header { padding: 16px 20px; }
+      .tool-card { padding: 18px 16px; }
+      .experts-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .expert-card { padding: 16px 14px; }
+      .expert-avatar { width: 44px; height: 44px; font-size: 1rem; }
+      .expert-card h4 { font-size: 0.85rem; }
+
+      .register-section { padding: 40px 16px 0; }
+      .register-box { padding: 28px 16px; border-radius: 20px; }
+      .register-box h2 { font-size: 1.4rem; }
+
+      .cta-section { padding: 32px 16px 50px; }
+      .cta-box { padding: 28px 16px; border-radius: 20px; }
+      .cta-box h2 { font-size: 1.4rem; }
+      footer { padding: 20px 16px; font-size: 0.8rem; }
+    }
+
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 1.6rem; }
+      .upcoming-tag { font-size: 0.85rem; padding: 9px 20px; }
+      .cta-box h2 { font-size: 1.3rem; }
+    }
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 10000;
+      height: 46px;
+      padding: 0 20px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 26px -8px rgba(255, 106, 61, 0.6);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(255, 106, 61, 0.7);
+    }
+    .lang-toggle svg {
+      width: 17px; height: 17px;
+      stroke: #fff; stroke-width: 2; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (max-width: 480px) {
+      .lang-toggle { bottom: 16px; right: 16px; height: 42px; padding: 0 16px; font-size: 0.84rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas class="wave-canvas" id="waveCanvas"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">AI Camp</a>
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" data-en="Home">Trang chủ</a></li>
+      <li><a href="#lichtrinh" data-en="Schedule">Lịch trình</a></li>
+      <li><a href="#chuyengia" data-en="Experts">Chuyên gia</a></li>
+      <li><a href="#congcu" data-en="Tools">Công cụ</a></li>
+      <li><a href="#dangky" class="nav-cta" data-en="Register Now">Đăng ký ngay</a></li>
+    </ul>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <!-- Language toggle -->
+  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span id="langLabel">English</span>
+  </button>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="upcoming-tag" data-event-end="2026-06-21" data-en="
+        <svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>
+        UPCOMING
+      ">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        SẮP DIỄN RA
+      </div>
+      <br>
+      <span class="hero-badge" data-en="2 hands-on days · 6 in-depth Modules · Hanoi">
+        2 ngày thực chiến · 6 Module chuyên sâu · Hà Nội
+      </span>
+      <h1>Lake <span class="grad">Camp</span></h1>
+      <p class="hero-subtitle" data-en="AI LAKE CAMP HANOI SCHEDULE · JUN 20–21, 2026">LỊCH TRÌNH AI LAKECAMP HÀ NỘI · 20–21/06/2026</p>
+      <p data-en="
+        2 days of in-depth AI Bootcamp in Hanoi. From <b>Orientation &amp; Practice</b> to <b>Project Delivery &amp; Wrap-up</b>.
+        Build AI Agent systems, automation, content, video &amp; customer care — all in a single program.
+      ">
+        2 ngày Bootcamp AI chuyên sâu tại Hà Nội. Từ <b>Định hướng & Thực hành</b> đến <b>Trả bài & Tổng kết</b>.
+        Xây dựng hệ thống AI Agent, automation, content, video &amp; chăm sóc khách hàng — tất cả trong một chương trình duy nhất.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value" data-en="2 days">2 ngày</span>
+          <span class="stat-label" data-en="Jun 20–21, 2026">20–21/06/2026</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">6</span>
+          <span class="stat-label" data-en="In-depth Modules">Module chuyên sâu</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">6</span>
+          <span class="stat-label" data-en="Experts">Chuyên gia</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">3</span>
+          <span class="stat-label" data-en="Hands-on Challenges">Challenge thực hành</span>
+        </div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#dangky" class="btn-primary" data-en="Register Now →">Đăng ký ngay →</a>
+        <a href="#lichtrinh" class="btn-secondary" data-en="View Schedule">Xem lịch trình</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lịch trình -->
+  <section class="section" id="lichtrinh">
+    <div class="section-title">
+      <h2 data-en="2 days of hands-on schedule">Lịch trình 2 ngày thực chiến</h2>
+      <p data-en="From individual Challenges to in-depth team Modules — practice right on the spot.">Từ Challenge cá nhân đến Module chuyên sâu theo nhóm — thực hành ngay tại chỗ.</p>
+    </div>
+
+    <div class="schedule-container">
+
+      <!-- NGÀY 1 -->
+      <div class="day-header">
+        <h3 data-en="Day 1 · Jun 20, 2026">Ngày 1 · 20/06/2026</h3>
+        <p data-en="Orientation &amp; Practice">Định Hướng &amp; Thực Hành</p>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">07:30</div>
+        <h4 data-en="Gather at the main hall">Tập trung tại hội trường</h4>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">08:00</div>
+        <h4 data-en="Settle in and start the first session">Bắt đầu ổn định và vào khóa học đầu tiên</h4>
+      </div>
+
+      <div class="schedule-item highlight">
+        <div class="schedule-time" data-en="08:00 – 08:30 · Challenge 1">08:00 – 08:30 · Challenge 1</div>
+        <h4 data-en="&quot;2 Option&quot; Intro (Individual)">"2 Option" Intro (Cá nhân)</h4>
+        <p data-en="Create content about yourself &amp; your business.">Content về bản thân &amp; doanh nghiệp của bạn.</p>
+      </div>
+
+      <div class="schedule-item highlight">
+        <div class="schedule-time" data-en="08:30 – 09:30 · Challenge 2">08:30 – 09:30 · Challenge 2</div>
+        <h4 data-en="Build a Landing Page for your product – service">Tạo Landing Page giới thiệu sản phẩm – dịch vụ</h4>
+        <p data-en="Build a landing page introducing your product, service, and business.">Xây dựng landing page giới thiệu về sản phẩm, dịch vụ, doanh nghiệp của mình.</p>
+      </div>
+
+      <div class="schedule-item highlight">
+        <div class="schedule-time" data-en="09:40 – 10:50 · Challenge 3">09:40 – 10:50 · Challenge 3</div>
+        <h4 data-en="Create a 45-second TikTok video introducing yourself">Tạo Video TikTok 45 giây giới thiệu bản thân</h4>
+        <p data-en="Produce a short self-introduction video using AI tools.">Sản xuất video ngắn giới thiệu bản thân bằng AI tools.</p>
+      </div>
+
+      <div class="schedule-item highlight">
+        <div class="schedule-time" data-en="10:50 – 11:00 · Module 1">10:50 – 11:00 · Module 1</div>
+        <h4 data-en="What we learn for and what AI can do">Chúng ta học để làm gì và AI giúp được gì</h4>
+        <p data-en="Split into groups by individual learning &quot;module&quot; needs.">Chia nhóm theo "module" nhu cầu học cá nhân.</p>
+        <div class="schedule-expert" data-en="Expert: Tuan Le">Chuyên Gia: Tuấn Lê</div>
+      </div>
+
+      <div class="schedule-item break-item">
+        <div class="schedule-time">11:00 – 13:30</div>
+        <h4 data-en="Lunch break">Nghỉ trưa</h4>
+      </div>
+
+      <!-- Afternoon modules -->
+      <div class="schedule-item highlight">
+        <div class="schedule-time" data-en="13:30 – 17:00 · Module 2 – 6">13:30 – 17:00 · Module 2 – 6</div>
+        <h4 data-en="In-depth group sessions by need">Chia nhóm chuyên sâu theo nhu cầu</h4>
+        <p data-en="Participants choose the right module and practice in groups with a dedicated expert.">Học viên chọn module phù hợp và thực hành theo nhóm cùng chuyên gia phụ trách.</p>
+      </div>
+
+      <div class="module-grid">
+        <div class="module-card">
+          <span class="module-num">Module 2</span>
+          <h4 data-en="Build AI Agents &amp; Automation systems">Xây dựng AI Agent &amp; hệ thống Automation</h4>
+          <p data-en="From Data to operations — build a complete automation system.">Từ Data đến vận hành — xây dựng hệ thống automation hoàn chỉnh.</p>
+          <div class="module-expert" data-en="Expert: N.C. Anh Khoa + Group sessions">Chuyên Gia: N.C.Anh Khoa + Chia nhóm</div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Module 3</span>
+          <h4 data-en="Advanced AI Agent systems for businesses">Hệ thống AI Agent chuyên sâu cho doanh nghiệp</h4>
+          <p data-en="Operations assistants that cut costs and boost productivity 5x.">Trợ lý vận hành tối ưu chi phí và gia tăng hiệu suất x5.</p>
+          <div class="module-expert" data-en="Expert: Dat Nguyen AI + Group sessions">Chuyên Gia: Đạt Nguyễn AI + Chia nhóm</div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Module 4</span>
+          <h4 data-en="Applying AI Agents: Build infinite content">Áp dụng AI Agent: Xây dựng content vô hạn</h4>
+          <p data-en="Produce multi-platform content with AI Agents.">Sản xuất content đa nền tảng với AI Agent.</p>
+          <div class="module-expert" data-en="Expert: Huynh Xuan Tung + Group sessions">Chuyên Gia: Huỳnh Xuân Tùng + Chia nhóm</div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Module 5</span>
+          <h4 data-en="AI Agent: Multi-channel image &amp; video production">AI Agent: Sản xuất hình ảnh &amp; Video đa kênh</h4>
+          <p data-en="Create professional images and videos with AI tools.">Tạo hình ảnh và video chuyên nghiệp bằng AI tools.</p>
+          <div class="module-expert" data-en="Expert: Truong Ngoc Hoan + Group sessions">Chuyên Gia: Trương Ngọc Hoàn + Chia nhóm</div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Module 6</span>
+          <h4 data-en="AI Agent: Automated customer care &amp; sales">AI Agent: Chăm sóc khách hàng &amp; bán hàng tự động</h4>
+          <p data-en="Build an automated customer care and sales system with AI.">Xây dựng hệ thống chăm sóc khách hàng và bán hàng tự động bằng AI.</p>
+          <div class="module-expert" data-en="Expert: Thanh Tuan (Smax) + Group sessions">Chuyên Gia: Thanh Tuấn (Smax) + Chia nhóm</div>
+        </div>
+      </div>
+
+      <div class="schedule-item break-item" style="margin-top: 12px;">
+        <div class="schedule-time">17:00</div>
+        <h4 data-en="Head to the restaurant for dinner — Free Networking">Di chuyển ra nhà hàng dùng tiệc tối — Giao Lưu Tự Do</h4>
+      </div>
+
+      <!-- NGÀY 2 -->
+      <div class="day-header">
+        <h3 data-en="Day 2 · Jun 21, 2026">Ngày 2 · 21/06/2026</h3>
+        <p data-en="Practice &amp; Wrap-up">Thực hành &amp; Tổng kết</p>
+      </div>
+
+      <div class="schedule-item">
+        <div class="schedule-time">07:30</div>
+        <h4 data-en="Gather">Tập trung</h4>
+      </div>
+
+      <div class="schedule-item highlight">
+        <div class="schedule-time">08:00 – 10:00</div>
+        <h4 data-en="Project Delivery – Group Practice">Trả Bài – Thực Hành theo nhóm</h4>
+        <p data-en="Practice and present results within the group chosen the previous day.">Thực hành và trình bày kết quả theo nhóm đã chọn ngày hôm trước.</p>
+      </div>
+
+      <div class="schedule-item highlight">
+        <div class="schedule-time">11:30 – 12:00</div>
+        <h4 data-en="Wrap-up &amp; Sharing">Tổng kết &amp; Chia sẻ</h4>
+        <p data-en="Summarize lessons, share experiences and application plans.">Đúc kết bài học, chia sẻ kinh nghiệm và kế hoạch áp dụng.</p>
+      </div>
+
+      <div class="schedule-item break-item">
+        <div class="schedule-time">12:00</div>
+        <h4 data-en="Head to the restaurant for lunch &amp; Program ends">Di chuyển ra nhà hàng ăn trưa &amp; Kết thúc chương trình</h4>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Đội ngũ chuyên gia -->
+  <section class="section" id="chuyengia">
+    <div class="section-title">
+      <h2 data-en="Our expert team">Đội ngũ chuyên gia</h2>
+      <p data-en="6 experts — each leading one in-depth module.">6 chuyên gia — mỗi người phụ trách một module chuyên sâu.</p>
+    </div>
+
+    <div class="experts-grid">
+      <div class="expert-card">
+        <div class="expert-avatar">TL</div>
+        <h4>Tuấn Lê</h4>
+        <span class="expert-role" data-en="Module 1 · Orientation">Module 1 · Định hướng</span>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">AK</div>
+        <h4>Nguyễn Chí Anh Khoa</h4>
+        <span class="expert-role" data-en="Module 2 · AI Agent &amp; Automation">Module 2 · AI Agent &amp; Automation</span>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">ĐN</div>
+        <h4>Đạt Nguyễn AI</h4>
+        <span class="expert-role" data-en="Module 3 · Enterprise AI Agent">Module 3 · AI Agent doanh nghiệp</span>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">XT</div>
+        <h4>Huỳnh Xuân Tùng</h4>
+        <span class="expert-role" data-en="Module 4 · Infinite Content">Module 4 · Content vô hạn</span>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">NH</div>
+        <h4>Trương Ngọc Hoàn</h4>
+        <span class="expert-role" data-en="Module 5 · Image &amp; Video">Module 5 · Hình ảnh &amp; Video</span>
+      </div>
+      <div class="expert-card">
+        <div class="expert-avatar">TT</div>
+        <h4>Thanh Tuấn</h4>
+        <span class="expert-role" data-en="Module 6 · Customer Care &amp; Sales (Smax)">Module 6 · CSKH &amp; Bán hàng (Smax)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Công cụ cần chuẩn bị -->
+  <section class="section" id="congcu">
+    <div class="section-title">
+      <h2 data-en="Tools to prepare">Công cụ cần chuẩn bị</h2>
+      <p data-en="Install the tools below before joining so you are ready to practice.">Hãy cài đặt sẵn các công cụ bên dưới trước khi tham gia để sẵn sàng thực hành.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h4>Đạt Nguyễn AI · Module 3</h4>
+        <ul class="tool-list">
+          <li>ChatGPT</li>
+          <li>Codex</li>
+          <li>GoClaw</li>
+        </ul>
+      </div>
+      <div class="tool-card">
+        <h4>Thanh Tuấn · Module 6</h4>
+        <ul class="tool-list">
+          <li>Meta Business AI</li>
+          <li>Smax GenAI</li>
+        </ul>
+      </div>
+      <div class="tool-card">
+        <h4>Huỳnh Xuân Tùng · Module 4</h4>
+        <ul class="tool-list">
+          <li>ChatGPT</li>
+        </ul>
+      </div>
+      <div class="tool-card">
+        <h4>N.C.Anh Khoa · Module 2</h4>
+        <ul class="tool-list">
+          <li>ChatGPT</li>
+        </ul>
+      </div>
+      <div class="tool-card" style="grid-column: 1 / -1;">
+        <h4>Trương Ngọc Hoàn · Module 5</h4>
+        <ul class="tool-list">
+          <li data-en="ChatGPT (Plus) — script and image generation">ChatGPT (Plus) — tạo kịch bản và hình ảnh</li>
+          <li data-en="Eleven Lab — voiceover generation">Eleven Lab — tạo voice off</li>
+          <li data-en="Gemini — script analysis">Gemini — phân tích scripts</li>
+          <li data-en="CapCut (Plus version) — video editing">CapCut (phiên bản Plus) — chỉnh sửa video</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Đăng ký -->
+  <section class="register-section" id="dangky">
+    <div class="register-box">
+      <h2 data-en="Register for AI Lake Camp">Đăng ký AI Lake Camp</h2>
+      <p data-en="Fill in the form below to reserve your slot. The organizers will reach out to confirm within 24h.">Điền form bên dưới để giữ slot. BTC sẽ liên hệ xác nhận trong 24h.</p>
+
+      <form id="registerForm">
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="campSelect" data-en="Program to register">Chương trình đăng ký</label>
+            <select id="campSelect" name="entry.1050302189" required>
+              <option value="AI Beach Camp (TPHCM – Vũng Tàu)" data-en="AI Beach Camp (HCMC – Vung Tau · Jun 06–07)">AI Beach Camp (TPHCM – Vũng Tàu · 06–07/06)</option>
+              <option value="AI Lake Camp (Hà Nội)" selected data-en="AI Lake Camp (Hanoi · Jun 20–21)">AI Lake Camp (Hà Nội · 20–21/06)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName" data-en="Full Name">Họ và Tên</label>
+            <input type="text" id="fullName" name="entry.1224024783" placeholder="Nguyễn Văn A" data-en-ph="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="phone" data-en="Phone Number">Số Điện Thoại</label>
+            <input type="tel" id="phone" name="entry.833743083" placeholder="0912 345 678" data-en-ph="0912 345 678" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" data-en="Email">Email</label>
+            <input type="email" id="email" name="entry.791971624" placeholder="email@company.com" data-en-ph="email@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="industry" data-en="Industry">Ngành Nghề</label>
+            <input type="text" id="industry" name="entry.2068102340" placeholder="F&B, Ecom, Retail…" data-en-ph="F&B, Ecom, Retail…">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="problem" data-en="What problem do you want to solve with AI?">Bài Toán Bạn Muốn Giải Bằng AI?</label>
+            <textarea id="problem" name="entry.1492755822" placeholder="Ví dụ: Tự động chăm sóc khách hàng, tạo content đa kênh, tối ưu vận hành…" data-en-ph="e.g. Automate customer care, create multi-channel content, optimize operations…"></textarea>
+          </div>
+        </div>
+        <div class="form-footer">
+          <span class="form-note" data-en="Your information is kept confidential · Organizers will contact you within 24h">Thông tin được bảo mật · BTC sẽ liên hệ trong 24h</span>
+          <button type="submit" class="btn-submit" data-en="Register Now →">Đăng ký ngay →</button>
+        </div>
+        <div class="form-error" id="formError"></div>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✓</div>
+        <h3 data-en="Registration successful!">Đăng ký thành công!</h3>
+        <p data-en="The organizers will contact you within 24h to confirm your slot. Check your email for the pre-reading materials.">BTC sẽ liên hệ bạn trong 24h để xác nhận slot. Kiểm tra email để nhận tài liệu đọc trước.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Payment -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2 data-en="Reserve your Lake Camp spot">Giữ chỗ Lake Camp</h2>
+      <p class="slots" data-en="Limited seats to ensure hands-on quality">Số lượng giới hạn để đảm bảo chất lượng thực hành</p>
+
+      <div class="payment-info">
+        <div class="payment-block">
+          <h4 data-en="Company Account (VAT invoice)">Tài khoản Công ty (Xuất VAT)</h4>
+          <p data-en="
+            Acc. No: <strong>1040767568</strong> · Vietcombank (VCB)<br>
+            Holder: <strong>A1Z Joint Stock Company / Le Anh Tuan</strong>
+          ">
+            STK: <strong>1040767568</strong> · Vietcombank (VCB)<br>
+            CTK: <strong>Công Ty Cổ Phần A1Z / Lê Anh Tuấn</strong>
+          </p>
+        </div>
+        <div class="payment-block">
+          <h4 data-en="Personal Account">Tài khoản Cá nhân</h4>
+          <p data-en="
+            Acc. No: <strong>1033603768</strong> · Vietcombank (VCB)<br>
+            Holder: <strong>Do Nhu Quynh</strong> (Organizer representative)
+          ">
+            STK: <strong>1033603768</strong> · Vietcombank (VCB)<br>
+            CTK: <strong>Đỗ Như Quỳnh</strong> (Đại diện BTC)
+          </p>
+        </div>
+      </div>
+
+      <p class="cta-note" data-en="Complete your transfer so the organizers can finalize the list &amp; set up the system for you.">Hoàn tất chuyển khoản để BTC chốt danh sách &amp; setup hệ thống cho bạn.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p data-en="<a href='index.html'>← Back to AI Camp</a> · © 2026 AI Camp"><a href="index.html">← Về trang AI Camp</a> · © 2026 AI Camp</p>
+  </footer>
+
+  <!-- Mobile menu -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.nav-overlay');
+
+    function closeMenu() {
+      toggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Form submission
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('.btn-submit');
+      var errorEl = document.getElementById('formError');
+      var successEl = document.getElementById('formSuccess');
+
+      btn.disabled = true;
+      btn.textContent = 'Đang gửi…';
+      errorEl.classList.remove('show');
+
+      var data = new FormData(form);
+      var params = new URLSearchParams(data).toString();
+
+      fetch('https://docs.google.com/forms/d/e/1FAIpQLSewwq53CdwZVE8MFO3lx4SQtDUaIyP2t-TYOGPgi1OH2AmUzQ/formResponse?' + params, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }).then(function() {
+        form.style.display = 'none';
+        successEl.classList.add('show');
+      }).catch(function() {
+        form.style.display = 'none';
+        successEl.classList.add('show');
+      });
+    });
+
+    // Auto-update badge after event ends
+    document.querySelectorAll('[data-event-end]').forEach(function(el) {
+      var end = new Date(el.dataset.eventEnd + 'T23:59:59');
+      if (new Date() > end) {
+        el.textContent = 'ĐÃ DIỄN RA';
+        el.style.background = 'linear-gradient(135deg, #94a3b8, #64748b)';
+        el.style.animation = 'none';
+      }
+    });
+  </script>
+
+  <!-- Wave background -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('waveCanvas');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const waves = [
+        { y: 0.85, amplitude: 40, frequency: 0.008, speed: 0.015, gradient: ['rgba(59, 130, 246, 0.14)', 'rgba(99, 102, 241, 0.05)'] },
+        { y: 0.80, amplitude: 50, frequency: 0.006, speed: 0.020, gradient: ['rgba(99, 102, 241, 0.10)', 'rgba(139, 92, 246, 0.04)'] },
+        { y: 0.75, amplitude: 35, frequency: 0.010, speed: 0.012, gradient: ['rgba(139, 92, 246, 0.08)', 'rgba(59, 130, 246, 0.03)'] },
+        { y: 0.70, amplitude: 45, frequency: 0.007, speed: 0.018, gradient: ['rgba(59, 130, 246, 0.08)', 'rgba(99, 102, 241, 0.03)'] },
+        { y: 0.65, amplitude: 30, frequency: 0.012, speed: 0.014, gradient: ['rgba(165, 180, 252, 0.07)', 'rgba(199, 210, 254, 0.02)'] },
+        { y: 0.60, amplitude: 55, frequency: 0.005, speed: 0.022, gradient: ['rgba(199, 210, 254, 0.06)', 'rgba(224, 231, 255, 0.02)'] },
+      ];
+
+      let time = 0;
+
+      function drawWave(wave) {
+        const w = canvas.width;
+        const h = canvas.height;
+        const baseY = h * wave.y;
+
+        ctx.beginPath();
+        ctx.moveTo(0, h);
+
+        let minY = h;
+        for (let x = 0; x <= w; x += 2) {
+          const y = baseY
+            + Math.sin(x * wave.frequency + time * wave.speed) * wave.amplitude
+            + Math.sin(x * wave.frequency * 0.5 + time * wave.speed * 1.3) * wave.amplitude * 0.5;
+          ctx.lineTo(x, y);
+          if (y < minY) minY = y;
+        }
+
+        ctx.lineTo(w, h);
+        ctx.closePath();
+
+        const grd = ctx.createLinearGradient(0, minY, 0, h);
+        grd.addColorStop(0, wave.gradient[0]);
+        grd.addColorStop(1, wave.gradient[1]);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const bgGrd = ctx.createRadialGradient(
+          canvas.width * 0.3, canvas.height * 0.3, 0,
+          canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.8
+        );
+        bgGrd.addColorStop(0, '#F0F4FF');
+        bgGrd.addColorStop(0.5, '#EBF0FF');
+        bgGrd.addColorStop(1, '#E0E7FF');
+        ctx.fillStyle = bgGrd;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = waves.length - 1; i >= 0; i--) {
+          drawWave(waves[i]);
+        }
+
+        time++;
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var KEY = 'aicamp_lang';
+      var textEls = document.querySelectorAll('[data-en]');
+      textEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi')) el.setAttribute('data-vi', el.innerHTML);
+      });
+      var phEls = document.querySelectorAll('[data-en-ph]');
+      phEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi-ph')) el.setAttribute('data-vi-ph', el.getAttribute('placeholder') || '');
+      });
+      var label = document.getElementById('langLabel');
+
+      function apply(lang) {
+        textEls.forEach(function(el) {
+          el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-vi');
+        });
+        phEls.forEach(function(el) {
+          el.setAttribute('placeholder', el.getAttribute(lang === 'en' ? 'data-en-ph' : 'data-vi-ph'));
+        });
+        document.documentElement.lang = lang;
+        if (label) label.textContent = lang === 'en' ? 'Tiếng Việt' : 'English';
+        try { localStorage.setItem(KEY, lang); } catch (e) {}
+      }
+
+      var saved = 'vi';
+      try { saved = localStorage.getItem(KEY) || 'vi'; } catch (e) {}
+      apply(saved);
+
+      document.getElementById('langToggle').addEventListener('click', function() {
+        var cur = document.documentElement.lang === 'en' ? 'en' : 'vi';
+        apply(cur === 'en' ? 'vi' : 'en');
+      });
+    })();
+  </script>
+
+</body>
+</html>

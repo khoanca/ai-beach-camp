@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Beach Camp · 05–06/07/2026 · TPHCM – Vũng Tàu</title>
+  <title data-en="AI Beach Camp · Jun 06–07, 2026 · Ho Chi Minh City – Vung Tau">AI Beach Camp · 06–07/06/2026 · TPHCM – Vũng Tàu</title>
   <meta name="description" content="AI Beach Camp – 2 ngày thực chiến TPHCM – Vũng Tàu. 6 Module từ chiến lược đến AI Agent, thực hành theo nhóm, networking beach party. Giới hạn 25-30 slot.">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
   <style>
@@ -519,6 +519,95 @@
       }
     }
 
+    /* Tools prep */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(78, 205, 196, 0.15);
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: all 0.3s;
+    }
+
+    .tool-card:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 24px rgba(78, 205, 196, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .tool-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tool-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4ECDC4, #44B09E);
+      color: white;
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tool-card-header h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .tool-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tool-list li {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.55;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .tool-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #4ECDC4;
+      font-weight: 700;
+    }
+
+    .tool-list li strong {
+      color: #0f172a;
+    }
+
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tool-card {
+        padding: 18px 16px;
+      }
+    }
+
     /* Benefits */
     .benefits-grid {
       display: grid;
@@ -627,6 +716,30 @@
       font-weight: 600;
       color: #0f172a;
       margin-bottom: 6px;
+    }
+
+    .form-group select {
+      padding: 14px 16px;
+      border: 1px solid rgba(78, 205, 196, 0.25);
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    .form-group select:focus {
+      border-color: #4ECDC4;
+      box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.12);
     }
 
     .form-group input,
@@ -978,6 +1091,41 @@
       .hero h1 { font-size: 1.6rem; }
       .cta-box h2 { font-size: 1.3rem; }
     }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 10000;
+      height: 46px;
+      padding: 0 20px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 26px -8px rgba(255, 106, 61, 0.6);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(255, 106, 61, 0.7);
+    }
+    .lang-toggle svg {
+      width: 17px; height: 17px;
+      stroke: #fff; stroke-width: 2; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (max-width: 480px) {
+      .lang-toggle { bottom: 16px; right: 16px; height: 42px; padding: 0 16px; font-size: 0.84rem; }
+    }
   </style>
 </head>
 <body>
@@ -991,49 +1139,59 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="index.html">Trang chủ</a></li>
-      <li><a href="#lichtrình">Lịch trình</a></li>
-      <li><a href="#chuyengia">Chuyên gia</a></li>
-      <li><a href="#quyen-loi">Quyền lợi</a></li>
-      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSewwq53CdwZVE8MFO3lx4SQtDUaIyP2t-TYOGPgi1OH2AmUzQ/viewform?usp=header" target="_blank" class="nav-cta">Giữ chỗ ngay</a></li>
+      <li><a href="index.html" data-en="Home">Trang chủ</a></li>
+      <li><a href="#lichtrình" data-en="Schedule">Lịch trình</a></li>
+      <li><a href="#chuyengia" data-en="Experts">Chuyên gia</a></li>
+      <li><a href="#congcu" data-en="Tools">Công cụ</a></li>
+      <li><a href="#quyen-loi" data-en="Benefits">Quyền lợi</a></li>
+      <li><a href="#dangky" class="nav-cta" data-en="Reserve now">Giữ chỗ ngay</a></li>
     </ul>
   </nav>
   <div class="nav-overlay"></div>
 
+  <!-- Language toggle -->
+  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span id="langLabel">English</span>
+  </button>
+
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-inner">
-      <span class="hero-badge">
+      <span class="hero-badge" data-en="&lt;span class='dot'&gt;&lt;/span&gt; Jun 06–07, 2026 · Ho Chi Minh City – Vung Tau · Only 25–30 seats">
         <span class="dot"></span>
-        05–06/07/2026 · TPHCM – Vũng Tàu · Giới hạn 25–30 slot
+        06–07/06/2026 · TPHCM – Vũng Tàu · Giới hạn 25–30 slot
       </span>
-      <div class="upcoming-tag" data-event-end="2026-07-06"><span class="pulse-circle"></span> Sắp diễn ra</div>
-      <h1>AI <span class="grad">Beach Camp</span></h1>
-      <p>
+      <div class="upcoming-tag" data-event-end="2026-06-07" data-en="&lt;span class='pulse-circle'&gt;&lt;/span&gt; Upcoming"><span class="pulse-circle"></span> Sắp diễn ra</div>
+      <h1 data-en="AI &lt;span class='grad'&gt;Beach Camp&lt;/span&gt;">AI <span class="grad">Beach Camp</span></h1>
+      <p data-en="
+        2 days of &lt;b&gt;hands-on work across 6 Modules&lt;/b&gt; with 5+ experts — from AI operations strategy and Agent building to limitless content production and automated customer care.
+        Walk away with a &lt;b&gt;system that runs from day one&lt;/b&gt;.
+      ">
         2 ngày <b>thực chiến 6 Module</b> cùng 5+ chuyên gia — từ chiến lược vận hành AI, xây dựng Agent, sản xuất content vô hạn đến chăm sóc khách hàng tự động.
         Học xong mang về <b>hệ thống chạy được ngay</b>.
       </p>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-value">05–06/07</span>
-          <span class="stat-label">Tháng 7, 2026</span>
+          <span class="stat-value" data-en="Jun 06–07">06–07/06</span>
+          <span class="stat-label" data-en="June 2026">Tháng 6, 2026</span>
         </div>
         <div class="stat">
           <span class="stat-value">6</span>
-          <span class="stat-label">Module chuyên sâu</span>
+          <span class="stat-label" data-en="In-depth modules">Module chuyên sâu</span>
         </div>
         <div class="stat">
           <span class="stat-value">5+</span>
-          <span class="stat-label">Chuyên gia</span>
+          <span class="stat-label" data-en="Experts">Chuyên gia</span>
         </div>
         <div class="stat">
           <span class="stat-value">1:1</span>
-          <span class="stat-label">Coach sau khoá</span>
+          <span class="stat-label" data-en="Post-camp coaching">Coach sau khoá</span>
         </div>
       </div>
       <div class="hero-buttons">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSewwq53CdwZVE8MFO3lx4SQtDUaIyP2t-TYOGPgi1OH2AmUzQ/viewform?usp=header" target="_blank" class="btn-primary">Giữ chỗ ngay →</a>
-        <a href="#lichtrình" class="btn-secondary">Xem lịch trình</a>
+        <a href="#dangky" class="btn-primary" data-en="Reserve now →">Giữ chỗ ngay →</a>
+        <a href="#lichtrình" class="btn-secondary" data-en="View schedule">Xem lịch trình</a>
       </div>
     </div>
   </section>
@@ -1041,8 +1199,8 @@
   <!-- Lịch trình -->
   <section class="section" id="lichtrình">
     <div class="section-title">
-      <h2>Lịch trình 2 ngày</h2>
-      <p>TPHCM – Vũng Tàu · 05–06/07/2026 · Challenge buổi sáng, 6 Module chiều, tiệc tối sát biển.</p>
+      <h2 data-en="2-Day Schedule">Lịch trình 2 ngày</h2>
+      <p data-en="Ho Chi Minh City – Vung Tau · Jun 06–07, 2026 · Morning challenges, 6 afternoon Modules, beachfront dinner party.">TPHCM – Vũng Tàu · 06–07/06/2026 · Challenge buổi sáng, 6 Module chiều, tiệc tối sát biển.</p>
     </div>
 
     <div class="schedule-container">
@@ -1050,52 +1208,69 @@
       <div class="day-block">
         <div class="day-header">
           <div class="day-number">D1</div>
-          <div class="day-label">05/07 — Challenge, Chiến Lược & Thực Hành 6 Module</div>
+          <div class="day-label" data-en="Jun 06 — Building the AI Agent &amp; Automation foundation">06/06 — Xây nền tảng AI Agent & Automation</div>
         </div>
 
         <div class="schedule-item break-item">
           <div class="schedule-time">07:00</div>
-          <h4>Tập trung xuất phát</h4>
-          <p>Katinat – Bến ga Waterbus, Đ. Số 21, Bình An, An Khánh, TP.HCM</p>
+          <h4 data-en="Meet-up">Tập trung</h4>
+          <p data-en="Katinat - Waterbus Station, Street 21, Binh An, An Khanh, Ho Chi Minh City">Katinat - Bến ga Waterbus Đ. Số 21, Bình An, An Khánh, Hồ Chí Minh</p>
+        </div>
+
+        <div class="schedule-item break-item">
+          <div class="schedule-time">07:30</div>
+          <h4 data-en="Departure &amp; Personal Skills Warm-up">Xuất Phát & Bài Cải Thiện Kỹ Năng Cá Nhân</h4>
         </div>
 
         <div class="schedule-item">
-          <div class="schedule-time">07:30 – 10:00</div>
-          <h4>3 Challenge cá nhân trên xe</h4>
-          <div class="sub-items">
-            <p><span class="sub-label">Challenge 1:</span> "2 option" intro — content về bản thân & doanh nghiệp</p>
-            <p><span class="sub-label">Challenge 2:</span> Tạo Landing Page giới thiệu sản phẩm/dịch vụ của mình</p>
-            <p><span class="sub-label">Challenge 3:</span> Tạo Video TikTok 45 giây giới thiệu bản thân</p>
-          </div>
+          <div class="schedule-time">08:00 – 08:30</div>
+          <h4 data-en="Challenge 1 – &quot;2 option&quot; intro (Individual)">Challenge 1 – "2 option" intro (Cá nhân)</h4>
+          <p data-en="Content about yourself &amp; your business">Content về bản thân & doanh nghiệp bạn</p>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">08:30 – 09:30</div>
+          <h4 data-en="Challenge 2: Build a Landing Page">Challenge 2: Tạo Landing Page</h4>
+          <p data-en="Introduce your products, services and business">Giới thiệu về sản phẩm - dịch vụ, doanh nghiệp của mình</p>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">09:30 – 10:00</div>
+          <h4 data-en="Challenge 3: Create a 45-second TikTok Video">Challenge 3: Tạo Video TikTok 45 giây</h4>
+          <p data-en="Introduce yourself">Giới thiệu bản thân</p>
+        </div>
+
+        <div class="schedule-item break-item">
+          <div class="schedule-time">10:00 – 10:30</div>
+          <h4 data-en="Check-in - Gather &quot;in the classroom&quot;">Checkin - Tập trung "tại phòng học"</h4>
         </div>
 
         <div class="schedule-item highlight">
           <div class="schedule-time">10:30 – 11:45</div>
-          <h4>Module 1: Usecase AI vận hành doanh nghiệp · Tuấn Lê</h4>
-          <p>Case study thực tế áp dụng AI vào vận hành doanh nghiệp thành công — rà soát điểm nghẽn, tiết kiệm chi phí, mở rộng từ nội lực sẵn có.</p>
+          <h4 data-en="Module 1: What we are here to learn and how AI helps">Module 1: Chúng ta học để làm gì và AI giúp được gì</h4>
+          <p data-en="Group split by personal learning &quot;module&quot; needs — Expert Tuan Le">Chia nhóm theo "module" nhu cầu học cá nhân — Chuyên Gia Tuấn Lê</p>
         </div>
 
         <div class="schedule-item break-item">
           <div class="schedule-time">12:00 – 13:00</div>
-          <h4>Di chuyển & Ăn trưa nhà hàng</h4>
+          <h4 data-en="Transfer to restaurant for Lunch">Di chuyển đến nhà hàng Ăn trưa</h4>
         </div>
 
         <div class="schedule-item highlight">
           <div class="schedule-time">13:30 – 17:00</div>
-          <h4>5 Module chuyên sâu + Chia nhóm thực hành</h4>
+          <h4 data-en="5 in-depth Modules + Hands-on group work">5 Module chuyên sâu + Chia nhóm thực hành</h4>
           <div class="sub-items">
-            <p><span class="sub-label">Module 2 · Anh Khoa Nguyễn:</span> Xây dựng AI Agent & hệ thống automation từ Data đến vận hành</p>
-            <p><span class="sub-label">Module 3 · Đạt Nguyễn AI:</span> AI Agent chuyên sâu cho doanh nghiệp — trợ lý vận hành tối ưu chi phí, gia tăng hiệu suất x5</p>
-            <p><span class="sub-label">Module 4 · Xuân Tùng:</span> AI Agent xây dựng content vô hạn đa kênh</p>
-            <p><span class="sub-label">Module 5 · Thầy Hoàn:</span> AI Agent sản xuất hình ảnh & video đa kênh</p>
-            <p><span class="sub-label">Module 6 · Thanh Tuấn (Smax):</span> AI Agent chăm sóc khách hàng & bán hàng tự động</p>
+            <p data-en="&lt;span class='sub-label'&gt;Module 2 · N.C. Anh Khoa:&lt;/span&gt; Building AI Agents and automation systems from Data to operations + Group work"><span class="sub-label">Module 2 · N.C. Anh Khoa:</span> Xây dựng AI Agent - và hệ thống automation từ Data đến vận hành + Chia nhóm</p>
+            <p data-en="&lt;span class='sub-label'&gt;Module 3 · Dat Nguyen AI:&lt;/span&gt; Building advanced AI Agent systems for businesses - an operations assistant that cuts costs and boosts performance x5 + Group work"><span class="sub-label">Module 3 · Đạt Nguyễn AI:</span> Xây dựng hệ thống AI Agent chuyên sâu cho doanh nghiệp - Trợ lý vận hành tối ưu chi phí và gia tăng hiệu suất x5 + Chia nhóm</p>
+            <p data-en="&lt;span class='sub-label'&gt;Module 4 · Nguyen Xuan Tung:&lt;/span&gt; Applying AI Agents: Building limitless content + Group work"><span class="sub-label">Module 4 · Nguyễn Xuân Tùng:</span> Áp dụng AI Agent: Xây dựng content vô hạn + Chia nhóm</p>
+            <p data-en="&lt;span class='sub-label'&gt;Module 5 · Expert Hoan:&lt;/span&gt; AI Agent: Multi-channel image and Video production + Group work"><span class="sub-label">Module 5 · Chuyên Gia Hoàn:</span> AI Agent: Sản xuất hình ảnh và Video đa kênh + Chia nhóm</p>
+            <p data-en="&lt;span class='sub-label'&gt;Module 6 · Thanh Tuan (Smax):&lt;/span&gt; Applying AI Agents for customer care and automated sales"><span class="sub-label">Module 6 · Thanh Tuấn (Smax):</span> Áp dụng AI Agent phục vụ chăm sóc khách hàng, bán hàng tự động</p>
           </div>
         </div>
 
         <div class="schedule-item">
           <div class="schedule-time">19:00 – 22:00</div>
-          <h4>Tiệc tối & Giao lưu Networking</h4>
-          <p>Di chuyển ra nhà hàng — tiệc tối, kết nối "người thật, số thật" cùng hơn 30 doanh chủ.</p>
+          <h4 data-en="Transfer to the Dinner Party Restaurant + Networking">Di chuyển Ra Nhà Hàng Tiệc Tối + Giao Lưu</h4>
         </div>
       </div>
 
@@ -1103,24 +1278,27 @@
       <div class="day-block">
         <div class="day-header">
           <div class="day-number">D2</div>
-          <div class="day-label">06/07 — Thực Hành & Tổng Kết</div>
+          <div class="day-label" data-en="Jun 07 — Practice &amp; Wrap-up">07/06 — Thực hành & Tổng kết</div>
+        </div>
+
+        <div class="schedule-item break-item">
+          <div class="schedule-time">07:30</div>
+          <h4 data-en="Meet-up">Tập trung</h4>
         </div>
 
         <div class="schedule-item highlight">
           <div class="schedule-time">08:00 – 10:00</div>
-          <h4>Trả Bài — Thực hành theo nhóm</h4>
-          <p>Thực hành theo nhóm đã chọn ngày hôm trước. Mentor trực tiếp sửa lỗi & tối ưu luồng vận hành tại bàn cho từng người.</p>
+          <h4 data-en="Project Review – Hands-on work in the group you chose the day before">Trả Bài – Thực Hành theo nhóm đã chọn ngày hôm trước</h4>
         </div>
 
         <div class="schedule-item">
           <div class="schedule-time">11:30 – 12:00</div>
-          <h4>Tổng Kết & Chia Sẻ</h4>
-          <p>Trao chứng nhận, bàn giao cẩm nang vận hành, kích hoạt lộ trình 30 ngày.</p>
+          <h4 data-en="Wrap-up &amp; Sharing">Tổng kết & Chia sẻ</h4>
         </div>
 
         <div class="schedule-item break-item">
           <div class="schedule-time">12:00</div>
-          <h4>Ăn trưa nhà hàng & Lên xe về TP.HCM</h4>
+          <h4 data-en="Transfer to restaurant for lunch and close the program with the return to Ho Chi Minh City">Di chuyển ra nhà hàng ăn trưa và kết thúc chương trình về lại TP.HCM</h4>
         </div>
       </div>
     </div>
@@ -1129,40 +1307,106 @@
   <!-- Đội ngũ chuyên gia -->
   <section class="section" id="chuyengia">
     <div class="section-title">
-      <h2>Đội ngũ chuyên gia</h2>
-      <p>5 chuyên gia phụ trách 6 Module — cầm tay chỉ việc từng nhóm.</p>
+      <h2 data-en="Our Expert Team">Đội ngũ chuyên gia</h2>
+      <p data-en="5 experts leading 6 Modules — hands-on guidance for every group.">5 chuyên gia phụ trách 6 Module — cầm tay chỉ việc từng nhóm.</p>
     </div>
 
     <div class="experts-grid">
       <div class="expert-card">
         <div class="expert-avatar">TL</div>
         <h4>Tuấn Lê</h4>
-        <span class="expert-role">Module 1 · Chiến lược</span>
+        <span class="expert-role" data-en="Module 1 · Strategy">Module 1 · Chiến lược</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">AK</div>
-        <h4>Nguyễn Chí Anh Khoa</h4>
-        <span class="expert-role">Module 2 · AI Agent & Automation</span>
+        <h4>N.C. Anh Khoa</h4>
+        <span class="expert-role">Module 2 · AI Automation & Data Systems</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">ĐN</div>
         <h4>Đạt Nguyễn AI</h4>
-        <span class="expert-role">Module 3 · Agent chuyên sâu</span>
+        <span class="expert-role" data-en="Module 3 · Advanced Agents">Module 3 · Agent chuyên sâu</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">XT</div>
-        <h4>Huỳnh Xuân Tùng</h4>
-        <span class="expert-role">Module 4 · Content vô hạn</span>
+        <h4>Nguyễn Xuân Tùng</h4>
+        <span class="expert-role">Module 4 · AI Content Strategy</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">NH</div>
-        <h4>Trương Ngọc Hoàn</h4>
-        <span class="expert-role">Module 5 · Hình ảnh & Video</span>
+        <h4 data-en="Expert Hoan">Chuyên gia Hoàn</h4>
+        <span class="expert-role">Module 5 · AI Visual & Video Production</span>
       </div>
       <div class="expert-card">
         <div class="expert-avatar">TT</div>
         <h4>Thanh Tuấn (Smax)</h4>
-        <span class="expert-role">Module 6 · CSKH & Bán hàng tự động</span>
+        <span class="expert-role" data-en="Module 6 · Customer Care &amp; Sales Automation">Module 6 · CSKH & Sales Automation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Công cụ cần chuẩn bị -->
+  <section class="section" id="congcu">
+    <div class="section-title">
+      <h2 data-en="Tools to Prepare">Công cụ cần chuẩn bị</h2>
+      <p data-en="Install the tools for each expert in advance so you can practice right in class.">Cài đặt sẵn các công cụ theo từng chuyên gia để thực hành ngay tại lớp.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-avatar">ĐN</div>
+          <h4>Đạt Nguyễn AI</h4>
+        </div>
+        <ul class="tool-list">
+          <li><strong>ChatGPT</strong></li>
+          <li><strong>Codex</strong></li>
+          <li><strong>GoClaw</strong></li>
+        </ul>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-avatar">TT</div>
+          <h4>Nguyễn Thanh Tuấn</h4>
+        </div>
+        <ul class="tool-list">
+          <li><strong>Meta Business AI</strong></li>
+          <li><strong>Smax GenAI</strong></li>
+        </ul>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-avatar">XT</div>
+          <h4>Huỳnh Xuân Tùng</h4>
+        </div>
+        <ul class="tool-list">
+          <li><strong>ChatGPT</strong></li>
+        </ul>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-avatar">AK</div>
+          <h4>N.C. Anh Khoa</h4>
+        </div>
+        <ul class="tool-list">
+          <li><strong>FoxG.dev</strong></li>
+        </ul>
+      </div>
+
+      <div class="tool-card" style="grid-column: 1 / -1;">
+        <div class="tool-card-header">
+          <div class="tool-avatar">NH</div>
+          <h4 data-en="Expert Hoan">Chuyên Gia Hoàn</h4>
+        </div>
+        <ul class="tool-list">
+          <li data-en="&lt;strong&gt;ChatGPT (Plus)&lt;/strong&gt; — scriptwriting and image generation"><strong>ChatGPT (Plus)</strong> — tạo kịch bản và hình ảnh</li>
+          <li data-en="&lt;strong&gt;Eleven Lab&lt;/strong&gt; — voice-over generation"><strong>Eleven Lab</strong> — tạo voice off</li>
+          <li data-en="&lt;strong&gt;Gemini&lt;/strong&gt; — script analysis"><strong>Gemini</strong> — phân tích scripts</li>
+          <li data-en="&lt;strong&gt;CapCut (Plus plan ~350,000đ)&lt;/strong&gt; — video editing"><strong>CapCut (phiên bản Plus ~350.000đ)</strong> — chỉnh sửa video</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1170,8 +1414,8 @@
   <!-- Quyền lợi -->
   <section class="section" id="quyen-loi">
     <div class="section-title">
-      <h2>Mang về sau Beach Camp</h2>
-      <p>Không chỉ kiến thức — mà là hệ thống chạy được ngay và cộng đồng đồng hành.</p>
+      <h2 data-en="What You Take Home After Beach Camp">Mang về sau Beach Camp</h2>
+      <p data-en="Not just knowledge — a system that runs from day one and a community by your side.">Không chỉ kiến thức — mà là hệ thống chạy được ngay và cộng đồng đồng hành.</p>
     </div>
 
     <div class="benefits-grid">
@@ -1179,8 +1423,8 @@
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <h4>5 Slides Thực Chiến</h4>
-        <p>Tài liệu độc quyền đúc kết từ 5 chuyên gia — áp dụng được ngay, không lý thuyết suông.</p>
+        <h4 data-en="5 Battle-tested Slide Decks">5 Slides Thực Chiến</h4>
+        <p data-en="Exclusive materials distilled from 5 experts — ready to apply, no empty theory.">Tài liệu độc quyền đúc kết từ 5 chuyên gia — áp dụng được ngay, không lý thuyết suông.</p>
       </div>
 
       <div class="benefit-card">
@@ -1188,74 +1432,128 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         </div>
         <h4>Orchestrator Agent</h4>
-        <p>Hệ thống setup sẵn, dùng ngay không cần code + tặng $5 credit LLM chạy thử nghiệm.</p>
+        <p data-en="A pre-built system, ready to use with no code + $5 in LLM credits for test runs.">Hệ thống setup sẵn, dùng ngay không cần code + tặng $5 credit LLM chạy thử nghiệm.</p>
       </div>
 
       <div class="benefit-card">
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-        <h4>Template Multi-Agent</h4>
-        <p>Thiết kế chuẩn theo usecase thực tế — demo trực tiếp trong bài học.</p>
+        <h4 data-en="Multi-Agent Templates">Template Multi-Agent</h4>
+        <p data-en="Designed around real-world use cases — demoed live during the sessions.">Thiết kế chuẩn theo usecase thực tế — demo trực tiếp trong bài học.</p>
       </div>
 
       <div class="benefit-card">
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h4>Đồng hành 30 ngày</h4>
-        <p>Cộng đồng hỗ trợ qua Zalo + 01 buổi Coach 1:1 giải quyết lỗi vận hành khi về doanh nghiệp.</p>
+        <h4 data-en="30 Days of Support">Đồng hành 30 ngày</h4>
+        <p data-en="A support community via Zalo + 01 1:1 Coaching session to resolve operational issues back at your business.">Cộng đồng hỗ trợ qua Zalo + 01 buổi Coach 1:1 giải quyết lỗi vận hành khi về doanh nghiệp.</p>
       </div>
 
       <div class="benefit-card" style="grid-column: 1 / -1;">
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
         </div>
-        <h4>Đặc quyền kết nối</h4>
-        <p>Tham gia offline giao lưu hàng tuần cùng 50++ anh em Ecom/Global/MMO/Retail tại phòng VIP hệ thống Sài Gòn.</p>
+        <h4 data-en="Networking Privileges">Đặc quyền kết nối</h4>
+        <p data-en="Join weekly offline meetups with 50++ Ecom/Global/MMO/Retail peers in the VIP rooms of our Saigon network.">Tham gia offline giao lưu hàng tuần cùng 50++ anh em Ecom/Global/MMO/Retail tại phòng VIP hệ thống Sài Gòn.</p>
       </div>
     </div>
   </section>
 
   <!-- Registration -->
   <section class="register-section" id="dangky">
-    <div class="register-box" style="text-align: center;">
-      <h2>Đăng ký AI Beach Camp</h2>
-      <p>Điền form đăng ký để giữ slot và nhận tài liệu đọc trước. Giới hạn 25–30 slot.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSewwq53CdwZVE8MFO3lx4SQtDUaIyP2t-TYOGPgi1OH2AmUzQ/viewform?usp=header" target="_blank" class="btn-submit" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; margin-top: 8px;">Đăng ký ngay →</a>
+    <div class="register-box">
+      <h2 data-en="Register for AI Beach Camp">Đăng ký AI Beach Camp</h2>
+      <p data-en="Fill out the form below to reserve your seat and receive the pre-reading materials. Only 25–30 seats.">Điền form bên dưới để giữ slot và nhận tài liệu đọc trước. Giới hạn 25–30 slot.</p>
+
+      <form id="registerForm">
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="campSelect" data-en="Program you are registering for">Chương trình đăng ký</label>
+            <select id="campSelect" name="entry.1050302189" required>
+              <option value="AI Beach Camp (TPHCM – Vũng Tàu)" selected data-en="AI Beach Camp (Ho Chi Minh City – Vung Tau · Jun 06–07)">AI Beach Camp (TPHCM – Vũng Tàu · 06–07/06)</option>
+              <option value="AI Lake Camp (Hà Nội)" data-en="AI Lake Camp (Hanoi · Jun 20–21)">AI Lake Camp (Hà Nội · 20–21/06)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName" data-en="Full Name">Họ và Tên</label>
+            <input type="text" id="fullName" name="entry.1224024783" placeholder="Nguyễn Văn A" data-en-ph="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="phone" data-en="Phone Number">Số Điện Thoại</label>
+            <input type="tel" id="phone" name="entry.833743083" placeholder="0912 345 678" data-en-ph="0912 345 678" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="entry.791971624" placeholder="email@company.com" data-en-ph="email@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="industry" data-en="Industry">Ngành Nghề</label>
+            <input type="text" id="industry" name="entry.2068102340" placeholder="F&B, Ecom, Retail…" data-en-ph="F&B, Ecom, Retail…">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="problem" data-en="What problem do you want to solve with AI?">Bài Toán Bạn Muốn Giải Bằng AI?</label>
+            <textarea id="problem" name="entry.1492755822" placeholder="Ví dụ: Tự động chăm sóc khách hàng, tạo content đa kênh, tối ưu vận hành…" data-en-ph="e.g. Automate customer care, create multi-channel content, optimize operations…"></textarea>
+          </div>
+        </div>
+        <div class="form-footer">
+          <span class="form-note" data-en="Your information is kept private · The organizers will contact you within 24h">Thông tin được bảo mật · BTC sẽ liên hệ trong 24h</span>
+          <button type="submit" class="btn-submit" data-en="Reserve now →">Giữ chỗ ngay →</button>
+        </div>
+        <div class="form-error" id="formError"></div>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✓</div>
+        <h3 data-en="Registration successful!">Đăng ký thành công!</h3>
+        <p data-en="The organizers will contact you within 24h to confirm your seat. Check your email for the pre-reading materials.">BTC sẽ liên hệ bạn trong 24h để xác nhận slot. Kiểm tra email để nhận tài liệu đọc trước.</p>
+      </div>
     </div>
   </section>
 
   <!-- CTA / Payment -->
   <section class="cta-section">
     <div class="cta-box">
-      <h2>Giữ chỗ Beach Camp</h2>
-      <p class="slots">Giới hạn 25 – 30 slot để đảm bảo chất lượng</p>
+      <h2 data-en="Reserve Your Beach Camp Seat">Giữ chỗ Beach Camp</h2>
+      <p class="slots" data-en="Limited to 25 – 30 seats to ensure quality">Giới hạn 25 – 30 slot để đảm bảo chất lượng</p>
 
       <div class="payment-info">
         <div class="payment-block">
-          <h4>Tài khoản Công ty (Xuất VAT)</h4>
-          <p>
+          <h4 data-en="Company Account (VAT invoice)">Tài khoản Công ty (Xuất VAT)</h4>
+          <p data-en="
+            Acc No: &lt;strong&gt;1040767568&lt;/strong&gt; · Vietcombank (VCB)&lt;br&gt;
+            Acc Name: &lt;strong&gt;A1Z Joint Stock Company / Le Anh Tuan&lt;/strong&gt;
+          ">
             STK: <strong>1040767568</strong> · Vietcombank (VCB)<br>
             CTK: <strong>Công Ty Cổ Phần A1Z / Lê Anh Tuấn</strong>
           </p>
         </div>
         <div class="payment-block">
-          <h4>Tài khoản Cá nhân</h4>
-          <p>
+          <h4 data-en="Personal Account">Tài khoản Cá nhân</h4>
+          <p data-en="
+            Acc No: &lt;strong&gt;1033603768&lt;/strong&gt; · Vietcombank (VCB)&lt;br&gt;
+            Acc Name: &lt;strong&gt;Do Nhu Quynh&lt;/strong&gt; (Organizer representative)
+          ">
             STK: <strong>1033603768</strong> · Vietcombank (VCB)<br>
             CTK: <strong>Đỗ Như Quỳnh</strong> (Đại diện BTC)
           </p>
         </div>
       </div>
 
-      <p class="cta-note">Hoàn tất chuyển khoản để BTC chốt danh sách & setup hệ thống cho bạn.</p>
+      <p class="cta-note" data-en="Complete your transfer so the organizers can finalize the list &amp; set up the system for you.">Hoàn tất chuyển khoản để BTC chốt danh sách & setup hệ thống cho bạn.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p><a href="index.html">← Về trang AI Camp</a> · © 2026 AI Camp</p>
+    <p data-en="&lt;a href='index.html'&gt;← Back to AI Camp&lt;/a&gt; · © 2026 AI Camp"><a href="index.html">← Về trang AI Camp</a> · © 2026 AI Camp</p>
   </footer>
 
   <!-- Mobile menu -->
@@ -1278,6 +1576,34 @@
 
     overlay.addEventListener('click', closeMenu);
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Form submission
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('.btn-submit');
+      var errorEl = document.getElementById('formError');
+      var successEl = document.getElementById('formSuccess');
+
+      btn.disabled = true;
+      btn.textContent = 'Đang gửi…';
+      errorEl.classList.remove('show');
+
+      var data = new FormData(form);
+      var params = new URLSearchParams(data).toString();
+
+      fetch('https://docs.google.com/forms/d/e/1FAIpQLSewwq53CdwZVE8MFO3lx4SQtDUaIyP2t-TYOGPgi1OH2AmUzQ/formResponse?' + params, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }).then(function() {
+        form.style.display = 'none';
+        successEl.classList.add('show');
+      }).catch(function() {
+        form.style.display = 'none';
+        successEl.classList.add('show');
+      });
+    });
 
     document.querySelectorAll('[data-event-end]').forEach(function(el) {
       var end = new Date(el.dataset.eventEnd + 'T23:59:59');
@@ -1365,6 +1691,41 @@
     })();
   </script>
 
+  <script>
+    (function() {
+      var KEY = 'aicamp_lang';
+      var textEls = document.querySelectorAll('[data-en]');
+      textEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi')) el.setAttribute('data-vi', el.innerHTML);
+      });
+      var phEls = document.querySelectorAll('[data-en-ph]');
+      phEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi-ph')) el.setAttribute('data-vi-ph', el.getAttribute('placeholder') || '');
+      });
+      var label = document.getElementById('langLabel');
+
+      function apply(lang) {
+        textEls.forEach(function(el) {
+          el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-vi');
+        });
+        phEls.forEach(function(el) {
+          el.setAttribute('placeholder', el.getAttribute(lang === 'en' ? 'data-en-ph' : 'data-vi-ph'));
+        });
+        document.documentElement.lang = lang;
+        if (label) label.textContent = lang === 'en' ? 'Tiếng Việt' : 'English';
+        try { localStorage.setItem(KEY, lang); } catch (e) {}
+      }
+
+      var saved = 'vi';
+      try { saved = localStorage.getItem(KEY) || 'vi'; } catch (e) {}
+      apply(saved);
+
+      document.getElementById('langToggle').addEventListener('click', function() {
+        var cur = document.documentElement.lang === 'en' ? 'en' : 'vi';
+        apply(cur === 'en' ? 'vi' : 'en');
+      });
+    })();
+  </script>
 
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Camp · Hiểu và thành thạo để quản lý AI</title>
-  <meta name="description" content="AI Camp – 3 hình thức học: City Camp tại TPHCM & Hà Nội, Beach Camp nghỉ dưỡng cùng gia đình, Webinar online. Hiểu và thành thạo để quản lý AI – không phải chỉ dùng AI.">
+  <title data-en="AI Camp · Understand and master AI to manage it">AI Camp · Hiểu và thành thạo để quản lý AI</title>
+  <meta name="description" content="AI Camp – 3 hình thức học: Lake Camp tại Hà Nội, Beach Camp nghỉ dưỡng cùng gia đình, Webinar online. Hiểu và thành thạo để quản lý AI – không phải chỉ dùng AI.">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
   <!-- hana-viewer loaded lazily via script below -->
   <style>
@@ -309,6 +309,18 @@
       display: block;
     }
 
+    .hero-spline .spline-en {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 24px;
+      display: none;
+    }
+
+    /* English mode: swap to the English Spline scene */
+    html[lang="en"] .hero-spline hana-viewer { display: none; }
+    html[lang="en"] .hero-spline .spline-en { display: block; }
+
     .spline-glow {
       position: absolute;
       inset: -20px;
@@ -434,6 +446,11 @@
       background: rgba(255, 255, 255, 0.92);
     }
 
+    .program-card.featured-lake {
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
     .featured-badge {
       position: absolute;
       top: 18px;
@@ -474,7 +491,7 @@
       stroke-linejoin: round;
     }
 
-    .program-icon.city { background: linear-gradient(135deg, #FFD93D, #FF8E53); }
+    .program-icon.city { background: linear-gradient(135deg, #3B82F6, #6366F1); }
     .program-icon.beach { background: linear-gradient(135deg, #4ECDC4, #44B09E); }
     .program-icon.webinar { background: linear-gradient(135deg, #FF6B6B, #ee5a24); }
 
@@ -523,6 +540,16 @@
       height: 12px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #ffd5bf, #ff6a3d);
+    }
+
+    .btn-lake {
+      background: linear-gradient(135deg, #3B82F6, #6366F1) !important;
+      color: white !important;
+      box-shadow: 0 10px 24px -10px rgba(59, 130, 246, 0.65) !important;
+    }
+
+    .btn-lake:hover {
+      box-shadow: 0 14px 30px -10px rgba(59, 130, 246, 0.7) !important;
     }
 
     .btn-beach {
@@ -885,6 +912,201 @@
       }
     }
 
+    /* Gallery Section */
+    .gallery-section {
+      padding: 80px 50px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-gallery {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+      grid-template-rows: 150px 150px;
+      gap: 8px;
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .bento-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .bento-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, opacity 0.6s ease;
+    }
+
+    .bento-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .bento-item img.fade-out {
+      opacity: 0;
+    }
+
+    .bento-item.tall { grid-row: span 2; }
+
+    .bento-more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.65);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .bento-more:hover {
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .photos-cta {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn-album {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 180, 130, 0.35);
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #0f172a;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-album:hover {
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 142, 83, 0.12);
+      border-color: rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-album svg {
+      width: 18px;
+      height: 18px;
+      stroke: #FF8E53;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.92);
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      user-select: none;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      width: 44px; height: 44px;
+      background: rgba(255, 255, 255, 0.12);
+      border: none; border-radius: 50%;
+      color: white; font-size: 1.5rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: rgba(255, 255, 255, 0.12);
+      border: none; border-radius: 50%;
+      color: white; font-size: 1.3rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-nav:hover { background: rgba(255, 255, 255, 0.25); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem; font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+      .gallery-section { padding: 60px 32px 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-section { padding: 48px 24px 24px; }
+      .bento-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 120px 120px;
+        gap: 6px;
+      }
+      .lightbox-nav { width: 40px; height: 40px; font-size: 1.1rem; }
+      .lightbox-prev { left: 12px; }
+      .lightbox-next { right: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-section { padding: 40px 16px 16px; }
+      .bento-gallery {
+        grid-template-columns: none;
+        grid-template-rows: 180px;
+        grid-auto-flow: column;
+        grid-auto-columns: 55vw;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 8px;
+        border-radius: 14px;
+        scrollbar-width: none;
+      }
+      .bento-gallery::-webkit-scrollbar { display: none; }
+      .bento-item { scroll-snap-align: start; }
+      .bento-item.tall { grid-row: span 1; }
+      .bento-more { min-width: 40vw; }
+    }
+
     /* Small mobile */
     @media (max-width: 360px) {
       .hero h1 {
@@ -898,6 +1120,41 @@
       .cta-box h2 {
         font-size: 1.3rem;
       }
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 10000;
+      height: 46px;
+      padding: 0 20px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 26px -8px rgba(255, 106, 61, 0.6);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(255, 106, 61, 0.7);
+    }
+    .lang-toggle svg {
+      width: 17px; height: 17px;
+      stroke: #fff; stroke-width: 2; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (max-width: 480px) {
+      .lang-toggle { bottom: 16px; right: 16px; height: 42px; padding: 0 16px; font-size: 0.84rem; }
     }
   </style>
 </head>
@@ -922,68 +1179,107 @@
       <span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="#home">Trang chủ</a></li>
-      <li><a href="#programs">Chương trình</a></li>
-      <li><a href="#noidung">Nội dung</a></li>
-      <li><a href="#dangky" class="nav-cta">Đăng ký tham dự</a></li>
+      <li><a href="#home" data-en="Home">Trang chủ</a></li>
+      <li><a href="#programs" data-en="Programs">Chương trình</a></li>
+      <li><a href="#noidung" data-en="Content">Nội dung</a></li>
+      <li><a href="#dangky" class="nav-cta" data-en="Register now">Đăng ký tham dự</a></li>
     </ul>
   </nav>
   <div class="nav-overlay"></div>
+
 
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-spline">
       <div class="spline-glow"></div>
       <hana-viewer url="https://prod.spline.design/pk6b0UIVJPidMY9m-tam/scene.hanacode"></hana-viewer>
+      <iframe class="spline-en" data-src="https://my.spline.design/3duienglish-qav5Dbzvw2Lg7NqZEqdBOUvJ-dRT/" frameborder="0" loading="lazy" title="AI Camp 3D"></iframe>
     </div>
     <div class="hero-content">
-      <span class="hero-badge">
+      <span class="hero-badge" data-en="<span class='dot'></span>
+        Upcoming: <a href='lake-camp.html' style='color:#3B82F6;font-weight:700;text-decoration:none;'>AI Lake Camp Jun 20–21</a> · Registration open">
         <span class="dot"></span>
-        Khoá sắp tới: <a href="beach-camp.html" style="color:#44B09E;font-weight:700;text-decoration:none;">AI Beach Camp 05–06/07</a> · Đang nhận đăng ký
+        Khoá sắp tới: <a href="lake-camp.html" style="color:#3B82F6;font-weight:700;text-decoration:none;">AI Lake Camp 20–21/06</a> · Đang nhận đăng ký
       </span>
-      <h1>Hiểu &amp; thành thạo để <span class="grad">quản lý AI</span></h1>
-      <p>
+      <h1 data-en="Understand &amp; master AI to <span class='grad'>manage it</span>">Hiểu &amp; thành thạo để <span class="grad">quản lý AI</span></h1>
+      <p data-en="Not a theory course, not a tool demo.
+        The goal: you leave camp able to <b>command AI</b> in your own work — knowing how to delegate, control the output, and lock in real results.">
         Không phải khoá học lý thuyết, không phải buổi demo công cụ.
         Mục tiêu: bạn rời camp với khả năng <b>chỉ huy AI</b> trong công việc của mình – biết giao việc, kiểm soát đầu ra, và chốt được kết quả thật.
       </p>
       <div class="hero-buttons">
-        <a href="#dangky" class="btn-primary">Đăng ký tham dự →</a>
-        <a href="#programs" class="btn-secondary">Xem chương trình</a>
+        <a href="#dangky" class="btn-primary" data-en="Register now →">Đăng ký tham dự →</a>
+        <a href="#programs" class="btn-secondary" data-en="View programs">Xem chương trình</a>
       </div>
       <div class="hero-meta">
-        <div>📌 <b>3 hình thức</b> · City · Beach · Online</div>
-        <div>🎓 Cho mọi nghề, không cần nền tảng kỹ thuật</div>
+        <div data-en="📌 <b>3 formats</b> · Lake · Beach · Online">📌 <b>3 hình thức</b> · Lake · Beach · Online</div>
+        <div data-en="🎓 For every profession, no technical background required">🎓 Cho mọi nghề, không cần nền tảng kỹ thuật</div>
       </div>
+    </div>
+  </section>
+
+  <!-- Hình ảnh các đợt Camp -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-title">
+      <h2 data-en="Energy from past Camps">Năng lượng từ các đợt Camp</h2>
+      <p data-en="Real moments captured at our previous Camps.">Hình ảnh thực tế từ các khoá Camp trước đó.</p>
+    </div>
+
+    <div class="bento-gallery" id="bentoGallery">
+      <div class="bento-item tall" data-slot="0"><img alt="Camp"></div>
+      <div class="bento-item" data-slot="1"><img alt="Camp"></div>
+      <div class="bento-item" data-slot="2"><img alt="Camp"></div>
+      <div class="bento-item" data-slot="3"><img alt="Camp"></div>
+      <div class="bento-item" data-slot="4"><img alt="Camp"></div>
+      <div class="bento-item" data-slot="5"><img alt="Camp"></div>
+      <div class="bento-item" data-slot="6"><img alt="Camp"></div>
+      <a class="bento-more" href="https://drive.google.com/drive/folders/1en06lJ3SpkjFo4-3Pl3pNv15kEviztmG" target="_blank" rel="noopener" data-en="+100 photos">+100 ảnh</a>
+    </div>
+    <div class="photos-cta">
+      <a href="https://drive.google.com/drive/folders/1en06lJ3SpkjFo4-3Pl3pNv15kEviztmG" target="_blank" rel="noopener" class="btn-album" data-en="<svg viewBox='0 0 24 24'><rect x='3' y='3' width='18' height='18' rx='2'/><circle cx='8.5' cy='8.5' r='1.5'/><path d='M21 15l-5-5L5 21'/></svg>
+        View the full photo album →">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Xem toàn bộ album ảnh →
+      </a>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+      <img id="lightboxImg" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
     </div>
   </section>
 
   <!-- Camp là gì? -->
   <section class="section" id="noidung">
     <div class="section-title">
-      <h2>Camp này là gì?</h2>
-      <p>Chuyển từ <i>"người dùng AI"</i> thành <i>"người quản lý AI"</i>. Cho mọi nghề, không cần nền tảng kỹ thuật.</p>
+      <h2 data-en="What is this Camp?">Camp này là gì?</h2>
+      <p data-en="Go from <i>&quot;AI user&quot;</i> to <i>&quot;AI manager&quot;</i>. For every profession, no technical background required.">Chuyển từ <i>"người dùng AI"</i> thành <i>"người quản lý AI"</i>. Cho mọi nghề, không cần nền tảng kỹ thuật.</p>
     </div>
     <div class="grid-3">
       <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M9 6.5c-2.5.5-4.5 1.5-5.5 3"/><path d="M15 6.5c2.5.5 4.5 1.5 5.5 3"/></svg>
         </div>
-        <h3>Hiểu cách AI hoạt động</h3>
-        <p>Nắm được điểm mạnh – điểm yếu – ranh giới của AI. Biết khi nào nên giao, khi nào phải tự làm, khi nào cần kiểm tra lại.</p>
+        <h3 data-en="Understand how AI works">Hiểu cách AI hoạt động</h3>
+        <p data-en="Grasp the strengths, weaknesses and limits of AI. Know when to delegate, when to do it yourself, and when to double-check.">Nắm được điểm mạnh – điểm yếu – ranh giới của AI. Biết khi nào nên giao, khi nào phải tự làm, khi nào cần kiểm tra lại.</p>
       </div>
       <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
         </div>
-        <h3>Thành thạo qua thực hành</h3>
-        <p>Học viên mở laptop làm tại chỗ. Ra workflow thật, ra prompt thật, ra kết quả mang về dùng được ngay.</p>
+        <h3 data-en="Master it through practice">Thành thạo qua thực hành</h3>
+        <p data-en="Open your laptop and build on the spot. Real workflows, real prompts, real results you can take home and use right away.">Học viên mở laptop làm tại chỗ. Ra workflow thật, ra prompt thật, ra kết quả mang về dùng được ngay.</p>
       </div>
       <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
-        <h3>Quản lý AI – không bị AI dắt</h3>
-        <p>Học cách giao việc cho AI như giao cho nhân sự: rõ yêu cầu, rõ tiêu chí, kiểm soát chất lượng đầu ra.</p>
+        <h3 data-en="Manage AI — don't let it lead you">Quản lý AI – không bị AI dắt</h3>
+        <p data-en="Learn to delegate to AI like you would to a team member: clear briefs, clear criteria, full control over the quality of the output.">Học cách giao việc cho AI như giao cho nhân sự: rõ yêu cầu, rõ tiêu chí, kiểm soát chất lượng đầu ra.</p>
       </div>
     </div>
   </section>
@@ -991,45 +1287,45 @@
   <!-- 3 Chương trình -->
   <section class="section" id="programs">
     <div class="section-title">
-      <h2>Chọn hình thức phù hợp với bạn</h2>
-      <p>Dù bạn ở đâu, bận đến đâu, luôn có chương trình phù hợp.</p>
+      <h2 data-en="Choose the format that fits you">Chọn hình thức phù hợp với bạn</h2>
+      <p data-en="Wherever you are, however busy you are, there's a program for you.">Dù bạn ở đâu, bận đến đâu, luôn có chương trình phù hợp.</p>
     </div>
     <div class="grid-3">
 
-      <!-- City Camp -->
-      <div class="program-card past">
-        <span class="featured-badge">Đã diễn ra</span>
+      <!-- Lake Camp -->
+      <div class="program-card featured-lake">
+        <span class="featured-badge" data-event-end="2026-06-21" data-en="Upcoming">Sắp diễn ra</span>
         <div class="program-icon city">
           <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
         </div>
-        <h3>City Camp</h3>
-        <p class="program-tag">AI Intensive · 1 ngày · TPHCM &amp; Hà Nội</p>
-        <p>Dành cho người bận rộn. Một ngày tập trung tại thành phố – sáng học &amp; thiết lập, chiều thực hành sâu &amp; coaching 1-1 trên usecase của chính bạn.</p>
+        <h3 data-en="Lake Camp">Lake Camp</h3>
+        <p class="program-tag" data-en="AI Intensive · 2 days · Hanoi · Jun 20–21">AI Intensive · 2 ngày · Hà Nội · 20–21/06</p>
+        <p data-en="A 2-day intensive AI bootcamp in Hanoi. 6 modules spanning AI Agents, automation, content and customer care — hands-on team practice with 6 experts.">2 ngày bootcamp AI chuyên sâu tại Hà Nội. 6 module từ AI Agent, automation, content đến chăm sóc khách hàng — thực hành theo nhóm cùng 6 chuyên gia.</p>
         <ul class="program-features">
-          <li>Mở laptop, làm trực tiếp tại chỗ</li>
-          <li>Thầy coaching 1-1 – chỉnh prompt, chỉnh quy trình</li>
-          <li>Mang về workflow dùng được ngay tuần sau</li>
-          <li>Networking với cộng đồng AI Việt Nam</li>
+          <li data-en="3 individual hands-on Challenges">3 Challenge thực hành cá nhân</li>
+          <li data-en="6 in-depth modules in small groups">6 Module chuyên sâu chia nhóm</li>
+          <li data-en="Hands-on practice &amp; team deliverables">Thực hành &amp; trả bài theo nhóm</li>
+          <li data-en="Networking &amp; gala dinner">Networking &amp; tiệc tối giao lưu</li>
         </ul>
-        <a href="city-camp.html" class="btn-primary" style="justify-content:center;">Xem City Camp →</a>
+        <a href="lake-camp.html" class="btn-primary btn-lake" style="justify-content:center;" data-en="View Lake Camp →">Xem Lake Camp →</a>
       </div>
 
       <!-- Beach Camp -->
       <div class="program-card featured">
-        <span class="featured-badge" data-event-end="2026-07-06">Sắp diễn ra</span>
+        <span class="featured-badge" data-event-end="2026-07-06" data-en="Upcoming">Sắp diễn ra</span>
         <div class="program-icon beach">
           <svg viewBox="0 0 24 24"><path d="M17.5 21H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
         </div>
-        <h3>Beach Camp</h3>
-        <p class="program-tag">AI + Family Retreat · 4 ngày · Resort Biển 5★</p>
-        <p>Kết hợp nghỉ dưỡng gia đình với học AI. Buổi sáng học &amp; thực hành với thầy, buổi chiều tận hưởng biển cùng người thân.</p>
+        <h3 data-en="Beach Camp">Beach Camp</h3>
+        <p class="program-tag" data-en="AI + Family Retreat · 4 days · 5★ beachfront resort">AI + Family Retreat · 4 ngày · Resort Biển 5★</p>
+        <p data-en="A family getaway combined with learning AI. Learn &amp; practice with speakers in the morning, enjoy the beach with your loved ones in the afternoon.">Kết hợp nghỉ dưỡng gia đình với học AI. Buổi sáng học &amp; thực hành với speaker, buổi chiều tận hưởng biển cùng người thân.</p>
         <ul class="program-features">
-          <li>Resort 5 sao ven biển</li>
-          <li>Chương trình hoạt động cho gia đình</li>
-          <li>Workshop AI buổi sáng, biển buổi chiều</li>
-          <li>Kết nối sâu với giảng viên &amp; học viên</li>
+          <li data-en="5-star beachfront resort">Resort 5 sao ven biển</li>
+          <li data-en="Activity program for the whole family">Chương trình hoạt động cho gia đình</li>
+          <li data-en="AI workshops in the morning, beach in the afternoon">Workshop AI buổi sáng, biển buổi chiều</li>
+          <li data-en="Deep connections with instructors &amp; peers">Kết nối sâu với giảng viên &amp; học viên</li>
         </ul>
-        <a href="beach-camp.html" class="btn-primary btn-beach" style="justify-content:center;">Xem Beach Camp →</a>
+        <a href="beach-camp.html" class="btn-primary btn-beach" style="justify-content:center;" data-en="View Beach Camp →">Xem Beach Camp →</a>
       </div>
 
       <!-- Webinar -->
@@ -1037,16 +1333,16 @@
         <div class="program-icon webinar">
           <svg viewBox="0 0 24 24"><path d="M15.6 11.6 22 7v10l-6.4-4.6"/><rect x="2" y="7" width="14" height="10" rx="2"/></svg>
         </div>
-        <h3>Webinar</h3>
-        <p class="program-tag">AI Skillset · Online · Mọi lúc mọi nơi</p>
-        <p>Chuỗi buổi học online chuyên sâu về từng bộ skillset AI cụ thể. Linh hoạt thời gian, replay không giới hạn.</p>
+        <h3 data-en="Webinar">Webinar</h3>
+        <p class="program-tag" data-en="AI Skillset · Online · Anytime, anywhere">AI Skillset · Online · Mọi lúc mọi nơi</p>
+        <p data-en="A series of in-depth online sessions on specific AI skillsets. Flexible scheduling, unlimited replays.">Chuỗi buổi học online chuyên sâu về từng bộ skillset AI cụ thể. Linh hoạt thời gian, replay không giới hạn.</p>
         <ul class="program-features">
-          <li>Buổi học live 90 phút mỗi tuần</li>
-          <li>Replay không giới hạn</li>
-          <li>Tài liệu &amp; template sẵn dùng</li>
-          <li>Cộng đồng hỗ trợ online</li>
+          <li data-en="90-minute live session every week">Buổi học live 90 phút mỗi tuần</li>
+          <li data-en="Unlimited replays">Replay không giới hạn</li>
+          <li data-en="Ready-to-use materials &amp; templates">Tài liệu &amp; template sẵn dùng</li>
+          <li data-en="Online support community">Cộng đồng hỗ trợ online</li>
         </ul>
-        <a href="#dangky" class="btn-primary btn-webinar" style="justify-content:center;">Đăng ký Webinar →</a>
+        <a href="#dangky" class="btn-primary btn-webinar" style="justify-content:center;" data-en="Register for Webinar →">Đăng ký Webinar →</a>
       </div>
 
     </div>
@@ -1055,18 +1351,26 @@
   <!-- CTA Section -->
   <section class="cta-section" id="dangky">
     <div class="cta-box">
-      <h2>Sẵn sàng bắt đầu?</h2>
-      <p>Để lại thông tin để giữ slot và nhận tài liệu đọc trước. BTC sẽ liên hệ tư vấn chương trình phù hợp nhất với bạn.</p>
-      <a href="#dangky" class="btn-primary">Đăng ký tham dự →</a>
+      <h2 data-en="Ready to get started?">Sẵn sàng bắt đầu?</h2>
+      <p data-en="Leave your details to reserve a slot and receive the pre-reading materials. Our team will reach out to recommend the program that fits you best.">Để lại thông tin để giữ slot và nhận tài liệu đọc trước. BTC sẽ liên hệ tư vấn chương trình phù hợp nhất với bạn.</p>
+      <a href="#dangky" class="btn-primary" data-en="Register now →">Đăng ký tham dự →</a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 AI Camp · Hiểu &amp; thành thạo để quản lý AI</p>
+    <p data-en="© 2026 AI Camp · Understand &amp; master AI to manage it">© 2026 AI Camp · Hiểu &amp; thành thạo để quản lý AI</p>
   </footer>
 
   </div><!-- /page-content -->
+
+  <!-- Language toggle -->
+  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span id="langLabel">English</span>
+  </button>
+
+
 
   <script>
     const toggle = document.querySelector('.menu-toggle');
@@ -1101,6 +1405,134 @@
         if (card) card.classList.add('past');
       }
     });
+  </script>
+
+  <script>
+    (function() {
+      var IDS = [
+        '1dmOPfDSQiAQdMZ681yRf2YMVgual92wo',
+        '1e5jPB5pamI34FBQ1xAB8PUEdOY_Tgj8K',
+        '1K3BjQUhbnc0lkW8WZ20XPrbrx8cv0A7k',
+        '1ZcSauX_A2RkFlqdczVra_-UlJ3kKmkla',
+        '1BUV0Se2pr9NS6rKPRKTuYzDqHWIfPH_c',
+        '1DDXihxXblGs-YD0TxJ5_IcUReIc6TpQV',
+        '12F7jK8hRZiLHxiGpl98Qpv3ZAaGdGAJ5',
+        '1izvWnOmJ4hNpsCZQ6JnLir_2nhJuYLKy',
+        '1hQ_rVBipWCN8SttPemJSZsFyDKZ1gEuI',
+        '1GgzzhCLbfn6_BkWgwetXta2W7_qhnUBC',
+        '1GQcRW66LFc-SgkFpNsBhG9A1sxfdITcH',
+        '1FMIIrP-4vsgaBvc6LVGttC6zXqb77kbX',
+        '1J-Zd36BseKvjJZLQEYlp59oMXKOJ99hA',
+        '1ep5l4OAwlHwXZK7kNX4Urjpn4ZPFysKk',
+        '1D2aJTEoroY0YcmnsYcWlTjfGfe1tKrTs',
+        '1o8WL2E30F0NSqhlMixX433jdjts-l0sb',
+        '11YgTcwtGUoNnU33jqXUvrLUdDxY-Wbn4',
+        '1mB-Jy0KOSihJosbWIlSh_tUxyUX3cB8J',
+        '132jeQ0gAE1JnkxMTut53_iQMd5kKTSdf',
+        '1GhUiPRcWUhXdVQ_XS5UPU9tuQ9b1dZop',
+        '1sP1ZhwjAaj6boIWc2cJR0QhBSjHJy2_w',
+        '1JrYs2uKSPj0Djhz7uAX513AdDdO1caey',
+        '16LoLaTRFtByaEjQizV11laGZDzsGRxZJ',
+        '1E3ru44B_pP5Cxf4zL8eEpBcH_6p9XccE',
+        '14AAHDo_w-ySK-5waKqtJV8zeErnKdIEG',
+        '1jJhFEtrHS6a6Ff4XXXSmXwRiCJB_Vamv',
+        '1KDh6bfjx_TH8ASoyECVCY_grfUhGmXgz',
+        '17d1JcFEa6JiWsbWa9xnhnCNH_6o9VQNX',
+        '1X5yA9FNm6gSVzJuAcvpo-N-GgSqTDIe7',
+        '1ijBSMGl1ORDgnmdh-lrRrLX1TfLDwZUP'
+      ];
+
+      var SLOT_COUNT = 7;
+      var slots = document.querySelectorAll('.bento-item[data-slot]');
+      var visible = [];
+      var pool = IDS.slice();
+
+      function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+        }
+      }
+
+      function thumb(id, sz) {
+        return 'https://drive.google.com/thumbnail?id=' + id + '&sz=w' + sz;
+      }
+
+      function initGallery() {
+        shuffle(pool);
+        for (var i = 0; i < SLOT_COUNT; i++) {
+          var id = pool[i];
+          visible[i] = id;
+          var img = slots[i].querySelector('img');
+          img.src = thumb(id, i === 0 ? 800 : 600);
+        }
+      }
+
+      function swapRandom() {
+        var slotIdx = Math.floor(Math.random() * SLOT_COUNT);
+        var available = IDS.filter(function(id) { return visible.indexOf(id) === -1; });
+        if (!available.length) return;
+        var newId = available[Math.floor(Math.random() * available.length)];
+        var img = slots[slotIdx].querySelector('img');
+
+        img.classList.add('fade-out');
+        setTimeout(function() {
+          img.src = thumb(newId, slotIdx === 0 ? 800 : 600);
+          visible[slotIdx] = newId;
+          img.classList.remove('fade-out');
+        }, 600);
+      }
+
+      initGallery();
+      setInterval(swapRandom, 2500);
+
+      slots.forEach(function(slot) {
+        slot.addEventListener('click', function() {
+          var idx = visible.indexOf(visible[parseInt(slot.dataset.slot)]);
+          openLightbox(idx);
+        });
+      });
+
+      // Lightbox
+      var lbEl = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightboxImg');
+      var lbCounter = document.getElementById('lightboxCounter');
+      var lbIndex = 0;
+
+      function showLb() {
+        lbImg.src = thumb(IDS[lbIndex], 1600);
+        lbCounter.textContent = (lbIndex + 1) + ' / ' + IDS.length;
+      }
+
+      window.openLightbox = function(i) {
+        lbIndex = IDS.indexOf(visible[i]);
+        if (lbIndex < 0) lbIndex = 0;
+        showLb();
+        lbEl.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeLightbox = function() {
+        lbEl.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      window.navLightbox = function(dir) {
+        lbIndex = (lbIndex + dir + IDS.length) % IDS.length;
+        showLb();
+      };
+
+      lbEl.addEventListener('click', function(e) {
+        if (e.target === lbEl) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (!lbEl.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+      });
+    })();
   </script>
 
   <script>
@@ -1209,6 +1641,46 @@
       setTimeout(reveal, 8000);
 
       document.head.appendChild(script);
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var KEY = 'aicamp_lang';
+      var textEls = document.querySelectorAll('[data-en]');
+      textEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi')) el.setAttribute('data-vi', el.innerHTML);
+      });
+      var phEls = document.querySelectorAll('[data-en-ph]');
+      phEls.forEach(function(el) {
+        if (!el.hasAttribute('data-vi-ph')) el.setAttribute('data-vi-ph', el.getAttribute('placeholder') || '');
+      });
+      var label = document.getElementById('langLabel');
+
+      function apply(lang) {
+        textEls.forEach(function(el) {
+          el.innerHTML = el.getAttribute(lang === 'en' ? 'data-en' : 'data-vi');
+        });
+        phEls.forEach(function(el) {
+          el.setAttribute('placeholder', el.getAttribute(lang === 'en' ? 'data-en-ph' : 'data-vi-ph'));
+        });
+        document.documentElement.lang = lang;
+        if (lang === 'en') {
+          var frame = document.querySelector('.spline-en');
+          if (frame && !frame.src && frame.dataset.src) frame.src = frame.dataset.src;
+        }
+        if (label) label.textContent = lang === 'en' ? 'Tiếng Việt' : 'English';
+        try { localStorage.setItem(KEY, lang); } catch (e) {}
+      }
+
+      var saved = 'vi';
+      try { saved = localStorage.getItem(KEY) || 'vi'; } catch (e) {}
+      apply(saved);
+
+      document.getElementById('langToggle').addEventListener('click', function() {
+        var cur = document.documentElement.lang === 'en' ? 'en' : 'vi';
+        apply(cur === 'en' ? 'vi' : 'en');
+      });
     })();
   </script>
 
