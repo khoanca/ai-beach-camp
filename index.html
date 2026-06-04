@@ -1107,6 +1107,119 @@
       .bento-more { min-width: 40vw; }
     }
 
+    /* Speakers Section */
+    .speakers-wrap {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .speakers-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 6px 4px 18px;
+      scroll-padding-left: 4px;
+    }
+
+    .speakers-track::-webkit-scrollbar { display: none; }
+
+    .speaker-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(230, 225, 214, 0.6);
+      border-radius: 18px;
+      padding: 20px 18px 22px;
+      text-align: center;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .speaker-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 20px 50px rgba(255, 142, 83, 0.14);
+    }
+
+    .speaker-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 22px -8px rgba(255, 106, 61, 0.45);
+      background: linear-gradient(135deg, #fff3e6, #fff);
+    }
+
+    .speaker-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .speaker-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .speaker-title {
+      font-size: 0.82rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .speaker-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(230, 180, 130, 0.35);
+      background: rgba(255, 255, 255, 0.95);
+      color: #0f172a;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px -10px rgba(15, 23, 42, 0.3);
+      transition: all 0.2s;
+      z-index: 2;
+    }
+
+    .speaker-nav:hover {
+      transform: translateY(-50%) scale(1.08);
+      border-color: rgba(255, 107, 107, 0.4);
+      color: #FF6B6B;
+    }
+
+    .speaker-prev { left: -10px; }
+    .speaker-next { right: -10px; }
+
+    @media (max-width: 768px) {
+      .speaker-nav { display: none; }
+      .speaker-card { flex-basis: 180px; padding: 18px 14px 20px; }
+      .speaker-photo { width: 110px; height: 110px; }
+    }
+
+    @media (max-width: 480px) {
+      .speakers-track { gap: 14px; }
+      .speaker-card { flex-basis: 64vw; }
+    }
+
     /* Small mobile */
     @media (max-width: 360px) {
       .hero h1 {
@@ -1182,6 +1295,7 @@
       <li><a href="#home" data-en="Home">Trang chủ</a></li>
       <li><a href="#programs" data-en="Programs">Chương trình</a></li>
       <li><a href="#noidung" data-en="Curriculum">Nội dung</a></li>
+      <li><a href="#speakers" data-en="Speakers">Speaker</a></li>
       <li><a href="#dangky" class="nav-cta" data-en="Reserve a seat">Đăng ký tham dự</a></li>
     </ul>
   </nav>
@@ -1249,6 +1363,75 @@
       <img id="lightboxImg" src="" alt="">
       <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
       <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </section>
+
+  <!-- Speakers -->
+  <section class="section speakers-section" id="speakers">
+    <div class="section-title">
+      <h2 data-en="Meet the speakers">Đội ngũ Speaker</h2>
+      <p data-en="Founders and operators who put AI to work every day.">Những founder và chuyên gia ứng dụng AI thực chiến mỗi ngày.</p>
+    </div>
+    <div class="speakers-wrap">
+      <button class="speaker-nav speaker-prev" type="button" aria-label="Previous">&#8249;</button>
+      <div class="speakers-track" id="speakersTrack">
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=18IQzHVa-2JVnq69Esf-YRTJtr7Gm5djG&sz=w400" alt="Lê Anh Tuấn" loading="lazy"></div>
+          <h3 class="speaker-name">Lê Anh Tuấn</h3>
+          <p class="speaker-title" data-en="CEO Firstcom Digital · Founder A1Demy · Co-Founder Climax Creatology">CEO Firstcom Digital · Founder A1Demy · Co-Founder Climax Creatology</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1xRAY4UvtOeQOzSXxDfllLBSKAARLnvtj&sz=w400" alt="Tesa Teshanovic" loading="lazy"></div>
+          <h3 class="speaker-name">Tesa Teshanovic</h3>
+          <p class="speaker-title" data-en="Principal · Agile Dynamic LLC">Principal · Agile Dynamic LLC</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1nkbt_rPn_UvnmSnVcd3it9_PUOiykC6E&sz=w400" alt="Khoa Nguyễn" loading="lazy"></div>
+          <h3 class="speaker-name">Khoa Nguyễn</h3>
+          <p class="speaker-title" data-en="CEO Expand VN · Expand.vn · Snappp.Ai">CEO Expand VN · Expand.vn · Snappp.Ai</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1uD0xxEfHQD1seMczX05QUKSF6m3t5kJK&sz=w400" alt="Huỳnh Xuân Tùng" loading="lazy"></div>
+          <h3 class="speaker-name">Huỳnh Xuân Tùng</h3>
+          <p class="speaker-title" data-en="CEO TAS Global · twinexpert.com · 1prompt.vn">CEO TAS Global · twinexpert.com · 1prompt.vn</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1F6Cl1PUZ8RswTlZz1NDJPzm-6hVNnLMs&sz=w400" alt="Nguyễn Thanh Tuấn" loading="lazy"></div>
+          <h3 class="speaker-name">Nguyễn Thanh Tuấn</h3>
+          <p class="speaker-title" data-en="AI Expert · Smax.ai">Chuyên gia AI · Smax.ai</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1zoaRhKyT9YrMcZSKXn4rYuMUj0Wj18ZX&sz=w400" alt="Nguyễn Quốc Đạt" loading="lazy"></div>
+          <h3 class="speaker-name">Nguyễn Quốc Đạt</h3>
+          <p class="speaker-title" data-en="CEO Admatrix · Admatrix.vn">CEO Admatrix · Admatrix.vn</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1rvtWDnsd_bebhyKR1juCaC1Ijh93-m1k&sz=w400" alt="Trần Hoàng Quân" loading="lazy"></div>
+          <h3 class="speaker-name">Trần Hoàng Quân</h3>
+          <p class="speaker-title" data-en="CGO · Bluecore.vn">CGO · Bluecore.vn</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1nfqdUNX8AN5ESutDrNfF0yC1mj2TyJ-G&sz=w400" alt="Thiện Trần" loading="lazy"></div>
+          <h3 class="speaker-name">Thiện Trần</h3>
+          <p class="speaker-title" data-en="CEO Moodbiz">CEO Moodbiz</p>
+        </div>
+
+        <div class="speaker-card">
+          <div class="speaker-photo"><img src="https://drive.google.com/thumbnail?id=1TucegkONS_9iJSB33kMTdlZA4Yh5u8NI&sz=w400" alt="Quốc Nguyễn" loading="lazy"></div>
+          <h3 class="speaker-name">Quốc Nguyễn</h3>
+          <p class="speaker-title" data-en="CEO &amp; Founder · Pidu Digital">CEO &amp; Founder · Pidu Digital</p>
+        </div>
+
+      </div>
+      <button class="speaker-nav speaker-next" type="button" aria-label="Next">&#8250;</button>
     </div>
   </section>
 
@@ -1640,6 +1823,26 @@
       setTimeout(reveal, 8000);
 
       document.head.appendChild(script);
+    })();
+  </script>
+
+  <script>
+    (function() {
+      var track = document.getElementById('speakersTrack');
+      if (!track) return;
+      var prev = document.querySelector('.speaker-prev');
+      var next = document.querySelector('.speaker-next');
+      function step() {
+        var card = track.querySelector('.speaker-card');
+        var gap = 20;
+        return card ? card.offsetWidth + gap : 240;
+      }
+      prev.addEventListener('click', function() {
+        track.scrollBy({ left: -step() * 2, behavior: 'smooth' });
+      });
+      next.addEventListener('click', function() {
+        track.scrollBy({ left: step() * 2, behavior: 'smooth' });
+      });
     })();
   </script>
 
