@@ -301,12 +301,10 @@
       position: relative;
     }
 
-    .hero-spline .hero-spline-frame {
+    .hero-spline hana-viewer {
       width: 100%;
       height: 100%;
-      border: 0;
       display: block;
-      border-radius: 24px;
       background: transparent;
     }
 
@@ -1586,7 +1584,7 @@
   <section class="hero" id="home">
     <div class="hero-spline">
       <div class="spline-glow"></div>
-      <iframe class="hero-spline-frame" src="https://my.spline.design/3duicopycopy-f5I5xoVxfuJ8PsC0wBnJNdkS-Ey9/" frameborder="0" title="AI Camp 3D"></iframe>
+      <hana-viewer url="https://prod.spline.design/pk6b0UIVJPidMY9m-tam/scene.hanacode"></hana-viewer>
     </div>
     <div class="hero-content">
       <span class="hero-badge" data-en="<span class='dot'></span>
@@ -2183,21 +2181,30 @@
     (function() {
       var loadingScreen = document.getElementById('loadingScreen');
       var pageContent = document.getElementById('pageContent');
-      var frame = document.querySelector('.hero-spline-frame');
 
       function reveal() {
         pageContent.classList.add('visible');
         loadingScreen.classList.add('loaded');
       }
 
-      if (frame) {
-        frame.addEventListener('load', function() {
-          setTimeout(reveal, 300);
-        });
-      }
+      var script = document.createElement('script');
+      script.type = 'module';
+      script.src = 'https://cdn.spline.design/@splinetool/hana-viewer@1.2.54/hana-viewer.js';
 
-      // Fallback: reveal after 6s even if Spline fails
-      setTimeout(reveal, 6000);
+      script.onload = function() {
+        var check = setInterval(function() {
+          var v = document.querySelector('hana-viewer');
+          if (v && v.shadowRoot && v.shadowRoot.querySelector('canvas')) {
+            clearInterval(check);
+            setTimeout(reveal, 200);
+          }
+        }, 100);
+      };
+
+      // Fallback: reveal after 8s even if Spline fails
+      setTimeout(reveal, 8000);
+
+      document.head.appendChild(script);
     })();
   </script>
 
