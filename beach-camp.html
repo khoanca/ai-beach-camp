@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-en="AI Beach Camp · Jun 06–07, 2026 · HCMC – Vung Tau">AI Beach Camp · 06–07/06/2026 · TPHCM – Vũng Tàu</title>
-  <meta name="description" content="AI Beach Camp – 2 ngày thực chiến TPHCM – Vũng Tàu. 6 Module từ chiến lược đến AI Agent, thực hành theo nhóm, networking beach party. Giới hạn 25-30 slot.">
+  <title data-en="AI Beach Camp K4 · Aug 01–02, 2026 · Vung Tau">AI Beach Camp Khóa 4 · 01–02/08/2026 · Vũng Tàu</title>
+  <meta name="description" content="AI Beach Camp Khóa 4 – 01–02/08/2026, 2 ngày thực chiến bên bờ biển Vũng Tàu cùng 6 chuyên gia: Tuấn Lê, Huỳnh Xuân Tùng, Đạt Nguyễn, Trương Ngọc Hoàn, Quân Trần, Khoa Nguyễn. Học để làm, tạo ra kết quả thật. Học phí 5.000.000đ đã gồm VAT.">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -517,6 +517,269 @@
       .expert-card h4 {
         font-size: 0.85rem;
       }
+    }
+
+    /* Speaker case studies */
+    .speakers-stack {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .speaker-block {
+      background: #fff;
+      border: 1px solid rgba(68, 176, 158, 0.18);
+      border-radius: 24px;
+      padding: 30px 32px;
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .speaker-block:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(68, 176, 158, 0.14);
+    }
+
+    .speaker-head {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .speaker-photo-lg {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid rgba(68, 176, 158, 0.3);
+      background: #e2e8f0;
+    }
+
+    .speaker-head h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .speaker-head .speaker-role {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #44B09E;
+    }
+
+    .speaker-lead {
+      font-size: 1rem;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .case-card {
+      background: linear-gradient(160deg, #f8fafc, #f1f5f9);
+      border: 1px solid rgba(68, 176, 158, 0.14);
+      border-radius: 16px;
+      padding: 20px 18px;
+    }
+
+    .case-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #44B09E, #3B82F6);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .case-card h5 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .case-card p {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .case-card .case-metric {
+      color: #44B09E;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .speaker-block { padding: 24px 20px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .speaker-head h3 { font-size: 1.2rem; }
+    }
+
+    /* Past-camp gallery */
+    .camp-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 150px;
+      gap: 12px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .camp-gallery .g-item {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    .camp-gallery .g-item.tall { grid-row: span 2; }
+    .camp-gallery .g-item.wide { grid-column: span 2; }
+
+    .camp-gallery .g-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .camp-gallery .g-item:hover img { transform: scale(1.06); }
+    .camp-gallery .g-item img.fade-out { opacity: 0; }
+
+    .gallery-more {
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .gallery-more a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border-radius: 50px;
+      background: rgba(68, 176, 158, 0.1);
+      color: #44B09E;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .gallery-more a:hover { background: rgba(68, 176, 158, 0.2); }
+
+    .past-camp-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      max-width: 1000px;
+      margin: 24px auto 0;
+    }
+
+    .past-camp-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid rgba(68, 176, 158, 0.2);
+      color: #0f172a;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .past-camp-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(68, 176, 158, 0.16);
+    }
+
+    .past-camp-links .pc-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #94a3b8;
+      background: #f1f5f9;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .camp-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 130px;
+      }
+      .camp-gallery .g-item.wide { grid-column: span 1; }
+    }
+
+    /* Business outcomes */
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .outcome-card {
+      background: #fff;
+      border: 1px solid rgba(68, 176, 158, 0.18);
+      border-radius: 18px;
+      padding: 26px 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .outcome-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 44px rgba(68, 176, 158, 0.14);
+    }
+
+    .outcome-card .o-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #44B09E, #3B82F6);
+      margin-bottom: 14px;
+    }
+
+    .outcome-card .o-check svg {
+      width: 22px; height: 22px;
+      stroke: #fff; stroke-width: 2.5;
+      fill: none; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .outcome-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .outcome-card p {
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 768px) {
+      .outcomes-grid { grid-template-columns: 1fr; }
     }
 
     /* Tools prep */
@@ -1140,10 +1403,10 @@
     </button>
     <ul class="nav-links">
       <li><a href="index.html" data-en="Home">Trang chủ</a></li>
+      <li><a href="#chuyengia" data-en="Speakers">Diễn giả</a></li>
+      <li><a href="#ketqua" data-en="Outcomes">Kết quả</a></li>
+      <li><a href="#hinhanh" data-en="Past Camps">Camp trước</a></li>
       <li><a href="#lichtrình" data-en="Schedule">Lịch trình</a></li>
-      <li><a href="#chuyengia" data-en="Experts">Chuyên gia</a></li>
-      <li><a href="#congcu" data-en="Tools">Công cụ</a></li>
-      <li><a href="#quyen-loi" data-en="Benefits">Quyền lợi</a></li>
       <li><a href="#dangky" class="nav-cta" data-en="Reserve now">Giữ chỗ ngay</a></li>
     </ul>
   </nav>
@@ -1158,35 +1421,35 @@
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-inner">
-      <span class="hero-badge" data-en="&lt;span class='dot'&gt;&lt;/span&gt; Jun 06–07, 2026 · HCMC – Vung Tau · 25–30 seats only">
+      <span class="hero-badge" data-en="&lt;span class='dot'&gt;&lt;/span&gt; Aug 01–02, 2026 · Vung Tau · Beachside">
         <span class="dot"></span>
-        06–07/06/2026 · TPHCM – Vũng Tàu · Giới hạn 25–30 slot
+        01–02/08/2026 · Vũng Tàu · Bên bờ biển
       </span>
-      <div class="upcoming-tag" data-event-end="2026-06-07" data-en="&lt;span class='pulse-circle'&gt;&lt;/span&gt; Upcoming"><span class="pulse-circle"></span> Sắp diễn ra</div>
-      <h1 data-en="AI &lt;span class='grad'&gt;Beach Camp&lt;/span&gt;">AI <span class="grad">Beach Camp</span></h1>
+      <div class="upcoming-tag" data-event-end="2026-08-02" data-en="&lt;span class='pulse-circle'&gt;&lt;/span&gt; Upcoming"><span class="pulse-circle"></span> Sắp diễn ra</div>
+      <h1 data-en="AI &lt;span class='grad'&gt;Beach Camp&lt;/span&gt; · K4">AI <span class="grad">Beach Camp</span> · Khóa 4</h1>
       <p data-en="
-        Two days, &lt;b&gt;6 hands-on Modules&lt;/b&gt;, 5+ experts — AI ops strategy, Agent building, limitless content, automated customer care.
-        Leave with a &lt;b&gt;system that runs from day one&lt;/b&gt;.
+        Two hands-on days for CEOs, founders and business owners who want to put AI to real work — &lt;b&gt;learn by doing, leave with results&lt;/b&gt;: AI content &amp; video, conversational marketing and automated customer care, data platforms &amp; AI governance, and AI for finance &amp; accounting.
+        You practice on your own laptop and &lt;b&gt;build an AI product for your own business&lt;/b&gt;, right in the room.
       ">
-        2 ngày <b>thực chiến 6 Module</b> cùng 5+ chuyên gia — từ chiến lược vận hành AI, xây dựng Agent, sản xuất content vô hạn đến chăm sóc khách hàng tự động.
-        Học xong mang về <b>hệ thống chạy được ngay</b>.
+        Hai ngày thực chiến dành cho CEO, Founder và chủ doanh nghiệp muốn đưa AI vào công việc thật — <b>học để làm, làm ra kết quả</b>: nội dung & video sản xuất bằng AI, conversational marketing & chăm sóc khách hàng tự động, nền tảng dữ liệu & quản trị AI, ứng dụng AI trong tài chính – kế toán.
+        Bạn thực hành trực tiếp trên máy và <b>mang về sản phẩm AI cho chính doanh nghiệp của mình</b>.
       </p>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-value" data-en="Jun 06–07">06–07/06</span>
-          <span class="stat-label" data-en="June 2026">Tháng 6, 2026</span>
+          <span class="stat-value" data-en="Aug 01–02">01–02/08</span>
+          <span class="stat-label" data-en="August 2026">Tháng 8, 2026</span>
         </div>
         <div class="stat">
           <span class="stat-value">6</span>
-          <span class="stat-label" data-en="In-depth Modules">Module chuyên sâu</span>
+          <span class="stat-label" data-en="Expert speakers">Chuyên gia thực chiến</span>
         </div>
         <div class="stat">
-          <span class="stat-value">5+</span>
-          <span class="stat-label" data-en="Experts">Chuyên gia</span>
+          <span class="stat-value" data-en="2 days">2 ngày</span>
+          <span class="stat-label" data-en="100% hands-on">Thực chiến 100%</span>
         </div>
         <div class="stat">
-          <span class="stat-value">1:1</span>
-          <span class="stat-label" data-en="Post-camp coaching">Coach sau khoá</span>
+          <span class="stat-value">5.000.000đ</span>
+          <span class="stat-label" data-en="Tuition, VAT included">Học phí, đã gồm VAT</span>
         </div>
       </div>
       <div class="hero-buttons">
@@ -1196,217 +1459,127 @@
     </div>
   </section>
 
-  <!-- Lịch trình -->
-  <section class="section" id="lichtrình">
-    <div class="section-title">
-      <h2 data-en="2-Day Schedule">Lịch trình 2 ngày</h2>
-      <p data-en="HCMC – Vung Tau · Jun 06–07, 2026 · Morning challenges, 6 afternoon Modules, beachfront dinner.">TPHCM – Vũng Tàu · 06–07/06/2026 · Challenge buổi sáng, 6 Module chiều, tiệc tối sát biển.</p>
-    </div>
-
-    <div class="schedule-container">
-      <!-- Day 1 -->
-      <div class="day-block">
-        <div class="day-header">
-          <div class="day-number">D1</div>
-          <div class="day-label" data-en="Jun 06 — Build the AI Agent &amp; automation foundation">06/06 — Xây nền tảng AI Agent & Automation</div>
-        </div>
-
-        <div class="schedule-item break-item">
-          <div class="schedule-time">07:00</div>
-          <h4 data-en="Meet-up">Tập trung</h4>
-          <p data-en="Katinat — Waterbus Station, Street 21, Binh An, An Khanh, HCMC">Katinat - Bến ga Waterbus Đ. Số 21, Bình An, An Khánh, Hồ Chí Minh</p>
-        </div>
-
-        <div class="schedule-item break-item">
-          <div class="schedule-time">07:30</div>
-          <h4 data-en="Departure &amp; personal-skills warm-up">Xuất Phát & Bài Cải Thiện Kỹ Năng Cá Nhân</h4>
-        </div>
-
-        <div class="schedule-item">
-          <div class="schedule-time">08:00 – 08:30</div>
-          <h4 data-en="Challenge 1 — &quot;2 option&quot; intro (individual)">Challenge 1 – "2 option" intro (Cá nhân)</h4>
-          <p data-en="Content about you &amp; your business">Content về bản thân & doanh nghiệp bạn</p>
-        </div>
-
-        <div class="schedule-item">
-          <div class="schedule-time">08:30 – 09:30</div>
-          <h4 data-en="Challenge 2: Build a landing page">Challenge 2: Tạo Landing Page</h4>
-          <p data-en="Pitch your products, services, and business">Giới thiệu về sản phẩm - dịch vụ, doanh nghiệp của mình</p>
-        </div>
-
-        <div class="schedule-item">
-          <div class="schedule-time">09:30 – 10:00</div>
-          <h4 data-en="Challenge 3: Make a 45-second TikTok video">Challenge 3: Tạo Video TikTok 45 giây</h4>
-          <p data-en="Introduce yourself">Giới thiệu bản thân</p>
-        </div>
-
-        <div class="schedule-item break-item">
-          <div class="schedule-time">10:00 – 10:30</div>
-          <h4 data-en="Check-in — regroup &quot;in the classroom&quot;">Checkin - Tập trung "tại phòng học"</h4>
-        </div>
-
-        <div class="schedule-item highlight">
-          <div class="schedule-time">10:30 – 11:45</div>
-          <h4 data-en="Module 1: Why we're here and where AI fits">Module 1: Chúng ta học để làm gì và AI giúp được gì</h4>
-          <p data-en="Groups formed by each learner's &quot;module&quot; needs — Expert Tuan Le">Chia nhóm theo "module" nhu cầu học cá nhân — Chuyên Gia Tuấn Lê</p>
-        </div>
-
-        <div class="schedule-item break-item">
-          <div class="schedule-time">12:00 – 13:00</div>
-          <h4 data-en="Transfer to restaurant · lunch">Di chuyển đến nhà hàng Ăn trưa</h4>
-        </div>
-
-        <div class="schedule-item highlight">
-          <div class="schedule-time">13:30 – 17:00</div>
-          <h4 data-en="5 in-depth Modules + hands-on group work">5 Module chuyên sâu + Chia nhóm thực hành</h4>
-          <div class="sub-items">
-            <p data-en="&lt;span class='sub-label'&gt;Module 2 · N.C. Anh Khoa:&lt;/span&gt; AI Agents and automation, from data to operations + group work"><span class="sub-label">Module 2 · N.C. Anh Khoa:</span> Xây dựng AI Agent - và hệ thống automation từ Data đến vận hành + Chia nhóm</p>
-            <p data-en="&lt;span class='sub-label'&gt;Module 3 · Dat Nguyen AI:&lt;/span&gt; Advanced AI Agent systems for business — an ops assistant that cuts costs and lifts performance 5x + group work"><span class="sub-label">Module 3 · Đạt Nguyễn AI:</span> Xây dựng hệ thống AI Agent chuyên sâu cho doanh nghiệp - Trợ lý vận hành tối ưu chi phí và gia tăng hiệu suất x5 + Chia nhóm</p>
-            <p data-en="&lt;span class='sub-label'&gt;Module 4 · Nguyen Xuan Tung:&lt;/span&gt; AI Agents for limitless content + group work"><span class="sub-label">Module 4 · Nguyễn Xuân Tùng:</span> Áp dụng AI Agent: Xây dựng content vô hạn + Chia nhóm</p>
-            <p data-en="&lt;span class='sub-label'&gt;Module 5 · Expert Hoan:&lt;/span&gt; AI Agents for multi-channel image and video production + group work"><span class="sub-label">Module 5 · Chuyên Gia Hoàn:</span> AI Agent: Sản xuất hình ảnh và Video đa kênh + Chia nhóm</p>
-            <p data-en="&lt;span class='sub-label'&gt;Module 6 · Thanh Tuan (Smax):&lt;/span&gt; AI Agents for customer care and automated sales"><span class="sub-label">Module 6 · Thanh Tuấn (Smax):</span> Áp dụng AI Agent phục vụ chăm sóc khách hàng, bán hàng tự động</p>
-          </div>
-        </div>
-
-        <div class="schedule-item">
-          <div class="schedule-time">19:00 – 22:00</div>
-          <h4 data-en="Transfer to dinner party + networking">Di chuyển Ra Nhà Hàng Tiệc Tối + Giao Lưu</h4>
-        </div>
-      </div>
-
-      <!-- Day 2 -->
-      <div class="day-block">
-        <div class="day-header">
-          <div class="day-number">D2</div>
-          <div class="day-label" data-en="Jun 07 — Practice &amp; wrap-up">07/06 — Thực hành & Tổng kết</div>
-        </div>
-
-        <div class="schedule-item break-item">
-          <div class="schedule-time">07:30</div>
-          <h4 data-en="Meet-up">Tập trung</h4>
-        </div>
-
-        <div class="schedule-item highlight">
-          <div class="schedule-time">08:00 – 10:00</div>
-          <h4 data-en="Project review — build with the group you picked on Day 1">Trả Bài – Thực Hành theo nhóm đã chọn ngày hôm trước</h4>
-        </div>
-
-        <div class="schedule-item">
-          <div class="schedule-time">11:30 – 12:00</div>
-          <h4 data-en="Wrap-up &amp; sharing">Tổng kết & Chia sẻ</h4>
-        </div>
-
-        <div class="schedule-item break-item">
-          <div class="schedule-time">12:00</div>
-          <h4 data-en="Lunch, then wrap and head back to HCMC">Di chuyển ra nhà hàng ăn trưa và kết thúc chương trình về lại TP.HCM</h4>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Đội ngũ chuyên gia -->
+  <!-- Diễn giả & Case study -->
   <section class="section" id="chuyengia">
     <div class="section-title">
-      <h2 data-en="Expert Team">Đội ngũ chuyên gia</h2>
-      <p data-en="5 experts, 6 Modules — hands-on guidance for every group.">5 chuyên gia phụ trách 6 Module — cầm tay chỉ việc từng nhóm.</p>
+      <h2 data-en="The expert team beside you">Đội ngũ chuyên gia đồng hành</h2>
+      <p data-en="Hands-on experts working alongside you so every attendee builds an AI product they can use right away.">Chuyên gia thực chiến, đồng hành để mỗi học viên tạo ra sản phẩm AI ứng dụng được ngay.</p>
     </div>
 
-    <div class="experts-grid">
-      <div class="expert-card">
-        <div class="expert-avatar">TL</div>
-        <h4>Tuấn Lê</h4>
-        <span class="expert-role" data-en="Module 1 · Strategy">Module 1 · Chiến lược</span>
+    <div class="speakers-stack">
+
+      <!-- Tuấn Lê -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%2344B09E'/%3E%3Ctext x='48' y='60' font-family='Arial, sans-serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3ETL%3C/text%3E%3C/svg%3E" alt="Tuấn Lê" loading="lazy">
+          <div>
+            <h3>Tuấn Lê</h3>
+            <span class="speaker-role" data-en="Keynote speaker">Diễn giả chính</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI — the growth platform of the new era.&lt;/b&gt; A strategic view of AI as the foundation for business development and growth."><b>AI – Nền tảng phát triển doanh nghiệp thời đại mới.</b> Định hướng chiến lược ứng dụng AI làm nền tảng phát triển và tăng trưởng cho doanh nghiệp trong thời đại mới.</p>
       </div>
-      <div class="expert-card">
-        <div class="expert-avatar">AK</div>
-        <h4>N.C. Anh Khoa</h4>
-        <span class="expert-role">Module 2 · AI Automation & Data Systems</span>
+
+      <!-- Huỳnh Xuân Tùng -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%233B82F6'/%3E%3Ctext x='48' y='60' font-family='Arial, sans-serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3EXT%3C/text%3E%3C/svg%3E" alt="Huỳnh Xuân Tùng" loading="lazy">
+          <div>
+            <h3>Huỳnh Xuân Tùng</h3>
+            <span class="speaker-role" data-en="AI content creation expert">Chuyên gia AI sáng tạo nội dung</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI for endless content.&lt;/b&gt; Build an AI content system for communications, marketing and brand growth."><b>AI tạo nội dung vô tận.</b> Xây dựng hệ thống tạo nội dung bằng AI phục vụ truyền thông, marketing và phát triển thương hiệu.</p>
       </div>
-      <div class="expert-card">
-        <div class="expert-avatar">ĐN</div>
-        <h4>Đạt Nguyễn AI</h4>
-        <span class="expert-role" data-en="Module 3 · Advanced Agents">Module 3 · Agent chuyên sâu</span>
+
+      <!-- Đạt Nguyễn -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1zoaRhKyT9YrMcZSKXn4rYuMUj0Wj18ZX&sz=w200" alt="Đạt Nguyễn" loading="lazy">
+          <div>
+            <h3>Đạt Nguyễn</h3>
+            <span class="speaker-role" data-en="AI Agent automation expert">Chuyên gia AI Agent tự động hóa</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI Agent automation.&lt;/b&gt; Build AI Agents that automate operations, customer care and sales for your business."><b>AI Agent tự động hóa.</b> Xây dựng AI Agent tự động hóa quy trình vận hành, chăm sóc khách hàng và bán hàng cho doanh nghiệp.</p>
       </div>
-      <div class="expert-card">
-        <div class="expert-avatar">XT</div>
-        <h4>Nguyễn Xuân Tùng</h4>
-        <span class="expert-role">Module 4 · AI Content Strategy</span>
+
+      <!-- Trương Ngọc Hoàn -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%238B5CF6'/%3E%3Ctext x='48' y='60' font-family='Arial, sans-serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3ENH%3C/text%3E%3C/svg%3E" alt="Trương Ngọc Hoàn" loading="lazy">
+          <div>
+            <h3>Trương Ngọc Hoàn</h3>
+            <span class="speaker-role" data-en="AI Video expert">Chuyên gia AI Video</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI Video — 3× savings, 5× growth.&lt;/b&gt; Produce multi-channel images and video with AI — cut costs, grow communication impact."><b>AI Video – X3 tiết kiệm, X5 tăng trưởng.</b> Sản xuất hình ảnh và video đa kênh bằng AI, tối ưu chi phí và gia tăng hiệu quả truyền thông.</p>
       </div>
-      <div class="expert-card">
-        <div class="expert-avatar">NH</div>
-        <h4 data-en="Expert Hoan">Chuyên gia Hoàn</h4>
-        <span class="expert-role">Module 5 · AI Visual & Video Production</span>
+
+      <!-- Quân Trần -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1rvtWDnsd_bebhyKR1juCaC1Ijh93-m1k&sz=w200" alt="Quân Trần" loading="lazy">
+          <div>
+            <h3>Quân Trần</h3>
+            <span class="speaker-role" data-en="Data platform &amp; AI governance expert">Chuyên gia Nền tảng dữ liệu & Quản trị AI</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;Data platforms &amp; AI governance.&lt;/b&gt; Build the data platform and AI governance your business needs to run standardized and sustainably."><b>Nền tảng dữ liệu & Quản trị AI.</b> Xây dựng nền tảng dữ liệu và quản trị AI giúp doanh nghiệp vận hành chuẩn hóa và bền vững.</p>
       </div>
-      <div class="expert-card">
-        <div class="expert-avatar">TT</div>
-        <h4>Thanh Tuấn (Smax)</h4>
-        <span class="expert-role" data-en="Module 6 · Customer Care &amp; Sales Automation">Module 6 · CSKH & Sales Automation</span>
+
+      <!-- Khoa Nguyễn -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1nkbt_rPn_UvnmSnVcd3it9_PUOiykC6E&sz=w200" alt="Khoa Nguyễn" loading="lazy">
+          <div>
+            <h3>Khoa Nguyễn</h3>
+            <span class="speaker-role" data-en="AI for finance &amp; accounting expert">Chuyên gia AI Tài chính – Kế toán</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI in finance &amp; accounting.&lt;/b&gt; Apply AI to financial and accounting management — lower costs, faster decisions."><b>AI trong Tài chính, Kế toán.</b> Ứng dụng AI vào quản trị tài chính, kế toán giúp tối ưu chi phí và ra quyết định nhanh hơn.</p>
       </div>
+
     </div>
   </section>
 
-  <!-- Công cụ cần chuẩn bị -->
-  <section class="section" id="congcu">
+  <!-- Các doanh nghiệp được gì sau camp này -->
+  <section class="section" id="ketqua">
     <div class="section-title">
-      <h2 data-en="Tools to Prepare">Công cụ cần chuẩn bị</h2>
-      <p data-en="Install each expert's tools beforehand so you can build right in class.">Cài đặt sẵn các công cụ theo từng chuyên gia để thực hành ngay tại lớp.</p>
+      <h2 data-en="Learn by doing, leave with real results">Học để làm, tạo ra kết quả thật</h2>
+      <p data-en="No empty theory — you practice directly and take home an AI product built for your own business, in an inspiring beachside space.">Không dạy lý thuyết suông — bạn thực hành trực tiếp và mang về sản phẩm ứng dụng cho chính doanh nghiệp của mình, trong không gian biển truyền cảm hứng.</p>
     </div>
 
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-card-header">
-          <div class="tool-avatar">ĐN</div>
-          <h4>Đạt Nguyễn AI</h4>
-        </div>
-        <ul class="tool-list">
-          <li><strong>ChatGPT</strong></li>
-          <li><strong>Codex</strong></li>
-          <li><strong>GoClaw</strong></li>
-        </ul>
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <span class="o-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h4 data-en="AI-made content &amp; video">Nội dung & video sản xuất bằng AI</h4>
+        <p data-en="Build an AI content system and produce multi-channel images and video for marketing and brand growth.">Xây hệ thống tạo nội dung bằng AI và sản xuất hình ảnh, video đa kênh phục vụ marketing và phát triển thương hiệu.</p>
       </div>
-
-      <div class="tool-card">
-        <div class="tool-card-header">
-          <div class="tool-avatar">TT</div>
-          <h4>Nguyễn Thanh Tuấn</h4>
-        </div>
-        <ul class="tool-list">
-          <li><strong>Meta Business AI</strong></li>
-          <li><strong>Smax GenAI</strong></li>
-        </ul>
+      <div class="outcome-card">
+        <span class="o-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h4 data-en="Conversational marketing &amp; automated care">Conversational marketing, CSKH tự động</h4>
+        <p data-en="Set up AI Agents that run conversational marketing, customer care and sales on autopilot.">Thiết lập AI Agent vận hành conversational marketing, chăm sóc khách hàng và bán hàng tự động.</p>
       </div>
-
-      <div class="tool-card">
-        <div class="tool-card-header">
-          <div class="tool-avatar">XT</div>
-          <h4>Huỳnh Xuân Tùng</h4>
-        </div>
-        <ul class="tool-list">
-          <li><strong>ChatGPT</strong></li>
-        </ul>
+      <div class="outcome-card">
+        <span class="o-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h4 data-en="Data platform &amp; AI governance">Nền tảng dữ liệu & quản trị AI</h4>
+        <p data-en="Build the data platform and AI governance for a standardized, sustainable operation.">Xây dựng nền tảng dữ liệu và quản trị AI giúp doanh nghiệp vận hành chuẩn hóa và bền vững.</p>
       </div>
-
-      <div class="tool-card">
-        <div class="tool-card-header">
-          <div class="tool-avatar">AK</div>
-          <h4>N.C. Anh Khoa</h4>
-        </div>
-        <ul class="tool-list">
-          <li><strong>FoxG.dev</strong></li>
-        </ul>
+      <div class="outcome-card">
+        <span class="o-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h4 data-en="AI in finance &amp; accounting">Ứng dụng AI trong tài chính, kế toán</h4>
+        <p data-en="Apply AI to financial and accounting management — lower costs, faster decisions.">Ứng dụng AI vào quản trị tài chính, kế toán giúp tối ưu chi phí và ra quyết định nhanh hơn.</p>
       </div>
-
-      <div class="tool-card" style="grid-column: 1 / -1;">
-        <div class="tool-card-header">
-          <div class="tool-avatar">NH</div>
-          <h4 data-en="Expert Hoan">Chuyên Gia Hoàn</h4>
-        </div>
-        <ul class="tool-list">
-          <li data-en="&lt;strong&gt;ChatGPT (Plus)&lt;/strong&gt; — scripts and images"><strong>ChatGPT (Plus)</strong> — tạo kịch bản và hình ảnh</li>
-          <li data-en="&lt;strong&gt;Eleven Lab&lt;/strong&gt; — voice-over"><strong>Eleven Lab</strong> — tạo voice off</li>
-          <li data-en="&lt;strong&gt;Gemini&lt;/strong&gt; — script analysis"><strong>Gemini</strong> — phân tích scripts</li>
-          <li data-en="&lt;strong&gt;CapCut (Plus, ~350,000đ)&lt;/strong&gt; — video editing"><strong>CapCut (phiên bản Plus ~350.000đ)</strong> — chỉnh sửa video</li>
-        </ul>
+      <div class="outcome-card">
+        <span class="o-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h4 data-en="An AI product for your business">Sản phẩm AI cho doanh nghiệp của bạn</h4>
+        <p data-en="Every attendee practices on their own laptop and builds an AI product in the room — not notes, a working result.">Mỗi học viên thực hành trên máy và làm ra sản phẩm AI ngay tại lớp — không phải ghi chép, mà là kết quả chạy được.</p>
+      </div>
+      <div class="outcome-card">
+        <span class="o-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <h4 data-en="A business community beside you">Cộng đồng doanh nghiệp đồng hành</h4>
+        <p data-en="Two focused days among CEOs, founders and owners on the same path — connections that outlast the camp.">2 ngày tập trung cao độ giữa các CEO, Founder, chủ doanh nghiệp cùng chí hướng — kết nối còn giá trị lâu sau camp.</p>
       </div>
     </div>
   </section>
@@ -1414,7 +1587,7 @@
   <!-- Quyền lợi -->
   <section class="section" id="quyen-loi">
     <div class="section-title">
-      <h2 data-en="What You Take Home">Mang về sau Beach Camp</h2>
+      <h2 data-en="What You Take Home">Mang về sau camp</h2>
       <p data-en="Not just knowledge — a system that runs from day one, plus a community at your back.">Không chỉ kiến thức — mà là hệ thống chạy được ngay và cộng đồng đồng hành.</p>
     </div>
 
@@ -1423,8 +1596,8 @@
         <div class="benefit-icon">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <h4 data-en="5 Battle-tested Decks">5 Slides Thực Chiến</h4>
-        <p data-en="Exclusive playbooks from 5 experts — ready to apply, zero fluff.">Tài liệu độc quyền đúc kết từ 5 chuyên gia — áp dụng được ngay, không lý thuyết suông.</p>
+        <h4 data-en="Battle-tested Decks">Slide Thực Chiến</h4>
+        <p data-en="Exclusive playbooks from the founder speakers — ready to apply, zero fluff.">Tài liệu độc quyền đúc kết từ các diễn giả sáng lập — áp dụng được ngay, không lý thuyết suông.</p>
       </div>
 
       <div class="benefit-card">
@@ -1461,19 +1634,132 @@
     </div>
   </section>
 
+  <!-- Camp trước -->
+  <section class="section" id="hinhanh">
+    <div class="section-title">
+      <h2 data-en="Past Camps">Camp trước</h2>
+      <p data-en="Real energy from past cohorts — this is the room you'll be joining.">Năng lượng thật từ các khoá đã diễn ra — đây là không gian bạn sẽ tham gia.</p>
+    </div>
+
+    <div class="camp-gallery" id="campGallery">
+      <div class="g-item tall" data-slot="0"><img alt="AI Camp"></div>
+      <div class="g-item" data-slot="1"><img alt="AI Camp"></div>
+      <div class="g-item wide" data-slot="2"><img alt="AI Camp"></div>
+      <div class="g-item" data-slot="3"><img alt="AI Camp"></div>
+      <div class="g-item" data-slot="4"><img alt="AI Camp"></div>
+      <div class="g-item" data-slot="5"><img alt="AI Camp"></div>
+      <div class="g-item" data-slot="6"><img alt="AI Camp"></div>
+    </div>
+    <div class="gallery-more">
+      <a href="https://drive.google.com/drive/folders/1en06lJ3SpkjFo4-3Pl3pNv15kEviztmG" target="_blank" rel="noopener" data-en="+100 photos from past Camps →">+100 ảnh từ các Camp trước →</a>
+    </div>
+
+    <div class="past-camp-links">
+      <a href="lake-camp.html">
+        <span class="pc-tag" data-en="Concluded">Đã diễn ra</span>
+        <span data-en="AI Lake Camp · Hanoi">AI Lake Camp · Hà Nội</span>
+      </a>
+      <a href="city-camp.html">
+        <span class="pc-tag" data-en="Concluded">Đã diễn ra</span>
+        <span data-en="AI City Camp · HCMC">AI City Camp · TPHCM</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Lịch trình -->
+  <section class="section" id="lichtrình">
+    <div class="section-title">
+      <h2 data-en="2-Day Program">Nội dung 2 ngày</h2>
+      <p data-en="Vung Tau · Aug 01–02, 2026 · 100% hands-on: you practice on your laptop and build an AI product for your own business. The detailed hour-by-hour agenda is sent after registration.">Vũng Tàu · 01–02/08/2026 · Thực chiến 100%: thực hành trên máy và làm ra sản phẩm AI cho chính doanh nghiệp của bạn. Lịch chi tiết từng khung giờ sẽ được BTC gửi sau khi đăng ký.</p>
+    </div>
+
+    <div class="schedule-container">
+      <div class="day-block">
+        <div class="day-header">
+          <div class="day-number">K4</div>
+          <div class="day-label" data-en="Aug 01–02 — 6 expert-led hands-on sessions">01–02/08 — 6 chuyên đề thực chiến cùng chuyên gia</div>
+        </div>
+
+        <div class="schedule-item highlight">
+          <div class="schedule-time" data-en="Session 1">Chuyên đề 1</div>
+          <h4 data-en="Tuan Le — AI, the growth platform of the new era">Tuấn Lê — AI: Nền tảng phát triển doanh nghiệp thời đại mới</h4>
+          <p data-en="A strategic direction for applying AI as the foundation for business development and growth.">Định hướng chiến lược ứng dụng AI làm nền tảng phát triển và tăng trưởng cho doanh nghiệp.</p>
+        </div>
+
+        <div class="schedule-item highlight">
+          <div class="schedule-time" data-en="Session 2">Chuyên đề 2</div>
+          <h4 data-en="Huynh Xuan Tung — AI for endless content">Huỳnh Xuân Tùng — AI tạo nội dung vô tận</h4>
+          <p data-en="Build an AI content system for communications, marketing and brand growth.">Xây dựng hệ thống tạo nội dung bằng AI phục vụ truyền thông, marketing và phát triển thương hiệu.</p>
+        </div>
+
+        <div class="schedule-item highlight">
+          <div class="schedule-time" data-en="Session 3">Chuyên đề 3</div>
+          <h4 data-en="Dat Nguyen — AI Agent automation">Đạt Nguyễn — AI Agent tự động hóa</h4>
+          <p data-en="Build AI Agents that automate operations, customer care and sales.">Xây dựng AI Agent tự động hóa quy trình vận hành, chăm sóc khách hàng và bán hàng.</p>
+        </div>
+
+        <div class="schedule-item highlight">
+          <div class="schedule-time" data-en="Session 4">Chuyên đề 4</div>
+          <h4 data-en="Truong Ngoc Hoan — AI Video: 3× savings, 5× growth">Trương Ngọc Hoàn — AI Video: X3 tiết kiệm, X5 tăng trưởng</h4>
+          <p data-en="Produce multi-channel images and video with AI — lower costs, bigger communication impact.">Sản xuất hình ảnh và video đa kênh bằng AI, tối ưu chi phí và gia tăng hiệu quả truyền thông.</p>
+        </div>
+
+        <div class="schedule-item highlight">
+          <div class="schedule-time" data-en="Session 5">Chuyên đề 5</div>
+          <h4 data-en="Quan Tran — Data platform &amp; AI governance">Quân Trần — Nền tảng dữ liệu & Quản trị AI</h4>
+          <p data-en="Build the data platform and AI governance for a standardized, sustainable operation.">Xây dựng nền tảng dữ liệu và quản trị AI giúp doanh nghiệp vận hành chuẩn hóa và bền vững.</p>
+        </div>
+
+        <div class="schedule-item highlight">
+          <div class="schedule-time" data-en="Session 6">Chuyên đề 6</div>
+          <h4 data-en="Khoa Nguyen — AI in finance &amp; accounting">Khoa Nguyễn — AI trong Tài chính, Kế toán</h4>
+          <p data-en="Apply AI to financial and accounting management — lower costs, faster decisions.">Ứng dụng AI vào quản trị tài chính, kế toán giúp tối ưu chi phí và ra quyết định nhanh hơn.</p>
+        </div>
+
+        <div class="schedule-item break-item">
+          <div class="schedule-time" data-en="Throughout">Xuyên suốt</div>
+          <h4 data-en="Hands-on practice &amp; your own AI product">Thực hành trực tiếp & sản phẩm AI của riêng bạn</h4>
+          <p data-en="High-focus space by the beach: every attendee builds on their laptop, among a community of like-minded business owners.">Không gian tập trung cao độ bên bờ biển: mỗi học viên thực hành trên máy, giữa cộng đồng doanh nghiệp cùng chí hướng.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Công cụ cần chuẩn bị -->
+  <section class="section" id="congcu">
+    <div class="section-title">
+      <h2 data-en="Tools to Prepare">Công cụ cần chuẩn bị</h2>
+      <p data-en="Just two things — get these ready so you can build alongside the speakers right in the room.">Chỉ cần hai thứ — chuẩn bị sẵn để thực hành cùng diễn giả ngay tại lớp.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card" style="grid-column: 1 / -1;">
+        <div class="tool-card-header">
+          <div class="tool-avatar">✓</div>
+          <h4 data-en="Everyone">Tất cả học viên</h4>
+        </div>
+        <ul class="tool-list">
+          <li data-en="&lt;strong&gt;A Claude Pro account&lt;/strong&gt;"><strong>Tài khoản Claude Pro</strong></li>
+          <li data-en="&lt;strong&gt;A laptop&lt;/strong&gt; — for hands-on practice"><strong>Laptop cá nhân</strong> — để thực hành trực tiếp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Registration -->
   <section class="register-section" id="dangky">
     <div class="register-box">
-      <h2 data-en="Reserve Your AI Beach Camp Seat">Đăng ký AI Beach Camp</h2>
-      <p data-en="Fill out the form to lock in your seat and get the pre-reading materials. 25–30 seats only.">Điền form bên dưới để giữ slot và nhận tài liệu đọc trước. Giới hạn 25–30 slot.</p>
+      <h2 data-en="Register for AI Beach Camp K4">Đăng ký AI Beach Camp Khóa 4</h2>
+      <p data-en="Fill out the form to lock in your seat, or join the Zalo group for direct support from the team.">Điền form bên dưới để giữ slot, hoặc tham gia nhóm Zalo để được BTC hỗ trợ trực tiếp.</p>
+      <p style="margin:-4px 0 20px;"><a href="https://zalo.me/g/chqbgmy6vzrpudam3xq8" target="_blank" rel="noopener" class="btn-secondary" data-en="Join the Zalo group →">Tham gia nhóm Zalo ngay →</a></p>
 
       <form id="registerForm">
         <div class="form-row">
           <div class="form-group full">
             <label for="campSelect" data-en="Program">Chương trình đăng ký</label>
             <select id="campSelect" name="entry.1050302189" required>
-              <option value="AI Beach Camp (TPHCM – Vũng Tàu)" selected data-en="AI Beach Camp (HCMC – Vung Tau · Jun 06–07)">AI Beach Camp (TPHCM – Vũng Tàu · 06–07/06)</option>
-              <option value="AI Lake Camp (Hà Nội)" data-en="AI Lake Camp (Hanoi · Jun 20–21)">AI Lake Camp (Hà Nội · 20–21/06)</option>
+              <option value="AI Beach Camp Khóa 4 (Vũng Tàu · 01–02/08)" selected data-en="AI Beach Camp K4 (Vung Tau · Aug 01–02)">AI Beach Camp Khóa 4 (Vũng Tàu · 01–02/08)</option>
             </select>
           </div>
         </div>
@@ -1521,8 +1807,8 @@
   <!-- CTA / Payment -->
   <section class="cta-section">
     <div class="cta-box">
-      <h2 data-en="Reserve Your Beach Camp Seat">Giữ chỗ Beach Camp</h2>
-      <p class="slots" data-en="Capped at 25–30 seats to keep quality high">Giới hạn 25 – 30 slot để đảm bảo chất lượng</p>
+      <h2 data-en="Full tuition: 5,000,000 VND">Học phí trọn khóa: 5.000.000 VNĐ</h2>
+      <p class="slots" data-en="VAT included · 2 hands-on days in Vung Tau">Đã bao gồm VAT · 2 ngày thực chiến tại Vũng Tàu</p>
 
       <div class="payment-info">
         <div class="payment-block">
@@ -1613,6 +1899,55 @@
         el.style.animation = 'none';
       }
     });
+  </script>
+
+  <!-- Past-camp gallery -->
+  <script>
+    (function() {
+      var IDS = [
+        '1dmOPfDSQiAQdMZ681yRf2YMVgual92wo','1e5jPB5pamI34FBQ1xAB8PUEdOY_Tgj8K','1K3BjQUhbnc0lkW8WZ20XPrbrx8cv0A7k',
+        '1ZcSauX_A2RkFlqdczVra_-UlJ3kKmkla','1BUV0Se2pr9NS6rKPRKTuYzDqHWIfPH_c','1DDXihxXblGs-YD0TxJ5_IcUReIc6TpQV',
+        '12F7jK8hRZiLHxiGpl98Qpv3ZAaGdGAJ5','1izvWnOmJ4hNpsCZQ6JnLir_2nhJuYLKy','1hQ_rVBipWCN8SttPemJSZsFyDKZ1gEuI',
+        '1GgzzhCLbfn6_BkWgwetXta2W7_qhnUBC','1GQcRW66LFc-SgkFpNsBhG9A1sxfdITcH','1FMIIrP-4vsgaBvc6LVGttC6zXqb77kbX',
+        '1J-Zd36BseKvjJZLQEYlp59oMXKOJ99hA','1ep5l4OAwlHwXZK7kNX4Urjpn4ZPFysKk','1D2aJTEoroY0YcmnsYcWlTjfGfe1tKrTs',
+        '1o8WL2E30F0NSqhlMixX433jdjts-l0sb','11YgTcwtGUoNnU33jqXUvrLUdDxY-Wbn4','1mB-Jy0KOSihJosbWIlSh_tUxyUX3cB8J',
+        '132jeQ0gAE1JnkxMTut53_iQMd5kKTSdf','1GhUiPRcWUhXdVQ_XS5UPU9tuQ9b1dZop','1sP1ZhwjAaj6boIWc2cJR0QhBSjHJy2_w',
+        '1JrYs2uKSPj0Djhz7uAX513AdDdO1caey','16LoLaTRFtByaEjQizV11laGZDzsGRxZJ','1E3ru44B_pP5Cxf4zL8eEpBcH_6p9XccE'
+      ];
+      var slots = document.querySelectorAll('.camp-gallery .g-item[data-slot]');
+      if (!slots.length) return;
+      var SLOT_COUNT = slots.length;
+      var visible = [];
+      var pool = IDS.slice();
+
+      function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+        }
+      }
+      function thumb(id, sz) { return 'https://drive.google.com/thumbnail?id=' + id + '&sz=w' + sz; }
+
+      shuffle(pool);
+      for (var i = 0; i < SLOT_COUNT; i++) {
+        visible[i] = pool[i];
+        slots[i].querySelector('img').src = thumb(pool[i], 600);
+      }
+
+      setInterval(function() {
+        var slotIdx = Math.floor(Math.random() * SLOT_COUNT);
+        var available = IDS.filter(function(id) { return visible.indexOf(id) === -1; });
+        if (!available.length) return;
+        var newId = available[Math.floor(Math.random() * available.length)];
+        var img = slots[slotIdx].querySelector('img');
+        img.classList.add('fade-out');
+        setTimeout(function() {
+          img.src = thumb(newId, 600);
+          visible[slotIdx] = newId;
+          img.classList.remove('fade-out');
+        }, 500);
+      }, 2800);
+    })();
   </script>
 
   <!-- Wave background -->

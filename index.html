@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-en="AI Camp · Master AI — don't just use it">AI Camp · Hiểu và thành thạo để quản lý AI</title>
-  <meta name="description" content="AI Camp – 3 hình thức học: Lake Camp tại Hà Nội, Beach Camp nghỉ dưỡng cùng gia đình, Webinar online. Hiểu và thành thạo để quản lý AI – không phải chỉ dùng AI.">
+  <meta name="description" content="AI Camp – Sắp diễn ra: AI Beach Camp Khóa 4, 01–02/08/2026 tại Vũng Tàu. 2 ngày thực chiến cùng 6 chuyên gia. Hiểu và thành thạo để quản lý AI – không phải chỉ dùng AI.">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
   <!-- hana-viewer loaded lazily via script below -->
   <style>
@@ -441,6 +441,16 @@
       animation: none;
     }
 
+    .program-card.past {
+      opacity: 0.65;
+      filter: grayscale(0.35);
+    }
+
+    .program-card.past:hover {
+      opacity: 1;
+      filter: none;
+    }
+
     .program-card.featured {
       border: 2px solid rgba(78, 205, 196, 0.4);
       background: rgba(255, 255, 255, 0.92);
@@ -469,6 +479,287 @@
     @keyframes badge-pulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.5); }
       50% { box-shadow: 0 0 0 8px rgba(255, 107, 107, 0); }
+    }
+
+    /* Upcoming-camp emphasis (top of page) */
+    .upcoming-section {
+      padding: 60px 32px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .upcoming-card {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.14), rgba(59, 130, 246, 0.10));
+      border: 2px solid rgba(78, 205, 196, 0.45);
+      border-radius: 30px;
+      padding: 44px 40px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 24px 70px rgba(78, 205, 196, 0.16);
+    }
+
+    .up-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #FF6B6B, #ee5a24);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 7px 18px;
+      border-radius: 50px;
+      margin-bottom: 18px;
+      animation: badge-pulse 2s ease-in-out infinite;
+    }
+
+    .up-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .up-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .up-title .grad {
+      background: linear-gradient(135deg, #44B09E, #3B82F6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .up-meta {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 22px;
+    }
+
+    .up-points {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .up-point {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(68, 176, 158, 0.1);
+      border: 1px solid rgba(68, 176, 158, 0.28);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #0f5b50;
+      line-height: 1.25;
+    }
+
+    .up-point::before {
+      content: "✦";
+      color: #44b09e;
+      font-size: 0.85rem;
+    }
+
+    .up-speakers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .up-speaker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(68, 176, 158, 0.2);
+      border-radius: 50px;
+      padding: 6px 16px 6px 6px;
+    }
+
+    .up-speaker img {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e2e8f0;
+    }
+
+    .up-speaker .up-sp-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .up-speaker .up-sp-role {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+
+    .up-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .up-speakers-intro {
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(68, 176, 158, 0.22);
+    }
+
+    .up-speakers-intro h3 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .up-speakers-intro p {
+      color: #64748b;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .upcoming-section { padding: 44px 20px 10px; }
+      .upcoming-card { padding: 32px 22px; border-radius: 24px; }
+      .up-title { font-size: 1.8rem; }
+      .up-meta { font-size: 0.95rem; }
+      .up-speakers-intro h3 { font-size: 1.4rem; }
+      .up-speaker .up-sp-role { display: none; }
+    }
+
+    /* Speaker case studies (homepage) */
+    .speakers-stack {
+      max-width: 1000px;
+      margin: 30px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .speaker-block {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(68, 176, 158, 0.18);
+      border-radius: 24px;
+      padding: 30px 32px;
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.05);
+      text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .speaker-block:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(68, 176, 158, 0.14);
+    }
+
+    .speaker-head {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .speaker-photo-lg {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid rgba(68, 176, 158, 0.3);
+      background: #e2e8f0;
+    }
+
+    .speaker-head h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .speaker-head .speaker-role {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #44B09E;
+    }
+
+    .speaker-lead {
+      font-size: 0.98rem;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .case-card {
+      background: linear-gradient(160deg, #f8fafc, #f1f5f9);
+      border: 1px solid rgba(68, 176, 158, 0.14);
+      border-radius: 16px;
+      padding: 18px 16px;
+    }
+
+    .case-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #44B09E, #3B82F6);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+    }
+
+    .case-card h5 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .case-card p {
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .case-card .case-metric { color: #44B09E; font-weight: 700; }
+
+    .up-fulltext-cta {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .speaker-block { padding: 24px 20px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .speaker-head h3 { font-size: 1.15rem; }
     }
 
     .program-icon {
@@ -1311,14 +1602,14 @@
     </div>
     <div class="hero-content">
       <span class="hero-badge" data-en="<span class='dot'></span>
-        Upcoming: <a href='lake-camp.html' style='color:#3B82F6;font-weight:700;text-decoration:none;'>AI Lake Camp · Jun 20–21</a> · Now open">
+        Upcoming: <a href='beach-camp.html' style='color:#3B82F6;font-weight:700;text-decoration:none;'>AI Beach Camp K4 · Aug 01–02</a> · Now open">
         <span class="dot"></span>
-        Khoá sắp tới: <a href="lake-camp.html" style="color:#3B82F6;font-weight:700;text-decoration:none;">AI Lake Camp 20–21/06</a> · Đang nhận đăng ký
+        Khoá sắp tới: <a href="beach-camp.html" style="color:#3B82F6;font-weight:700;text-decoration:none;">AI Beach Camp Khóa 4 · 01–02/08</a> · Đang nhận đăng ký
       </span>
       <h1 data-en="Stop using AI. Start <span class='grad'>directing it</span>">Hiểu &amp; thành thạo để <span class="grad">quản lý AI</span></h1>
       <p data-en="No theory lectures, no tool demos. You leave able to <b>direct AI</b> like a team — delegate, control the output, and ship real results.">
         Không phải khoá học lý thuyết, không phải buổi demo công cụ.
-        Mục tiêu: bạn rời camp với khả năng <b>chỉ huy AI</b> trong công việc của mình – biết giao việc, kiểm soát đầu ra, và chốt được kết quả thật.
+        Mục tiêu: bạn rời camp với khả năng <b>sử dụng AI</b> trong công việc của mình – biết giao việc, kiểm soát đầu ra, và chốt được kết quả thật.
       </p>
       <div class="hero-buttons">
         <a href="#dangky" class="btn-primary" data-en="Reserve a seat →">Đăng ký tham dự →</a>
@@ -1328,6 +1619,111 @@
         <div data-en="📌 <b>3 formats</b> · Lake · Beach · Online">📌 <b>3 hình thức</b> · Lake · Beach · Online</div>
         <div data-en="🎓 Built for any role — no technical background needed">🎓 Cho mọi nghề, không cần nền tảng kỹ thuật</div>
       </div>
+    </div>
+  </section>
+
+  <!-- Camp sắp diễn ra (nhấn mạnh, lên top) -->
+  <section class="upcoming-section" id="sapdienra">
+    <div class="upcoming-card">
+      <span class="up-badge"><span class="dot"></span><span data-en="Upcoming">Sắp diễn ra</span></span>
+      <h2 class="up-title" data-en="AI <span class='grad'>Beach Camp</span> · K4">AI <span class="grad">Beach Camp</span> · Khóa 4</h2>
+      <p class="up-meta" data-en="Aug 01–02, 2026 · Vung Tau, beachside · 5,000,000 VND (VAT included)">01–02/08/2026 · Vũng Tàu, bên bờ biển · Học phí 5.000.000đ (đã gồm VAT)</p>
+
+      <div class="up-points">
+        <span class="up-point" data-en="Learn by doing — leave with real results">Học để làm, tạo ra kết quả thật</span>
+        <span class="up-point" data-en="For CEOs, founders, managers &amp; marketing/sales teams">Dành cho CEO, Founder, quản lý & team Marketing/Sales</span>
+        <span class="up-point" data-en="Build an AI product for your own business, in the room">Thực hành trên máy, mang về sản phẩm AI cho chính doanh nghiệp</span>
+      </div>
+
+      <div class="up-ctas">
+        <a href="beach-camp.html" class="btn-primary btn-beach" data-en="View Beach Camp K4 →">Xem Beach Camp Khóa 4 →</a>
+        <a href="beach-camp.html#dangky" class="btn-secondary" data-en="Reserve a seat">Giữ chỗ ngay</a>
+      </div>
+
+      <div class="up-speakers-intro">
+        <h3 data-en="The expert team beside you">Đội ngũ chuyên gia đồng hành</h3>
+        <p data-en="Six hands-on experts, each leading one deep-dive session — from AI strategy and content to data, video, finance and AI Agents.">6 chuyên gia thực chiến, mỗi người dẫn dắt một chuyên đề — từ chiến lược AI, nội dung, video đến dữ liệu, tài chính và AI Agent.</p>
+      </div>
+    </div>
+
+    <div class="speakers-stack">
+
+      <!-- Tuấn Lê -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=18IQzHVa-2JVnq69Esf-YRTJtr7Gm5djG&sz=w200" alt="Tuấn Lê" loading="lazy">
+          <div>
+            <h3>Tuấn Lê</h3>
+            <span class="speaker-role" data-en="Keynote speaker">Diễn giả chính</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI — the growth platform of the new era.&lt;/b&gt; A strategic view of AI as the foundation for business development and growth."><b>AI – Nền tảng phát triển doanh nghiệp thời đại mới.</b> Định hướng chiến lược ứng dụng AI làm nền tảng phát triển và tăng trưởng cho doanh nghiệp trong thời đại mới.</p>
+      </div>
+
+      <!-- Huỳnh Xuân Tùng -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1uD0xxEfHQD1seMczX05QUKSF6m3t5kJK&sz=w200" alt="Huỳnh Xuân Tùng" loading="lazy">
+          <div>
+            <h3>Huỳnh Xuân Tùng</h3>
+            <span class="speaker-role" data-en="AI content creation expert">Chuyên gia AI sáng tạo nội dung</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI for endless content.&lt;/b&gt; Build an AI content system for communications, marketing and brand growth."><b>AI tạo nội dung vô tận.</b> Xây dựng hệ thống tạo nội dung bằng AI phục vụ truyền thông, marketing và phát triển thương hiệu.</p>
+      </div>
+
+      <!-- Đạt Nguyễn -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1zoaRhKyT9YrMcZSKXn4rYuMUj0Wj18ZX&sz=w200" alt="Đạt Nguyễn" loading="lazy">
+          <div>
+            <h3>Đạt Nguyễn</h3>
+            <span class="speaker-role" data-en="AI Agent automation expert">Chuyên gia AI Agent tự động hóa</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI Agent automation.&lt;/b&gt; Build AI Agents that automate operations, customer care and sales for your business."><b>AI Agent tự động hóa.</b> Xây dựng AI Agent tự động hóa quy trình vận hành, chăm sóc khách hàng và bán hàng cho doanh nghiệp.</p>
+      </div>
+
+      <!-- Trương Ngọc Hoàn -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' fill='%238B5CF6'/%3E%3Ctext x='48' y='60' font-family='Arial, sans-serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3ENH%3C/text%3E%3C/svg%3E" alt="Trương Ngọc Hoàn" loading="lazy">
+          <div>
+            <h3>Trương Ngọc Hoàn</h3>
+            <span class="speaker-role" data-en="AI Video expert">Chuyên gia AI Video</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI Video — 3× savings, 5× growth.&lt;/b&gt; Produce multi-channel images and video with AI — cut costs, grow communication impact."><b>AI Video – X3 tiết kiệm, X5 tăng trưởng.</b> Sản xuất hình ảnh và video đa kênh bằng AI, tối ưu chi phí và gia tăng hiệu quả truyền thông.</p>
+      </div>
+
+      <!-- Quân Trần -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1rvtWDnsd_bebhyKR1juCaC1Ijh93-m1k&sz=w200" alt="Quân Trần" loading="lazy">
+          <div>
+            <h3>Quân Trần</h3>
+            <span class="speaker-role" data-en="Data platform &amp; AI governance expert">Chuyên gia Nền tảng dữ liệu & Quản trị AI</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;Data platforms &amp; AI governance.&lt;/b&gt; Build the data platform and AI governance your business needs to run standardized and sustainably."><b>Nền tảng dữ liệu & Quản trị AI.</b> Xây dựng nền tảng dữ liệu và quản trị AI giúp doanh nghiệp vận hành chuẩn hóa và bền vững.</p>
+      </div>
+
+      <!-- Khoa Nguyễn -->
+      <div class="speaker-block">
+        <div class="speaker-head">
+          <img class="speaker-photo-lg" src="https://drive.google.com/thumbnail?id=1nkbt_rPn_UvnmSnVcd3it9_PUOiykC6E&sz=w200" alt="Khoa Nguyễn" loading="lazy">
+          <div>
+            <h3>Khoa Nguyễn</h3>
+            <span class="speaker-role" data-en="AI for finance &amp; accounting expert">Chuyên gia AI Tài chính – Kế toán</span>
+          </div>
+        </div>
+        <p class="speaker-lead" data-en="&lt;b&gt;AI in finance &amp; accounting.&lt;/b&gt; Apply AI to financial and accounting management — lower costs, faster decisions."><b>AI trong Tài chính, Kế toán.</b> Ứng dụng AI vào quản trị tài chính, kế toán giúp tối ưu chi phí và ra quyết định nhanh hơn.</p>
+      </div>
+
+    </div>
+
+    <div class="up-fulltext-cta">
+      <a href="beach-camp.html" class="btn-primary btn-beach" data-en="See full Beach Camp K4 details →">Xem chi tiết Beach Camp Khóa 4 →</a>
     </div>
   </section>
 
@@ -1474,9 +1870,27 @@
     </div>
     <div class="grid-3">
 
-      <!-- Lake Camp -->
-      <div class="program-card featured-lake">
-        <span class="featured-badge" data-event-end="2026-06-21" data-en="Upcoming">Sắp diễn ra</span>
+      <!-- Beach Camp Khóa 4 -->
+      <div class="program-card featured">
+        <span class="featured-badge" data-event-end="2026-08-02" data-en="Upcoming">Sắp diễn ra</span>
+        <div class="program-icon beach">
+          <svg viewBox="0 0 24 24"><path d="M17.5 21H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+        </div>
+        <h3 data-en="Beach Camp · K4">Beach Camp · Khóa 4</h3>
+        <p class="program-tag" data-en="100% hands-on · 2 days · Aug 01–02 · Vung Tau">Thực chiến 100% · 2 ngày · 01–02/08 · Vũng Tàu</p>
+        <p data-en="Two hands-on days by the sea with six experts — AI content &amp; video, conversational marketing, data platforms &amp; AI governance, and AI for finance &amp; accounting.">2 ngày thực chiến bên bờ biển cùng 6 chuyên gia — nội dung & video AI, conversational marketing, nền tảng dữ liệu & quản trị AI, ứng dụng AI trong tài chính – kế toán.</p>
+        <ul class="program-features">
+          <li data-en="For CEOs, founders, managers &amp; Marketing/Sales">Cho CEO, Founder, quản lý &amp; team Marketing/Sales</li>
+          <li data-en="Practice on your laptop, build a real AI product">Thực hành trên máy, làm ra sản phẩm AI thật</li>
+          <li data-en="6 expert-led deep-dive sessions">6 chuyên đề chuyên sâu cùng chuyên gia</li>
+          <li data-en="5,000,000 VND · VAT included">Học phí 5.000.000đ · Đã gồm VAT</li>
+        </ul>
+        <a href="beach-camp.html" class="btn-primary btn-beach" style="justify-content:center;" data-en="Explore Beach Camp K4 →">Xem Beach Camp Khóa 4 →</a>
+      </div>
+
+      <!-- Lake Camp (đã diễn ra) -->
+      <div class="program-card featured-lake past">
+        <span class="featured-badge" data-en="Concluded">Đã diễn ra</span>
         <div class="program-icon city">
           <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg>
         </div>
@@ -1489,25 +1903,7 @@
           <li data-en="Hands-on practice, team deliverables">Thực hành &amp; trả bài theo nhóm</li>
           <li data-en="Networking &amp; gala dinner">Networking &amp; tiệc tối giao lưu</li>
         </ul>
-        <a href="lake-camp.html" class="btn-primary btn-lake" style="justify-content:center;" data-en="Explore Lake Camp →">Xem Lake Camp →</a>
-      </div>
-
-      <!-- Beach Camp -->
-      <div class="program-card featured">
-        <span class="featured-badge" data-event-end="2026-07-06" data-en="Upcoming">Sắp diễn ra</span>
-        <div class="program-icon beach">
-          <svg viewBox="0 0 24 24"><path d="M17.5 21H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
-        </div>
-        <h3 data-en="Beach Camp">Beach Camp</h3>
-        <p class="program-tag" data-en="AI + Family Retreat · 4 days · 5★ beachfront resort">AI + Family Retreat · 4 ngày · Resort Biển 5★</p>
-        <p data-en="A family getaway that doubles as AI training. Learn and practice with speakers each morning; hit the beach with your family each afternoon.">Kết hợp nghỉ dưỡng gia đình với học AI. Buổi sáng học &amp; thực hành với speaker, buổi chiều tận hưởng biển cùng người thân.</p>
-        <ul class="program-features">
-          <li data-en="5-star beachfront resort">Resort 5 sao ven biển</li>
-          <li data-en="Activities for the whole family">Chương trình hoạt động cho gia đình</li>
-          <li data-en="AI workshops by morning, beach by afternoon">Workshop AI buổi sáng, biển buổi chiều</li>
-          <li data-en="Deep connections with instructors &amp; peers">Kết nối sâu với giảng viên &amp; học viên</li>
-        </ul>
-        <a href="beach-camp.html" class="btn-primary btn-beach" style="justify-content:center;" data-en="Explore Beach Camp →">Xem Beach Camp →</a>
+        <a href="lake-camp.html" class="btn-primary btn-lake" style="justify-content:center;" data-en="Recap Lake Camp →">Xem lại Lake Camp →</a>
       </div>
 
       <!-- Webinar -->

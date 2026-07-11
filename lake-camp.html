@@ -28,6 +28,22 @@
     }
 
     /* Navigation */
+    /* Past-event top strip */
+    .past-strip {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .past-strip ~ nav { top: 38px; }
+
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -1009,6 +1025,11 @@
 
   <canvas class="wave-canvas" id="waveCanvas"></canvas>
 
+  <!-- Fixed past-event strip -->
+  <div class="past-strip" data-en="THIS EVENT HAS CONCLUDED — Thank you to everyone who joined.">
+    SỰ KIỆN ĐÃ DIỄN RA THÀNH CÔNG — Cảm ơn tất cả học viên đã tham gia!
+  </div>
+
   <!-- Navigation -->
   <nav>
     <a href="index.html" class="logo">AI Camp</a>
@@ -1020,7 +1041,7 @@
       <li><a href="#lichtrinh" data-en="Schedule">Lịch trình</a></li>
       <li><a href="#chuyengia" data-en="Experts">Chuyên gia</a></li>
       <li><a href="#congcu" data-en="Tools">Công cụ</a></li>
-      <li><a href="#dangky" class="nav-cta" data-en="Register">Đăng ký ngay</a></li>
+      <li><a href="beach-camp.html" class="nav-cta" data-en="View Beach Camp →">Xem Beach Camp →</a></li>
     </ul>
   </nav>
   <div class="nav-overlay"></div>
@@ -1073,7 +1094,7 @@
         </div>
       </div>
       <div class="hero-buttons">
-        <a href="#dangky" class="btn-primary" data-en="Register →">Đăng ký ngay →</a>
+        <a href="beach-camp.html" class="btn-primary" data-en="View AI Beach Camp →">Xem AI Beach Camp →</a>
         <a href="#lichtrinh" class="btn-secondary" data-en="View schedule">Xem lịch trình</a>
       </div>
     </div>
@@ -1298,13 +1319,14 @@
     </div>
   </section>
 
-  <!-- Đăng ký -->
+  <!-- Đăng ký (đã đóng) -->
   <section class="register-section" id="dangky">
     <div class="register-box">
-      <h2 data-en="Register for AI Lake Camp">Đăng ký AI Lake Camp</h2>
-      <p data-en="Fill out the form to reserve your seat. Our team confirms within 24h.">Điền form bên dưới để giữ slot. BTC sẽ liên hệ xác nhận trong 24h.</p>
+      <h2 data-en="AI Lake Camp has concluded">AI Lake Camp đã kết thúc</h2>
+      <p data-en="Thank you to everyone who joined. Registration for this camp is now closed — the next cohort is AI Beach Camp.">Cảm ơn tất cả học viên đã tham gia. Khoá này đã đóng đăng ký — chương trình tiếp theo là AI Beach Camp.</p>
+      <a href="beach-camp.html" class="btn-submit" style="display:inline-flex;margin-top:8px;text-decoration:none;" data-en="View AI Beach Camp →">Xem AI Beach Camp →</a>
 
-      <form id="registerForm">
+      <form id="registerForm" style="display:none;">
         <div class="form-row">
           <div class="form-group full">
             <label for="campSelect" data-en="Program">Chương trình đăng ký</label>
@@ -1355,8 +1377,8 @@
     </div>
   </section>
 
-  <!-- CTA / Payment -->
-  <section class="cta-section">
+  <!-- CTA / Payment (đã đóng đăng ký) -->
+  <section class="cta-section" style="display:none;">
     <div class="cta-box">
       <h2 data-en="Reserve your Lake Camp seat">Giữ chỗ Lake Camp</h2>
       <p class="slots" data-en="Seats are limited to keep sessions hands-on">Số lượng giới hạn để đảm bảo chất lượng thực hành</p>
